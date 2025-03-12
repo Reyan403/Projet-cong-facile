@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+}
+
+/************************************HEADER*******************************/
+header{
+    background-color: #004c6c;
+    border-radius: 15px;
+    height: 67px;
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+header img{
+    width: 200px;
+    padding-left: 2%;
+    margin-top: 4px;
+}
+
+.background-gray{
+    background-color: #b4c4cf;
+    position: relative;
+    z-index: -1;
+    width: 98%;
+    margin: 0 auto;
+    height: 50px;
+    border-radius: 15px;
+    bottom: 70px;
+}
+
+/*  */
