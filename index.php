@@ -25,15 +25,19 @@ session_start();
         <div class="logo-mentalworks">
             <img src="./PNG/logo-mentalworks-blanc.png" alt="">
         </div>
-        <div class="burger-menu">
-            <img src="./PNG/burger-bar (1).png" alt="">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <img src="./PNG/burger-bar (1).png" alt="Menu">
         </div>
     </header>
+    <div class="menu" id="menu">
+        <span class="close-menu" onclick="toggleMenu()">&times;</span>
+        <a href="./index.php">Connexion</a>
+    </div>
 
-    <section class="bloc-connexion">
+    <section class="bloc">
         <div class="sidebar">
             <div class="content-menu">
-                <a href="#">Connexion</a>
+                <a href="./index.php">Connexion</a>
             </div>
         </div>
         <div class="content-bloc-connexion">
