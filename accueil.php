@@ -34,16 +34,6 @@
             <a href="">Déconnexion</a>
     </div>
 
-    <div class="menu" id="menu">
-        <span class="close-menu" onclick="toggleMenu()">&times;</span>
-            <a href="">Accueil</a>
-            <a href="">Nouvelle demande</a>
-            <a href="">Historique des demandes</a>
-            <a href="">Mes informations</a>
-            <a href="">Mes préférences</a>
-            <a href="">Déconnexion</a>
-    </div>
-
     <section class="bloc">
         <div class="sidebar">
             <div class="content-menu">
