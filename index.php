@@ -40,7 +40,7 @@ session_start();
                 <a href="./index.php">Connexion</a>
             </div>
         </div>
-        <div class="content-bloc-connexion">
+        <div class="content-bloc">
             <h1>
                 CongéFacile
             </h1>

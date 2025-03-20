@@ -98,7 +98,7 @@ header{
     bottom: -16px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 940px) {
     .burger-menu{
         display: flex;
         margin-left: auto;
@@ -146,7 +146,7 @@ header{
     padding-bottom: 15px;
 }
 
-.content-bloc-connexion{
+.content-bloc{
     width: 883px;
     line-height: 25px;
     margin: 30px 0 0 50px;
@@ -226,7 +226,7 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 940px) {
     .sidebar{
         display: none;
     }
@@ -247,4 +247,127 @@ button[type="submit"] {
     border-top: 1px solid #d1d5db;
     width: 80%;
     margin: 30px auto;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 230px;
+    margin-top: 60px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid #004b6b;
+    background-color: white;
+    color: #004b6b;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Inter';
+}
+
+.active {
+    background-color: #004b6b;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Inter';
+}
+
+.line {
+    height: 2px;
+    width: 595px;
+    background-color: #004b6b;
+    position: absolute;
+    top: 405px;
+    z-index: -1;
+}
+
+.step:not(:last-child) .line {
+    transform: translateX(50%);
+}
+
+.text {
+    margin-top: 5px;
+    font-size: 16px;
+    font-family: 'Inter';
+    font-weight: 500;
+}
+
+.name-steps{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.name-step{
+    background-color: #004C6C0D;
+    align-content: center;
+    padding: 15px 20px;
+    border-radius: 7px;
+}
+
+.name-step p{
+    width: 204px;
+    align-content: center;
+}
+
+.mail-mentalworks{
+    margin-top: 50px;
+}
+
+.mail-mentalworks a{
+    color :#004C6C;
+}
+
+@media screen and (max-width: 1230px) {
+    .content-timeline{
+        display: flex;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .timeline {
+        display: grid;
+        gap: 75px;
+        margin-top: 0px;
+        justify-content: left;
+    }
+
+    .name-steps{
+        display: grid;
+        margin-top: 0px;
+    }
+
+    .line {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .timeline {
+        gap: 140px;
+    }
+
+    .name-step p{
+        width: 100px;
+        align-content: center;
+    }
 }
