@@ -46,6 +46,59 @@
                 <a href="">Déconnexion</a>
             </div>
         </div>
+        <div class="content-bloc">
+            <h1>
+                Effectuer une nouvelle demande
+            </h1>
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="type-demande">Type de demande - champ obligatoire</label>
+                        <select id="type-demande" required>
+                            <option value="">Sélectionner un type</option>
+                            <option value="">Congé payé</option>
+                            <option value="">Congé maladie</option>
+                            <option value="">Congé sans solde</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date-debut">Date début - champ obligatoire</label>
+                            <input type="date" id="date-debut" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-fin">Date de fin - champ obligatoire</label>
+                            <input type="date" id="date-fin" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="jours-demandes">Nombre de jours demandés</label>
+                        <input type="number" id="jours-demandes" value="0" min="0">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="justificatif">Justificatif si applicable</label>
+                        <input type="file" id="justificatif" hidden>
+                        <button type="button" class="upload-btn" onclick="document.getElementById('justificatif').click();">
+                            <img src="./PNG/fichier-texte.png" alt=""> Sélectionner un fichier
+                        </button>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="commentaire">Commentaire supplémentaire</label>
+                        <textarea id="commentaire" placeholder="Si congé exceptionnel ou sans solde, vous pouvez préciser votre demande."></textarea>
+                    </div>
+                </form>
+                <button type="submit" class="button-connexion">Soumettre ma demande*</button>
+                <p>
+                    *En cas d'erreur de saisie ou de changements, vous pourrez modifier votre demande tant que celle-ci n'a pas été validée par le manager.
+                </p>
+            </div>
+        </div>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>

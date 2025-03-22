@@ -26,6 +26,12 @@ a{
     text-decoration: none;
 }
 
+.content-bloc{
+    width: 883px;
+    line-height: 25px;
+    margin: 30px 0 0 50px;
+}
+
 /************************************HEADER*******************************/
 header{
     background-color: #004c6c;
@@ -109,6 +115,10 @@ header{
     .burger-menu img{
         width: 45px;
     }
+
+    .content-bloc{
+        margin: 30px 0 0 20px;
+    }
 }
 
 /* -----------------------CONNEXION--------------------------------- */
@@ -146,12 +156,6 @@ header{
     padding-bottom: 15px;
 }
 
-.content-bloc{
-    width: 883px;
-    line-height: 25px;
-    margin: 30px 0 0 50px;
-}
-
 form{
     display: grid;
 }
@@ -161,13 +165,14 @@ label{
     font-family: 'Inter';
     font-weight: 500;
     color: #212B36;
+    margin-bottom: 15px;
 }
 
 #email {
     background: url(./PNG/email.png) no-repeat left center;
     background-size: 17px;
     padding: 12px 16px 12px 40px;
-    width: 100%;
+    width: 95%;
     max-width: 350px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -182,7 +187,7 @@ label{
 .password-label {
     display: block;
     margin: 20px 0 0 0px;
-    width: 100%; 
+    width: 95%; 
     max-width: 350px; 
 }
 
@@ -215,7 +220,6 @@ button[type="submit"] {
     background-color: #004C6C;
     border: none;
     color: white;
-    width: 215px;
     height: 50px;
     border-radius: 6px;
     padding: 13px 28px;
@@ -369,5 +373,80 @@ button[type="submit"] {
     .name-step p{
         width: 100px;
         align-content: center;
+    }
+}
+
+/* --------------------NOUVELLE DEMANDE----------------------------------------- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+input#jours-demandes, #date-fin, #date-debut, button.upload-btn, select#type-demande {
+    background-size: 17px;
+    padding: 12px 16px 12px 20px;
+    width: 150%;
+    max-width: 350px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #9CA3AF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-position: 17px;
+    cursor: pointer;
+}
+
+input#jours-demandes{
+    background-color: #F3F4F6 
+}
+
+button.upload-btn{
+    background-color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button.upload-btn img{
+    width: 16px;
+}
+
+textarea {
+    background-size: 17px;
+    width: 100%;
+    max-width: 730px;
+    padding: 20px;
+    height: 186px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #9CA3AF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-position: 17px;
+}
+
+.form-row{
+    display: flex;
+    gap: 140px;
+}
+
+@media screen and (max-width: 1030px) {
+    .form-row{
+        display: grid;
+        gap: 0px;
+    }
+
+    input#jours-demandes, #date-fin, #date-debut, button.upload-btn, select#type-demande {
+        width: 95%;
+    }
+
+    textarea{
+        width: 95%;
     }
 }

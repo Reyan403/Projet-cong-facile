@@ -54,7 +54,7 @@ session_start();
                 <h2>
                     Connectez-vous
                 </h2>
-                <form action="login.php" method="POST">
+                <form action="" method="POST">
                     <label for="email">Adresse email</label>
                     <input type="text" name="email" id="email" placeholder="****@mentalworks.fr">
 
