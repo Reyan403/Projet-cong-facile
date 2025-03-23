@@ -228,6 +228,16 @@ button[type="submit"] {
     font-family: 'Inter';
     margin-top: 20px;
     cursor: pointer;
+    width: 223px;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+    font-family: 'Epilogue';
+    font-weight: 400;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    margin-left: 10px;
 }
 
 @media screen and (max-width: 940px) {
