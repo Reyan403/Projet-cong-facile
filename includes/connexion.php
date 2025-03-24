@@ -1,21 +1,22 @@
 <?php
+session_start();
 
-// nécessite d'être définies ici pour être utilisées dans les fonctions.
+include 'includes/db.php';
+
+// Définition des variables
 $erreurs = [];
 $data = [];
 
-// Si je ne suis pas en POST, je n'ai pas besoin de traiter le formulaire.
+// Si je ne suis pas en POST, on ne traite pas le formulaire.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = $_POST;
 
-    // Suppression des espaces avant/après pour les différentes données.
+    // Nettoyage des entrées
     $data['email'] = trim($data['email'] ?? '');
     $data['password'] = trim($data['password'] ?? '');
 
     // Vérification de l'email
-
-    // Vérification si le champ n'est pas vide.
     if (empty($data['email'])) {
         $erreurs['email'] = 'Veuillez saisir votre email.';
     } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
@@ -23,61 +24,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérification du mot de passe
-
-    // Vérification si le champ n'est pas vide.
     if (empty($data['password'])) {
         $erreurs['password'] = 'Veuillez saisir votre mot de passe.';
     }
 
-    // On doit vérifier que l'user existe en base de données
-    // Vérifier également son mot de passe
-    // Si ok : on le "connecte".
-
+    // Vérification en base de données
     $requete = $connexion->prepare('
-        SELECT id, email, password, enabled, created_at, role, person_id
-        FROM user
-        WHERE email = :email
+        SELECT u.id, u.email, u.password, u.enabled, u.created_at, u.role, u.person_id,
+               p.first_name, p.last_name
+        FROM user u
+        LEFT JOIN person p ON u.person_id = p.id
+        WHERE u.email = :email
     ');
 
-    $requete->bindParam('email', $data['email']);
+    $requete->bindParam(':email', $data['email']);
     $requete->execute();
-    $user = $requete->fetch(\PDO::FETCH_ASSOC);
+    $user = $requete->fetch(PDO::FETCH_ASSOC);
 
-    // user non trouvé en base de données.
-    if ($user === false || !password_verify($data['password'], $user['password'])) {
+    // Vérification des informations utilisateur
+    if (!$user || !password_verify($data['password'], $user['password'])) {
         $erreurs['email'] = 'Compte non valide, veuillez réessayer.';
     } else {
-        if (password_verify($data['password'], $user['password'])) {
-            // OK l'utilisateur peut se connecter.
-            // On créé une session avec ses données.
-            $_SESSION['user'] = [
-                'id' => $user['id'],
-                'email' => $user['email'],
-                'enabled' => $user['enabled'],
-                'created_at' => $user['created_at'],
-                'role' => $user['role'],
-                'person_id' => $user['person_id']
-            ];
-        
-            $_SESSION['message'] = [
-                'type' => 'success',
-                'message' => 'Vous êtes maintenant connecté.',
-            ];
-        
-            // Redirection selon le rôle de l'utilisateur
-            if ($user['role'] === 'employe') {
-                header('Location: accueil.php');
-            } elseif ($user['role'] === 'manager') {
-                header('Location: accueil2.php');
-            } else {
-                // Si le rôle n'est pas reconnu, rediriger vers une page par défaut
-                header('Location: index.php');
-            }
+        // Stocker les informations dans la session
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'enabled' => $user['enabled'],
+            'created_at' => $user['created_at'],
+            'role' => $user['role'],
+            'person_id' => $user['person_id'],
+            'first_name' => $user['first_name'] ?? 'Non défini',
+            'last_name' => $user['last_name'] ?? 'Non défini',
+        ];
+
+        $_SESSION['message'] = [
+            'type' => 'success',
+            'message' => 'Vous êtes maintenant connecté.',
+        ];
+
+        // Redirection selon le rôle de l'utilisateur
+        if ($user['role'] === 'employe') {
+            header('Location: accueil.php');
+        } elseif ($user['role'] === 'manager') {
+            header('Location: accueil2.php');
+        } else {
+            header('Location: index.php');
         }
+        exit;
     }
 
-    // On réinitialise le mot de passe à l'affichage.
+    // Réinitialisation du mot de passe dans le formulaire
     $data['password'] = '';
 }
-
 ?>

@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Vérification si l'utilisateur est bien connecté
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php');
+    exit;
+}
+
+// Vérification et affichage sécurisé des informations
+$firstName = $_SESSION['user']['first_name'] ?? 'Utilisateur';
+$lastName = $_SESSION['user']['last_name'] ?? 'Inconnu';
+$role = $_SESSION['user']['role'] ?? 'Non défini';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,6 +61,8 @@
                     <a href="">Mes préférences</a>
                     <a href="">Déconnexion</a>
                 </div>
+                <p><strong><?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?></strong></p>
+                <p><?= ($role === 'manager') ? 'Manager' : 'Collaborateur' ?></p>
             </div>
         </div>
         <div class="content-bloc">
