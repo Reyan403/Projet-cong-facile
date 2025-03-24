@@ -27,8 +27,14 @@
     <div class="menu" id="menu">
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="">Accueil</a>
-            <a href="">Nouvelle demande</a>
+            <a href="">Demandes en attente</a>
             <a href="">Historique des demandes</a>
+            <a href="">Mon équipe</a>
+            <a href="">Statistiques</a>
+            <a href="">Types de demandes</a>
+            <a href="">Directions/Services</a>
+            <a href="">Managers</a>
+            <a href="">Postes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
             <a href="">Déconnexion</a>
@@ -38,12 +44,25 @@
         <div class="sidebar">
             <div class="content-menu">
                 <div class="other-menu">
-                    <a href="./accueil.php">Accueil</a>
-                    <a href="./nouvelle-demande.php">Nouvelle demande</a>
+                    <a href="./accueil2.php">Accueil</a>
+                    <a href="">Demandes en attente</a>
                     <a href="">Historique des demandes</a>
+                    <a href="">Mon équipe</a>
+                    <a href="">Statistiques</a>
                     <hr class="separator">
                     <a href="">Mes informations</a>
                     <a href="">Mes préférences</a>
+                </div>
+                <details>
+                    <summary>Administration</summary>
+                        <div class="choix">
+                            <a href="">Types de demandes</a>
+                            <a href="">Directions/Services</a>
+                            <a href="">Managers</a>
+                            <a href="">Postes</a>
+                        </div>
+                </details>
+                <div class="other-menu">
                     <a href="">Déconnexion</a>
                 </div>
             </div>

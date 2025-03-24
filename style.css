@@ -26,10 +26,16 @@ a{
     text-decoration: none;
 }
 
-.content-bloc{
-    width: 883px;
-    line-height: 25px;
-    margin: 30px 0 0 50px;
+form{
+    display: grid;
+}
+
+label{
+    font-size: 16px;
+    font-family: 'Inter';
+    font-weight: 500;
+    color: #212B36;
+    margin-bottom: 15px;
 }
 
 /************************************HEADER*******************************/
@@ -71,10 +77,10 @@ header{
 .menu a {
     display: block;
     text-decoration: none;
-    padding-top: 50px;
+    padding-top: 40px;
     text-align: center;
     color: #637381;
-    font-size: 22px;
+    font-size: 18px;
     font-family: 'Inter';
     font-weight: 500;
 }
@@ -136,6 +142,12 @@ header{
     margin-top: 25px;
 }
 
+.content-bloc{
+    width: 883px;
+    line-height: 25px;
+    margin: 30px 0 0 50px;
+}
+
 .content-menu a {
     display: block;
     text-decoration: none;
@@ -148,24 +160,12 @@ header{
     padding: 10px 0px 15px 30px;
 }
 
-.content-menu a:hover {
+.other-menu a:hover {
     color: #0066cc;
     border-right: 4px solid #0066cc;
     background-color: #cdcdf921;
     padding-top: 10px;
     padding-bottom: 15px;
-}
-
-form{
-    display: grid;
-}
-
-label{
-    font-size: 16px;
-    font-family: 'Inter';
-    font-weight: 500;
-    color: #212B36;
-    margin-bottom: 15px;
 }
 
 #email {
@@ -236,7 +236,7 @@ button[type="submit"] {
     font-size: 16px;
     font-family: 'Epilogue';
     font-weight: 400;
-    white-space: nowrap; /* Empêche le retour à la ligne */
+    white-space: nowrap; 
     margin-left: 10px;
 }
 
@@ -384,6 +384,47 @@ button[type="submit"] {
         width: 100px;
         align-content: center;
     }
+}
+
+/* ---------------------------------ACCUEIL2 POUR MANAGER---------------------------------------------------------- */
+
+details {
+    display: block;
+    text-decoration: none;
+    color: #637381;
+    font-size: 16px;
+    font-family: 'Inter';
+    font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px 15px 30px;
+    border: none;
+    position: relative; 
+}
+
+details a:hover{
+    color: #004C6C;
+}
+
+details summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    padding-right: 30px;
+}
+
+details summary::after {
+    content: "⯆";
+    background-size: contain;
+    width: 12px; 
+    height: 12px;
+    position: absolute;
+    right: 15px; 
+    transition: transform 0.2s ease-in-out;
+}
+
+.choix{
+    margin-top: 15px;
 }
 
 /* --------------------NOUVELLE DEMANDE----------------------------------------- */

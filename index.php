@@ -39,7 +39,9 @@ include 'includes/connexion.php'
     <section class="bloc">
         <div class="sidebar">
             <div class="content-menu">
-                <a href="./index.php">Connexion</a>
+                <div class="other-menu">
+                    <a href="./index.php">Connexion</a>
+                </div>
             </div>
         </div>
         <div class="content-bloc">
