@@ -138,6 +138,35 @@ header{
     box-shadow: 10px 0px 20px 0 #5C73A012;
 }
 
+.character-menu{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    position: absolute;
+    bottom: 40px;
+}
+
+.character-menu img{
+    width: 49px;
+    border-radius: 40px;
+    margin-top: 10px;
+}
+
+.info-employe p{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 500;
+    color: #111928;
+    margin-bottom: 7px;
+}
+
+.info-employe span{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    color: #637381;
+}
+
 .content-menu{
     margin-top: 25px;
 }
@@ -239,6 +268,32 @@ button[type="submit"] {
     white-space: nowrap; 
     margin-left: 10px;
 }
+
+/* Style pour le message */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Style pour un message de succès */
+.message.success {
+    background-color: #4CAF50;  /* Vert */
+    color: white;
+}
+
+/* Style pour un message d'erreur */
+.message.error {
+    background-color: #f44336;  /* Rouge */
+    color: white;
+}
+
+
 
 @media screen and (max-width: 940px) {
     .sidebar{

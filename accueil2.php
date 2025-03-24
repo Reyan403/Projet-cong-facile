@@ -1,3 +1,8 @@
+<?php
+include 'includes/affichage-avatar.php'
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,7 +42,7 @@
             <a href="">Postes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
-            <a href="">Déconnexion</a>
+            <a href="deconnexion.php">Déconnexion</a>
     </div>
 
     <section class="bloc">
@@ -63,7 +68,16 @@
                         </div>
                 </details>
                 <div class="other-menu">
-                    <a href="">Déconnexion</a>
+                    <a href="deconnexion.php">Déconnexion</a>
+                </div>
+            </div>
+            <div class="character-menu">
+                <div class="img-caharacter">
+                    <img src="./PNG/download.png" alt="">
+                </div>
+                <div class="info-employe">
+                    <p><?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?></p>
+                    <span><?= ($role === 'manager') ? 'Manager' : 'Collaborateur' ?></span>
                 </div>
             </div>
         </div>

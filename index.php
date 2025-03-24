@@ -1,8 +1,6 @@
 <?php
-
-include 'includes/db.php';
-include 'includes/connexion.php'
-
+    include 'includes/db.php';
+    include 'includes/connexion.php';
 ?>
 
 <!DOCTYPE html>
