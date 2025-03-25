@@ -1,3 +1,29 @@
+<?php
+include 'includes/affichage-avatar.php';
+
+$type_demande = $date_debut = $date_fin = $jours_demandes = "";
+$error = [];
+
+if($_SERVER ['REQUEST_METHOD'] == 'POST'){
+
+    if (empty ($_POST ['type_demande'])){
+        $error[] = "Veuillez choisir un type de demande";
+    }
+
+    if (empty ($_POST ['date_debut'])){
+        $error[] = "Veuillez choisir une date de début";
+    }
+
+    if (empty ($_POST ['date_fin'])){
+        $error[] = "Veuillez choisir une date de fin";
+    }
+
+    if (empty ($_POST ['jours_demandes'])){
+        $error[] = "Veuillez choisir le nombre de jours que vous voulez";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,25 +52,34 @@
     </header>
     <div class="menu" id="menu">
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
-            <a href="">Accueil</a>
-            <a href="">Nouvelle demande</a>
+            <a href="accueil.php">Accueil</a>
+            <a href="./nouvelle-demande.html">Nouvelle demande</a>
             <a href="">Historique des demandes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
-            <a href="">Déconnexion</a>
+            <a href="deconnexion.php">Déconnexion</a>
     </div>
 
     <section class="bloc">
         <div class="sidebar">
             <div class="content-menu">
                 <div class="other-menu">
-                    <a href="">Accueil</a>
-                    <a href="">Nouvelle demande</a>
+                    <a href="accueil.php">Accueil</a>
+                    <a href="./nouvelle-demande.php">Nouvelle demande</a>
                     <a href="">Historique des demandes</a>
                     <hr class="separator">
                     <a href="">Mes informations</a>
                     <a href="">Mes préférences</a>
-                    <a href="">Déconnexion</a>
+                    <a href="deconnexion.php">Déconnexion</a>
+                </div>
+                <div class="character-menu">
+                    <div class="img-caharacter">
+                        <img src="./PNG/download.png" alt="">
+                    </div>
+                    <div class="info-employe">
+                        <p><?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?></p>
+                        <span><?= ($role === 'manager') ? 'Manager' : 'Collaborateur' ?></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +88,7 @@
                 Effectuer une nouvelle demande
             </h1>
             <div class="form-container">
-                <form>
+                <form method="POST" action="historique-demandes.php">
                     <div class="form-group">
                         <label for="type-demande">Type de demande - champ obligatoire</label>
                         <select id="type-demande" required>

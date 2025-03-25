@@ -31,7 +31,7 @@ include 'includes/affichage-avatar.php'
     <div class="menu" id="menu">
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="">Accueil</a>
-            <a href="">Nouvelle demande</a>
+            <a href="./nouvelle-demande.php">Nouvelle demande</a>
             <a href="">Historique des demandes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
