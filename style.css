@@ -260,16 +260,15 @@ button[type="submit"] {
     width: 250px;
 }
 
-.error {
+.error{
     color: red;
-    font-size: 16px;
+    font-size: 15px;
     font-family: 'Epilogue';
-    font-weight: 400;
+    font-weight: 500;
     white-space: nowrap; 
-    margin-left: 10px;
+    margin: 10px 0 0 10px;
 }
 
-/* Message de succès (vert) */
 .message.green {
     background-color: #d4edda;
     color: #155724;
@@ -284,6 +283,12 @@ button[type="submit"] {
 @media screen and (max-width: 940px) {
     .sidebar{
         display: none;
+    }
+    
+    .content-bloc{
+        width: 883px;
+        line-height: 25px;
+        margin: 30px 0 0 30px;
     }
 }
 

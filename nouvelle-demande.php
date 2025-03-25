@@ -6,20 +6,22 @@ $error = [];
 
 if($_SERVER ['REQUEST_METHOD'] == 'POST'){
 
-    if (empty ($_POST ['type_demande'])){
-        $error[] = "Veuillez choisir un type de demande";
+    $type_demande = isset($_POST['type_demande']) ? trim($_POST['type_demande']) : '';
+
+    if ($type_demande === "") {
+        $error['type_demande'] = "Veuillez choisir un type de demande";
     }
 
     if (empty ($_POST ['date_debut'])){
-        $error[] = "Veuillez choisir une date de début";
+        $error['date_debut'] = "Veuillez choisir une date de début";
     }
 
     if (empty ($_POST ['date_fin'])){
-        $error[] = "Veuillez choisir une date de fin";
+        $error['date_fin'] = "Veuillez choisir une date de fin";
     }
 
     if (empty ($_POST ['jours_demandes'])){
-        $error[] = "Veuillez choisir le nombre de jours que vous voulez";
+        $error['jours_demandes'] = "Veuillez choisir le nombre de jours que vous voulez";
     }
 }
 ?>
@@ -54,7 +56,7 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="accueil.php">Accueil</a>
             <a href="./nouvelle-demande.html">Nouvelle demande</a>
-            <a href="">Historique des demandes</a>
+            <a href="./historique-demandes.php">Historique des demandes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
             <a href="deconnexion.php">Déconnexion</a>
@@ -66,7 +68,7 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
                 <div class="other-menu">
                     <a href="accueil.php">Accueil</a>
                     <a href="./nouvelle-demande.php">Nouvelle demande</a>
-                    <a href="">Historique des demandes</a>
+                    <a href="./historique-demandes.php">Historique des demandes</a>
                     <hr class="separator">
                     <a href="">Mes informations</a>
                     <a href="">Mes préférences</a>
@@ -88,31 +90,35 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
                 Effectuer une nouvelle demande
             </h1>
             <div class="form-container">
-                <form method="POST" action="historique-demandes.php">
+                <form method="POST" action="nouvelle-demande.php">
                     <div class="form-group">
-                        <label for="type-demande">Type de demande - champ obligatoire</label>
-                        <select id="type-demande" required>
-                            <option value="">Sélectionner un type</option>
-                            <option value="">Congé payé</option>
-                            <option value="">Congé maladie</option>
-                            <option value="">Congé sans solde</option>
+                        <label for="type-demande"  name="type_demande" >Type de demande - champ obligatoire</label>
+                        <select id="type-demande" name="type_demande">
+                            <option value="" <?= empty($type_demande) ? 'selected' : '' ?>>Sélectionner un type</option>
+                            <option value="conge_paye" <?= ($type_demande == 'conge_paye') ? 'selected' : '' ?>>Congé payé</option>
+                            <option value="conge_maladie" <?= ($type_demande == 'conge_maladie') ? 'selected' : '' ?>>Congé maladie</option>
+                            <option value="conge_sans_solde" <?= ($type_demande == 'conge_sans_solde') ? 'selected' : '' ?>>Congé sans solde</option>
                         </select>
+                        <span class="error"> <?php echo $error['type_demande'] ?? ''; ?> </span>
                     </div>
         
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date-debut">Date début - champ obligatoire</label>
-                            <input type="date" id="date-debut" required>
+                            <input type="date" id="date-debut" name="date_debut" value="<?php echo htmlspecialchars($date_debut); ?>">
+                            <span class="error"> <?php echo $error['date_debut'] ?? ''; ?> </span>
                         </div>
                         <div class="form-group">
                             <label for="date-fin">Date de fin - champ obligatoire</label>
-                            <input type="date" id="date-fin" required>
+                            <input type="date" id="date-fin" name="date_fin" value="<?php echo htmlspecialchars($date_fin); ?>">
+                            <span class="error"> <?php echo $error['date_fin'] ?? ''; ?> </span>
                         </div>
                     </div>
         
                     <div class="form-group">
                         <label for="jours-demandes">Nombre de jours demandés</label>
                         <input type="number" id="jours-demandes" value="0" min="0">
+                        <span class="error"> <?php echo $error['jours_demandes'] ?? ''; ?> </span>
                     </div>
         
                     <div class="form-group">
@@ -127,8 +133,8 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
                         <label for="commentaire">Commentaire supplémentaire</label>
                         <textarea id="commentaire" placeholder="Si congé exceptionnel ou sans solde, vous pouvez préciser votre demande."></textarea>
                     </div>
+                    <button type="submit" class="button-connexion">Soumettre ma demande*</button>
                 </form>
-                <button type="submit" class="button-connexion">Soumettre ma demande*</button>
                 <p>
                     *En cas d'erreur de saisie ou de changements, vous pourrez modifier votre demande tant que celle-ci n'a pas été validée par le manager.
                 </p>
