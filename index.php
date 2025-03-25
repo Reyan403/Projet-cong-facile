@@ -1,6 +1,17 @@
 <?php
     include 'includes/db.php';
     include 'includes/connexion.php';
+
+    // Vérifie si le cookie `logout_message` existe et stocke son contenu
+    $alerte = null;
+    if (isset($_COOKIE['logout_message'])) {
+        $alerte = [
+            'type' => 'success',
+            'message' => $_COOKIE['logout_message']
+        ];
+        // Supprime le cookie après lecture
+        setcookie("logout_message", "", time() - 3600, "/");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +84,11 @@
                 <p>
                     Vous avez oublié votre mot de passe ? <a href="#" class="mdp-forgot"><strong>Cliquez ici</strong></a> pour le réinitialiser.
                 </p>
+                <?php 
+                    if ($alerte): 
+                        echo "<div class='message green'>{$alerte['message']}</div>";
+                    endif; 
+                ?>
             </div>
         </div>
     </section>

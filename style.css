@@ -269,31 +269,17 @@ button[type="submit"] {
     margin-left: 10px;
 }
 
-/* Style pour le message */
-.message {
-    padding: 15px;
-    margin: 20px 0;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+/* Message de succès (vert) */
+.message.green {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    font-size: 18px;
+    font-family: 'Inter';
+    font-weight: 500;
+    width: 89%;
+    padding: 3%;
 }
-
-/* Style pour un message de succès */
-.message.success {
-    background-color: #4CAF50;  /* Vert */
-    color: white;
-}
-
-/* Style pour un message d'erreur */
-.message.error {
-    background-color: #f44336;  /* Rouge */
-    color: white;
-}
-
-
 
 @media screen and (max-width: 940px) {
     .sidebar{
