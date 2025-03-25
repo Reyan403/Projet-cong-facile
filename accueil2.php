@@ -1,7 +1,6 @@
 <?php
-include 'includes/affichage-avatar.php'
+include 'includes/affichage-avatar.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -61,10 +61,60 @@ include 'includes/affichage-avatar.php'
                 </div>
             </div>
         </div>
-        <div class="content-bloc">
+        <div class="content-bloc2">
             <h1>
                 Historique des demandes
             </h1>
+            <table>
+            <thead>
+            <tr>
+                <th>Type de demande <input type="search"></th>
+                <th>Demandé le <input type="search"></th>
+                <th>Date de début <input type="search"></th>
+                <th>Date de fin <input type="search"></th>
+                <th>Nb de jours <input type="search"></th>
+                <th>Statut <input type="search"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Congé payé</td>
+                    <td>10/12/2024 8h00</td>
+                    <td>19/12/2024 8h00</td>
+                    <td>23/12/2024 18h00</td>
+                    <td>3 jours</td>
+                    <td>Accepté</td>
+                    <td><button class="details-btn">Détails</button></td>
+                </tr>
+                <tr>
+                    <td>Congé sans solde</td>
+                    <td>11/11/2024 8h00</td>
+                    <td>29/11/2024 8h00</td>
+                    <td>30/11/2024 8h00</td>
+                    <td>2 jours</td>
+                    <td>En cours</td>
+                    <td><button class="details-btn">Détails</button></td>
+                </tr>
+                <tr>
+                    <td>Congé maladie</td>
+                    <td>29/08/2024 8h00</td>
+                    <td>02/09/2024 8h00</td>
+                    <td>06/09/2024 18h00</td>
+                    <td>5 jours</td>
+                    <td>Accepté</td>
+                    <td><button class="details-btn">Détails</button></td>
+                </tr>
+                <tr>
+                    <td>Congé sans solde</td>
+                    <td>05/08/2024 13h30</td>
+                    <td>09/08/2024 13h30</td>
+                    <td>09/08/2024 18h00</td>
+                    <td>0,5 jours</td>
+                    <td>Accepté</td>
+                    <td><button class="details-btn">Détails</button></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
     </section> 
     <script src="script.js"></script>

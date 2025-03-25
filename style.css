@@ -142,7 +142,7 @@ header{
     display: flex;
     align-items: center;
     padding-left: 30px;
-    position: absolute;
+    position: fixed;
     bottom: 40px;
 }
 
@@ -547,3 +547,82 @@ textarea {
         width: 95%;
     }
 }
+
+/* --------------------------------------------DEMANDE ENVOYE-------------------------------------------------------- */
+.demande-conge-envoye {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.demande-conge-envoye p{
+    font-size: 25px;
+    font-family: 'Epilogue';
+    font-weight: 600;
+    color: green;
+    margin-bottom: 50px;
+}
+
+.demande-conge-envoye a{
+    font-size: 25px;
+    font-family: 'Epilogue';
+    font-weight: 500;
+}
+
+/* ----------------------------------------------HISTORIQUE DES DEMANDES-------------------------------------------- */
+.content-bloc2{
+    margin: 30px 0 0 50px;
+}
+
+table {
+    width: 98%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    border-radius: 12px;
+    max-width: 1554px;
+}
+
+th, td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 16px 24px;
+    text-align: left;
+}
+
+td{
+    font-size: 14px;
+    font-family: 'Inter';
+    color: #475467;
+    font-weight: 400;
+}
+
+thead{
+    background-color: #F9FAFB;
+}
+
+thead input{
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+th input {
+    width: 90%;
+}
+
+.details-btn {
+    background-color: #EAECF0;
+    color: white;
+    border: none;
+    padding: 13px 28px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #475467;
+    font-weight: 500;
+    font-family: 'Inter';
+}
+

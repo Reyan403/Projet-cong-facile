@@ -1,29 +1,7 @@
 <?php
 include 'includes/affichage-avatar.php';
-
-$type_demande = $date_debut = $date_fin = $jours_demandes = "";
-$error = [];
-
-if($_SERVER ['REQUEST_METHOD'] == 'POST'){
-
-    $type_demande = isset($_POST['type_demande']) ? trim($_POST['type_demande']) : '';
-
-    if ($type_demande === "") {
-        $error['type_demande'] = "Veuillez choisir un type de demande";
-    }
-
-    if (empty ($_POST ['date_debut'])){
-        $error['date_debut'] = "Veuillez choisir une date de début";
-    }
-
-    if (empty ($_POST ['date_fin'])){
-        $error['date_fin'] = "Veuillez choisir une date de fin";
-    }
-
-    if (empty ($_POST ['jours_demandes'])){
-        $error['jours_demandes'] = "Veuillez choisir le nombre de jours que vous voulez";
-    }
-}
+include 'includes/db.php';
+include 'includes/affichage-erreurs.php';
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +68,7 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
                 Effectuer une nouvelle demande
             </h1>
             <div class="form-container">
-                <form method="POST" action="nouvelle-demande.php">
+                <form method="POST" action="nouvelle-demande.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="type-demande"  name="type_demande" >Type de demande - champ obligatoire</label>
                         <select id="type-demande" name="type_demande">
@@ -117,21 +95,23 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST'){
         
                     <div class="form-group">
                         <label for="jours-demandes">Nombre de jours demandés</label>
-                        <input type="number" id="jours-demandes" value="0" min="0">
+                        <input type="number" id="jours-demandes" name="jours_demandes" value="0" <?= htmlspecialchars($jours_demandes) ?>" min="0">
                         <span class="error"> <?php echo $error['jours_demandes'] ?? ''; ?> </span>
                     </div>
+
         
                     <div class="form-group">
-                        <label for="justificatif">Justificatif si applicable</label>
-                        <input type="file" id="justificatif" hidden>
-                        <button type="button" class="upload-btn" onclick="document.getElementById('justificatif').click();">
-                            <img src="./PNG/fichier-texte.png" alt=""> Sélectionner un fichier
+                        <label for="receipt_file">Justificatif si applicable</label>
+                        <input type="file" name="receipt_file" id="receipt_file" hidden onchange="updateFileName(this)">
+                        <button type="button" class="upload-btn" onclick="document.getElementById('receipt_file').click();">
+                            <img src="./PNG/fichier-texte.png" alt=""> <span id="file-name">Sélectionner un fichier</span>
                         </button>
+                        <span class="error"><?php echo $error['file'] ?? ''; ?></span>
                     </div>
-        
+       
                     <div class="form-group">
                         <label for="commentaire">Commentaire supplémentaire</label>
-                        <textarea id="commentaire" placeholder="Si congé exceptionnel ou sans solde, vous pouvez préciser votre demande."></textarea>
+                        <textarea id="commentaire" name="commentaire" placeholder="Si congé exceptionnel ou sans solde, vous pouvez préciser votre demande."></textarea>
                     </div>
                     <button type="submit" class="button-connexion">Soumettre ma demande*</button>
                 </form>

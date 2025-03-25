@@ -55,7 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'person_id' => $user['person_id'],
             'first_name' => $user['first_name'] ?? 'Non défini',
             'last_name' => $user['last_name'] ?? 'Non défini',
+            'department_id' => $user['department_id'] ?? null 
         ];
+
+        // Stocker l'ID du collaborateur dans la session
+        $_SESSION['collaborator_id'] = $user['id']; // Enregistrer l'ID du collaborateur
+        $_SESSION['department_id'] = $user['department_id']; // Enregistrer l'ID du département dans la session
 
         $_SESSION['message'] = [
             'type' => 'success',
@@ -77,3 +82,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data['password'] = '';
 }
 ?>
+

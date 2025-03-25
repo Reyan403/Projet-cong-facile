@@ -1,0 +1,82 @@
+<?php
+include 'includes/db.php';
+
+// Déclaration des variables
+$type_demande = $date_debut = $date_fin = $jours_demandes = $justificatif = "";
+$error = [];
+
+// Vérification de l'utilisateur connecté
+$collaborator_id = $_SESSION['user']['id'] ?? null;
+$department_id = $_SESSION['user']['department_id'] ?? null;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupération des données du formulaire
+    $type_demande = $_POST['type_demande'] ?? '';
+    $date_debut = $_POST['date_debut'] ?? '';
+    $date_fin = $_POST['date_fin'] ?? '';
+    $jours_demandes = $_POST['jours_demandes'] ?? '';
+    $commentaire = $_POST['commentaire'] ?? '';
+
+    // Vérification des champs obligatoires
+    if (empty($type_demande)) $error['type_demande'] = "Veuillez choisir un type de demande.";
+    if (empty($date_debut)) $error['date_debut'] = "Veuillez choisir une date de début.";
+    if (empty($date_fin)) $error['date_fin'] = "Veuillez choisir une date de fin.";
+    if (empty($jours_demandes)) $error['jours_demandes'] = "Veuillez choisir le nombre de jours.";
+
+    // Mapping du type de congé avec la base de données
+    $type_demande_mapping = [
+        'conge_paye' => 1,
+        'conge_maladie' => 2,
+        'conge_sans_solde' => 3
+    ];
+    $type_demande_id = $type_demande_mapping[$type_demande] ?? null;
+
+    if ($type_demande_id === null) {
+        $error['type_demande'] = "Type de demande invalide.";
+    }
+
+    // Gestion du fichier uploadé (justificatif)
+    if (!empty($_FILES['receipt_file']['name'])) { 
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; 
+
+        $filename = time() . '_' . basename($_FILES['receipt_file']['name']);
+        $target_file = $upload_dir . $filename;
+        $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $max_size = 10 * 1024 * 1024; // 10 Mo
+
+        // Vérifier la taille et le format
+        if ($_FILES['receipt_file']['size'] > $max_size) {
+            $error['file'] = "❌ Le fichier est trop volumineux (max 10 Mo).";
+        } elseif (!in_array($file_type, ['jpg', 'jpeg', 'png', 'pdf', 'docx'])) {
+            $error['file'] = "❌ Format de fichier non supporté. Seuls JPG, JPEG, PNG, PDF et DOCX sont autorisés.";
+        } elseif (!move_uploaded_file($_FILES['receipt_file']['tmp_name'], $target_file)) {
+            $error['file'] = "❌ Échec du téléchargement du fichier.";
+        } else {
+            $justificatif = '/uploads/' . $filename;
+        }
+    }
+        
+    // Si aucune erreur, insérer dans la base de données
+    if (empty($error)) {
+        try {
+            $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, comment, receipt_file) 
+                    VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file)";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute([
+                ':request_type_id' => $type_demande_id,
+                ':collaborator_id' => $collaborator_id, 
+                ':department_id' => $department_id,     
+                ':start_at' => $date_debut,
+                ':end_at' => $date_fin,
+                ':comment' => $commentaire,
+                ':receipt_file' => $justificatif ?? null
+            ]);
+
+            header("Location: demande-envoye.php?success=1");
+            exit();
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+    }
+}
+?>
