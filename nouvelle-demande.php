@@ -76,6 +76,8 @@ include 'includes/affichage-erreurs.php';
                             <option value="conge_paye" <?= ($type_demande == 'conge_paye') ? 'selected' : '' ?>>Congé payé</option>
                             <option value="conge_maladie" <?= ($type_demande == 'conge_maladie') ? 'selected' : '' ?>>Congé maladie</option>
                             <option value="conge_sans_solde" <?= ($type_demande == 'conge_sans_solde') ? 'selected' : '' ?>>Congé sans solde</option>
+                            <option value="conge_paternite_maternite" <?= ($type_demande == 'conge_paternite_maternite') ? 'selected' : '' ?>>Congé paternité/maternité</option>
+                            <option value="autre" <?= ($type_demande == 'autre') ? 'selected' : '' ?>>Autre</option>
                         </select>
                         <span class="error"> <?php echo $error['type_demande'] ?? ''; ?> </span>
                     </div>

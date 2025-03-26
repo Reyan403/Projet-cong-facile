@@ -26,7 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $type_demande_mapping = [
         'conge_paye' => 1,
         'conge_maladie' => 2,
-        'conge_sans_solde' => 3
+        'conge_sans_solde' => 3,
+        'conge_paternite_maternite' => 4,
+        'autre' => 5
     ];
     $type_demande_id = $type_demande_mapping[$type_demande] ?? null;
 
