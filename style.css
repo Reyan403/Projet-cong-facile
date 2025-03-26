@@ -573,6 +573,7 @@ textarea {
 /* ----------------------------------------------HISTORIQUE DES DEMANDES-------------------------------------------- */
 .content-bloc2{
     margin: 30px 0 0 50px;
+    overflow-x: auto;
 }
 
 table {

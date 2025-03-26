@@ -66,16 +66,20 @@ include 'includes/affichage-avatar.php'
                 Historique des demandes
             </h1>
             <table>
-            <thead>
-            <tr>
-                <th>Type de demande <input type="search"></th>
-                <th>Demandé le <input type="search"></th>
-                <th>Date de début <input type="search"></th>
-                <th>Date de fin <input type="search"></th>
-                <th>Nb de jours <input type="search"></th>
-                <th>Statut <input type="search"></th>
-            </tr>
-            </thead>
+                <thead>
+                <tr>
+                    <div class="input">
+                    <th>Type de demande <img src="./PNG/fleche-droite (8).png" alt=""><img src="./PNG/fleche-droite (8).png" alt=""> 
+                    </div>
+                    <input type="search"></th> 
+                    <th>Demandé le <input type="search"></th>
+                    <th>Date de début <input type="search"></th>
+                    <th>Date de fin <input type="search"></th>
+                    <th>Nb de jours <input type="search"></th>
+                    <th>Statut <input type="search"></th>
+                    <th></th>
+                </tr>
+                </thead>
             <tbody>
                 <tr>
                     <td>Congé payé</td>
