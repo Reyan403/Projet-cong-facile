@@ -14,14 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $type_demande = $_POST['type_demande'] ?? '';
     $date_debut = $_POST['date_debut'] ?? '';
     $date_fin = $_POST['date_fin'] ?? '';
-    $jours_demandes = $_POST['jours_demandes'] ?? '';
+    $jours_demandes = $_POST['jours_demandes'] ?? '';  // Vous n'êtes plus obligé de valider ce champ
     $commentaire = $_POST['commentaire'] ?? '';
 
-    // Vérification des champs obligatoires
+    // Vérification des champs obligatoires (sans `jours_demandes`)
     if (empty($type_demande)) $error['type_demande'] = "Veuillez choisir un type de demande.";
     if (empty($date_debut)) $error['date_debut'] = "Veuillez choisir une date de début.";
     if (empty($date_fin)) $error['date_fin'] = "Veuillez choisir une date de fin.";
-    if (empty($jours_demandes)) $error['jours_demandes'] = "Veuillez choisir le nombre de jours.";
 
     // Mapping du type de congé avec la base de données
     $type_demande_mapping = [

@@ -24,3 +24,26 @@ function updateFileName(input) {
     document.getElementById("file-name").textContent = fileName;
 }
 
+// ça sert à ce que l'utilisateur puisse voir le nombre de jours demandés
+function calculerJours() {
+    const dateDebut = document.getElementById('date-debut').value;
+    const dateFin = document.getElementById('date-fin').value;
+    const joursDemandes = document.getElementById('jours-demandes');
+
+    if (dateDebut && dateFin) {
+        const date1 = new Date(dateDebut);
+        const date2 = new Date(dateFin);
+        const diffTime = date2 - date1;
+        let diffDays = diffTime / (1000 * 3600 * 24) + 1; // Ajoute 1 pour inclure le jour de début
+
+        if (diffDays >= 0) {
+            joursDemandes.value = Math.floor(diffDays); // Arrondi à l'inférieur
+        } else {
+            alert("La date de fin doit être supérieure ou égale à la date de début.");
+            joursDemandes.value = ''; // Réinitialise si les dates ne sont pas valides
+        }
+    } else {
+        joursDemandes.value = ''; // Si une date manque, réinitialise le champ
+    }
+}
+

@@ -83,20 +83,19 @@ include 'includes/affichage-erreurs.php';
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date-debut">Date début - champ obligatoire</label>
-                            <input type="date" id="date-debut" name="date_debut" value="<?php echo htmlspecialchars($date_debut); ?>">
+                            <input type="datetime-local" id="date-debut" name="date_debut" value="<?php echo htmlspecialchars($date_debut); ?>" onchange="calculerJours()">
                             <span class="error"> <?php echo $error['date_debut'] ?? ''; ?> </span>
                         </div>
                         <div class="form-group">
                             <label for="date-fin">Date de fin - champ obligatoire</label>
-                            <input type="date" id="date-fin" name="date_fin" value="<?php echo htmlspecialchars($date_fin); ?>">
+                            <input type="datetime-local" id="date-fin" name="date_fin" value="<?php echo htmlspecialchars($date_fin); ?>" onchange="calculerJours()">
                             <span class="error"> <?php echo $error['date_fin'] ?? ''; ?> </span>
                         </div>
                     </div>
-        
+
                     <div class="form-group">
                         <label for="jours-demandes">Nombre de jours demandés</label>
-                        <input type="number" id="jours-demandes" name="jours_demandes" value="0" <?= htmlspecialchars($jours_demandes) ?>" min="0">
-                        <span class="error"> <?php echo $error['jours_demandes'] ?? ''; ?> </span>
+                        <input type="number" id="jours-demandes" name="jours_demandes" value="0" <?= htmlspecialchars($jours_demandes) ?> min="0" readonly>
                     </div>
 
         

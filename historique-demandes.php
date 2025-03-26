@@ -68,15 +68,66 @@ include 'includes/affichage-avatar.php'
             <table>
                 <thead>
                 <tr>
-                    <div class="input">
-                    <th>Type de demande <img src="./PNG/fleche-droite (8).png" alt=""><img src="./PNG/fleche-droite (8).png" alt=""> 
-                    </div>
-                    <input type="search"></th> 
-                    <th>Demandé le <input type="search"></th>
-                    <th>Date de début <input type="search"></th>
-                    <th>Date de fin <input type="search"></th>
-                    <th>Nb de jours <input type="search"></th>
-                    <th>Statut <input type="search"></th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Type de demande</p>
+                            <div class="arrow">
+                                    <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                    <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Demandée le</p>
+                            <div class="arrow">
+                                <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Date de début</p>
+                            <div class="arrow">
+                                <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Date de fin</p>
+                            <div class="arrow">
+                                <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Nb de jours</p>
+                            <div class="arrow">
+                                <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
+                    <th class="request-type">
+                        <div class="text-and-arrow">
+                            <p>Statut</p>
+                            <div class="arrow">
+                                <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="">
+                                <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="">
+                            </div>
+                        </div>
+                        <input type="search">
+                    </th>
                     <th></th>
                 </tr>
                 </thead>

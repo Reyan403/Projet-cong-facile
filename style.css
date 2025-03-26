@@ -38,6 +38,18 @@ label{
     margin-bottom: 15px;
 }
 
+.content-bloc{
+    width: 883px;
+    line-height: 25px;
+    margin: 30px 0 0 50px;
+}
+
+@media screen and (max-width: 940px) {
+    .content-bloc{
+        margin: 30px 0 0 25px;
+    }
+}
+
 /************************************HEADER*******************************/
 header{
     background-color: #004c6c;
@@ -121,10 +133,6 @@ header{
     .burger-menu img{
         width: 45px;
     }
-
-    .content-bloc{
-        margin: 30px 0 0 20px;
-    }
 }
 
 /* -----------------------CONNEXION--------------------------------- */
@@ -169,12 +177,6 @@ header{
 
 .content-menu{
     margin-top: 25px;
-}
-
-.content-bloc{
-    width: 883px;
-    line-height: 25px;
-    margin: 30px 0 0 50px;
 }
 
 .content-menu a {
@@ -283,12 +285,6 @@ button[type="submit"] {
 @media screen and (max-width: 940px) {
     .sidebar{
         display: none;
-    }
-    
-    .content-bloc{
-        width: 883px;
-        line-height: 25px;
-        margin: 30px 0 0 30px;
     }
 }
 
@@ -576,6 +572,36 @@ textarea {
     overflow-x: auto;
 }
 
+.text-and-arrow {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.text-and-arrow p{
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    color: #344054;
+}
+
+.arrow{
+    display: grid;
+}
+
+.arrow img {
+    width: 9px; 
+    height: auto;
+}
+
+.arrow-top{
+    transform: rotate(-90deg);
+}
+
+.arrow-bottom{
+    transform: rotate(90deg);
+}
+
 table {
     width: 98%;
     border-collapse: collapse;
@@ -606,7 +632,7 @@ thead{
 thead input{
     padding: 10px 14px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
 }
 
@@ -626,4 +652,36 @@ th input {
     font-weight: 500;
     font-family: 'Inter';
 }
+
+@media screen and (max-width: 1600px) {
+    th, td {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 16px 7px;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 1330px) {
+    table {
+        width: 1060px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .content-bloc2{
+        margin: 30px 0 0 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    table {
+        width: 700px;
+    }
+
+    .details-btn{
+        padding: 10px 16px;
+    }
+}
+
 
