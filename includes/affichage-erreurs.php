@@ -10,17 +10,24 @@ $collaborator_id = $_SESSION['user']['id'] ?? null;
 $department_id = $_SESSION['user']['department_id'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupération des données du formulaire
     $type_demande = $_POST['type_demande'] ?? '';
     $date_debut = $_POST['date_debut'] ?? '';
     $date_fin = $_POST['date_fin'] ?? '';
-    $jours_demandes = $_POST['jours_demandes'] ?? '';  // Vous n'êtes plus obligé de valider ce champ
+    $jours_demandes = $_POST['jours_demandes'] ?? '';
     $commentaire = $_POST['commentaire'] ?? '';
 
     // Vérification des champs obligatoires (sans `jours_demandes`)
-    if (empty($type_demande)) $error['type_demande'] = "Veuillez choisir un type de demande.";
-    if (empty($date_debut)) $error['date_debut'] = "Veuillez choisir une date de début.";
-    if (empty($date_fin)) $error['date_fin'] = "Veuillez choisir une date de fin.";
+    if (empty($_POST['type_demande'])) { 
+        $error['type_demande'] = "Veuillez choisir un type de demande.";
+    }
+
+    if (empty($_POST['date_debut'])) { 
+        $error['date_debut'] = "Veuillez choisir une date de début.";
+    }
+
+    if (empty($_POST['date_fin'])) {
+        $error['date_fin'] = "Veuillez choisir une date de fin.";
+    }
 
     // Mapping du type de congé avec la base de données
     $type_demande_mapping = [
@@ -30,11 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'conge_paternite_maternite' => 4,
         'autre' => 5
     ];
-    $type_demande_id = $type_demande_mapping[$type_demande] ?? null;
-
-    if ($type_demande_id === null) {
-        $error['type_demande'] = "Type de demande invalide.";
-    }
 
     // Gestion du fichier uploadé (justificatif)
     if (!empty($_FILES['receipt_file']['name'])) { 
@@ -64,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file)";
             $stmt = $connexion->prepare($sql);
             $stmt->execute([
-                ':request_type_id' => $type_demande_id,
+                ':request_type_id' => $type_demande_mapping[$type_demande] ?? null,
                 ':collaborator_id' => $collaborator_id, 
                 ':department_id' => $department_id,     
                 ':start_at' => $date_debut,
