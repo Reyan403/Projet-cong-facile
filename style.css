@@ -590,16 +590,18 @@ textarea {
 }
 
 .arrow img {
-    width: 9px; 
+    width: 10px; 
     height: auto;
 }
 
 .arrow-top{
     transform: rotate(-90deg);
+    cursor: pointer;
 }
 
 .arrow-bottom{
     transform: rotate(90deg);
+    cursor: pointer;
 }
 
 table {

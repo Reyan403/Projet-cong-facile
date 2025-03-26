@@ -47,3 +47,104 @@ function calculerJours() {
     }
 }
 
+// Fonction de recherche dans le tableau
+function searchTable() {
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.querySelectorAll('input[type="search"]');
+    table = document.getElementById("requestsTable");
+    tr = table.getElementsByTagName("tr");
+    
+    for (let i = 1; i < tr.length; i++) {
+        let row = tr[i];
+        let showRow = true;
+        
+        for (let j = 0; j < input.length; j++) {
+            filter = input[j].value.toUpperCase();
+            td = row.getElementsByTagName("td")[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) === -1) {
+                    showRow = false;
+                    break;
+                }
+            }
+        }
+        
+        if (showRow) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+
+// Attache les fonctions de tri et de recherche à des événements
+window.onload = function() {
+    document.querySelectorAll('.arrow-top').forEach(function(arrow) {
+        arrow.addEventListener('click', function() {
+            const columnIndex = arrow.parentNode.parentNode.cellIndex;
+            sortTable(columnIndex, true); // Tri ascendant
+        });
+    });
+
+    document.querySelectorAll('.arrow-bottom').forEach(function(arrow) {
+        arrow.addEventListener('click', function() {
+            const columnIndex = arrow.parentNode.parentNode.cellIndex;
+            sortTable(columnIndex, false); // Tri descendant
+        });
+    });
+
+    document.querySelectorAll('input[type="search"]').forEach(function(input) {
+        input.addEventListener('keyup', function() {
+            searchTable();
+        });
+    });
+};
+
+// Fonction de tri
+function sortTable(n, ascending = true) {
+let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+table = document.getElementById("requestsTable");
+switching = true;
+dir = ascending ? "asc" : "desc";  // Si "asc", on trie dans l'ordre croissant, sinon décroissant
+
+while (switching) {
+switching = false;
+rows = table.rows;
+
+for (i = 1; i < (rows.length - 1); i++) {
+    shouldSwitch = false;
+    x = rows[i].getElementsByTagName("TD")[n];
+    y = rows[i + 1].getElementsByTagName("TD")[n];
+
+    if (dir == "asc") {
+        if (x.innerHTML.trim() > y.innerHTML.trim()) {  // Tri croissant
+            shouldSwitch = true;
+            break;
+        }
+    } else if (dir == "desc") {
+        if (x.innerHTML.trim() < y.innerHTML.trim()) {  // Tri décroissant
+            shouldSwitch = true;
+            break;
+        }
+    }
+}
+
+if (shouldSwitch) {
+    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    switching = true;
+    switchcount++;
+} else {
+    if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+    }
+}
+}
+
+let arrowTop = table.rows[0].cells[n].getElementsByClassName("arrow-top")[0];
+let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[0];
+
+// Réexécuter la fonction de recherche après le tri
+searchTable();
+}
