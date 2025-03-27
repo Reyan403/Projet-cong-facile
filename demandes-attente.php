@@ -2,24 +2,20 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 
-$collaborator_id = $_SESSION['collaborator_id']; 
+$manager_id = 1; // ID du manager connecté
+$sql = "SELECT r.created_at, r.request_type_id, r.start_at, r.end_at,
+               p.last_name, p.first_name, rt.name AS request_type_name,
+               DATEDIFF(r.end_at, r.start_at) AS jours_demandes
+        FROM request r 
+        JOIN person p ON r.collaborator_id = p.id
+        JOIN request_type rt ON r.request_type_id = rt.id
+        WHERE p.manager_id = :manager_id";
 
-// Requête SQL pour récupérer l'historique des demandes du collaborateur sans tri
-$sql = "SELECT r.id, r.start_at, r.end_at, r.request_type_id, r.collaborateur_id, 
-               DATEDIFF(r.end_at, r.start_at) AS jours_demandes,
-               rt.name AS type_demande, r.created_at AS date_creation
-        FROM request r
-        LEFT JOIN request_type rt ON r.request_type_id = rt.id
-        WHERE r.collaborator_id = ?"; 
-
-// Préparer la requête SQL
 $stmt = $connexion->prepare($sql);
-
-// Exécuter la requête avec l'ID du collaborateur comme paramètre
-$stmt->execute([$collaborator_id]);
-
-// Récupérer toutes les demandes du collaborateur
+$stmt->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
+$stmt->execute();
 $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +41,7 @@ include 'includes/menu-manager.php';
 ?>
      <div class="content-bloc2">
             <h1>
-                Historique des demandes
+                Demandes en attente
             </h1>
             <table id="requestsTable">
                 <thead>
@@ -116,15 +112,15 @@ include 'includes/menu-manager.php';
                 <tbody>
                     <?php foreach ($demandes as $demande) : 
                         // Convertir les dates en format 03/10/2025 18h30
-                        $date_creation = (new DateTime($demande['date_creation']))->format('d/m/Y H\hi');
+                        $date_creation = (new DateTime($demande['created_at']))->format('d/m/Y H\hi');
                         $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
                         $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
                         
                     ?>
                         <tr>
-                            <td><?= htmlspecialchars($demande['type_demande']) ?></td>
+                        <td><?= htmlspecialchars($demande['request_type_name']) ?></td>
                             <td><?= htmlspecialchars($date_creation) ?></td>
-                            <td><?= htmlspecialchars($demande['collaborator_id']) ?></td>
+                            <td><?= htmlspecialchars($demande['last_name'] . ' ' . $demande['first_name']) ?></td>
                             <td><?= htmlspecialchars($start_at) ?></td>
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
