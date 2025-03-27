@@ -142,8 +142,8 @@ header{
 
 .sidebar { 
     width: 280px;
-    height: 901px; 
     box-shadow: 10px 0px 20px 0 #5C73A012;
+    min-height: 901px;
 }
 
 .character-menu{

@@ -19,67 +19,10 @@ include 'includes/affichage-avatar.php';
         <title>Mentalworks</title>
     </head>
 <body>
-    <div class="background-gray"></div>
-    <header>
-        <div class="logo-mentalworks">
-            <img src="./PNG/logo-mentalworks-blanc.png" alt="">
-        </div>
-        <div class="burger-menu" onclick="toggleMenu()">
-            <img src="./PNG/burger-bar (1).png" alt="Menu">
-        </div>
-    </header>
-    <div class="menu" id="menu">
-        <span class="close-menu" onclick="toggleMenu()">&times;</span>
-            <a href="">Accueil</a>
-            <a href="">Demandes en attente</a>
-            <a href="">Historique des demandes</a>
-            <a href="">Mon équipe</a>
-            <a href="">Statistiques</a>
-            <a href="">Types de demandes</a>
-            <a href="">Directions/Services</a>
-            <a href="">Managers</a>
-            <a href="">Postes</a>
-            <a href="">Mes informations</a>
-            <a href="">Mes préférences</a>
-            <a href="deconnexion.php">Déconnexion</a>
-    </div>
-
-    <section class="bloc">
-        <div class="sidebar">
-            <div class="content-menu">
-                <div class="other-menu">
-                    <a href="./accueil2.php">Accueil</a>
-                    <a href="">Demandes en attente</a>
-                    <a href="">Historique des demandes</a>
-                    <a href="">Mon équipe</a>
-                    <a href="">Statistiques</a>
-                    <hr class="separator">
-                    <a href="">Mes informations</a>
-                    <a href="">Mes préférences</a>
-                </div>
-                <details>
-                    <summary>Administration</summary>
-                        <div class="choix">
-                            <a href="">Types de demandes</a>
-                            <a href="">Directions/Services</a>
-                            <a href="">Managers</a>
-                            <a href="">Postes</a>
-                        </div>
-                </details>
-                <div class="other-menu">
-                    <a href="deconnexion.php">Déconnexion</a>
-                </div>
-            </div>
-            <div class="character-menu">
-                <div class="img-caharacter">
-                    <img src="./PNG/download.png" alt="">
-                </div>
-                <div class="info-employe">
-                    <p><?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?></p>
-                    <span><?= ($role === 'manager') ? 'Manager' : 'Collaborateur' ?></span>
-                </div>
-            </div>
-        </div>
+<?php
+include 'includes/header.php';
+include 'includes/menu-manager.php';
+?>
         <div class="content-bloc">
             <h1>
                 CongéFacile

@@ -1,13 +1,13 @@
 // burger menu
 function toggleMenu() {
-    var menu = document.getElementById("menu");
+    const menu = document.getElementById("menu");
     menu.classList.toggle("show");
 }
 
 // mdp caché ou non
 function togglePassword() {
-    var passwordInput = document.getElementById("password");
-    var toggleEye = document.getElementById("toggleEye");
+    const passwordInput = document.getElementById("password");
+    const toggleEye = document.getElementById("toggleEye");
 
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
