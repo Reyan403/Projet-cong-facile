@@ -44,7 +44,7 @@ label{
     margin: 30px 0 0 50px;
 }
 
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1436px) {
     .content-bloc{
         margin: 30px 0 0 25px;
     }
@@ -122,7 +122,7 @@ header{
     bottom: -16px;
 }
 
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1436px) {
     .burger-menu{
         display: flex;
         margin-left: auto;
@@ -203,6 +203,12 @@ header{
     font-weight: 400;
     font-family: 'Inter';
     color: #004C6C;
+}
+
+@media screen and (max-width: 1436px) {
+    .sidebar{
+        display: none;
+    }
 }
 
 /* -----------------------CONNEXION--------------------------------- */
@@ -291,18 +297,6 @@ button[type="submit"] {
     font-weight: 500;
     width: 89%;
     padding: 3%;
-}
-
-@media screen and (max-width: 940px) {
-    .sidebar{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .content-bloc-connexion{
-        margin: 30px 0 0 20px;
-    }
 }
 
 /* ---------------------------MDP OUBLIE--------------------------------------- */
@@ -404,7 +398,7 @@ button[type="submit"] {
     color :#004C6C;
 }
 
-@media screen and (max-width: 1230px) {
+@media screen and (max-width: 925px) {
     .content-timeline{
         display: flex;
         gap: 40px;
@@ -540,7 +534,7 @@ textarea {
     gap: 140px;
 }
 
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 800px) {
     .form-row{
         display: grid;
         gap: 0px;
@@ -616,18 +610,16 @@ textarea {
 }
 
 table {
-    width: 98%;
     border-collapse: collapse;
     border: 1px solid #ddd;
     margin-top: 20px;
     border-radius: 12px;
-    max-width: 1554px;
 }
 
 th, td {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    padding: 16px 24px;
+    padding: 16px 20px;
     text-align: left;
 }
 
@@ -650,7 +642,7 @@ thead input{
 }
 
 th input {
-    width: 90%;
+    width: 187px;
 }
 
 .details-btn {
@@ -677,11 +669,11 @@ th input {
 
 @media screen and (max-width: 1330px) {
     table {
-        width: 1060px;
+        width: 700px;
     }
 }
 
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1436px) {
     .content-bloc2{
         margin: 30px 0 0 25px;
     }
@@ -689,7 +681,7 @@ th input {
 
 @media screen and (max-width: 500px) {
     table {
-        width: 700px;
+        width: 400px;
     }
 
     .details-btn{
@@ -697,4 +689,85 @@ th input {
     }
 }
 
+/* ---------------------------------------------------------------TYPE DE DEMANDES MANAGER------------------------------------------------------------------------------------ */
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
+.flex a{
+    background-color: #004C6C;
+    border: none;
+    color: white;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    cursor: pointer;
+    width: 272px;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+.type-de-demandes{
+    width: 587px;
+    height: 44px;
+}
+
+.demandes-associees{
+    width: 150px;
+    height: 44px;
+}
+
+@media screen and (max-width: 620px) {
+    .flex{
+        display: grid;
+        align-items: center;
+        gap: 0px;
+    }   
+}
+
+/* ----------------------------------AJOUT TYPE DE DEMANDES-------------------------------------------------------------------- */
+
+.input-type{
+    padding: 12px 16px 12px 20px;
+    width: 95%;
+    max-width: 350px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #9CA3AF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.two-buttons-type2{
+    display: flex;
+}
+
+.two-buttons-type2 .btn-remove{
+    background-color: #E10E0E;
+    padding: 13px 28px;
+    width: 136px;
+}
+
+.two-buttons-type2 .btn-update{
+    padding: 13px 28px;
+    width: 153px;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 360px) {
+    .two-buttons-type2{
+        display: grid;
+    }
+
+    .two-buttons-type2 .btn-update{
+        width: 136px;
+        margin-left: 0px;
+    }
+}
