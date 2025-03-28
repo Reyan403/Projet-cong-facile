@@ -81,15 +81,15 @@ include 'includes/affichage-erreurs.php';
                 <form method="POST" action="nouvelle-demande.php" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="type-demande">Type de demande - champ obligatoire</label>
-        <select id="type-demande" name="type_demande">
-            <option value="" <?= empty($type_demande) ? 'selected' : '' ?>>Sélectionner un type</option>
-            <?php foreach ($request_types as $request_type): ?>
-                <option value="<?= $request_type['id'] ?>" <?= ($type_demande == $request_type['id']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($request_type['name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <span class="error"><?= $error['type_demande'] ?? ''; ?></span>
+                        <select id="type-demande" name="type_demande">
+                            <option value="" <?= empty($type_demande) ? 'selected' : '' ?>>Sélectionner un type</option>
+                            <?php foreach ($request_types as $request_type): ?>
+                                <option value="<?= $request_type['id'] ?>" <?= ($type_demande == $request_type['id']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($request_type['name']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    <span class="error"><?= $error['type_demande'] ?? ''; ?></span>
                     </div>
         
                     <div class="form-row">

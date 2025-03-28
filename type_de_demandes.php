@@ -1,6 +1,11 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
+
+$sql = "SELECT id, name FROM request_type";
+$stmt = $connexion->prepare($sql);
+$stmt->execute();
+$request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +65,13 @@ include 'includes/menu-manager.php';
                 </tr>
                 </thead>
                 <tbody>
-
+                    <?php foreach ($request_types as $request_type): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($request_type['name']) ?></td>
+                            <td></td>
+                            <td><button class="details-btn">Détails</button></td> 
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
