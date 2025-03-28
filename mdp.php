@@ -3,32 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mdp</title>
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Mentalworks</title>
+</head>
 <body>
 <?php
 include 'includes/header.php';
 ?>
 
-    <section>
-        <h1>Mot de passe oublié</h1>
-        <p>Renseignez votre adresse email dans le champ ci-dessous.<br>
-        Vous recevrez par la suite un email avec un lien vous permettant de réinitialiser votre mot de passe.</p>
-        <form action="traitement.php" method="post">
-            <label for="email">Adresse email</label>
-            <div class="input-container">
-                <i class='bx bx-envelope'></i>
-                <input type="email" id="email" name="email" placeholder="****@mentalworks.fr" required>
+<div class="menu" id="menu">
+        <span class="close-menu" onclick="toggleMenu()">&times;</span>
+        <a href="./index.php">Connexion</a>
+    </div>
+
+<section class="bloc">
+        <div class="sidebar">
+            <div class="content-menu">
+                <div class="other-menu">
+                    <a href="./index.php">Connexion</a>
+                </div>
             </div>
-            <br>
-            <button class="btn-submit" type="submit">Demander à réinitialiser mot de passe</button>
-        </form>
+        </div>
+        <div class="content-bloc">
+            <h1>Mot de passe oublié</h1>
+            <p>Renseignez votre adresse email dans le champ ci-dessous.
+            Vous recevrez par la suite un email avec un lien vous permettant de réinitialiser votre mot de passe.</p>
+            <form action="traitement.php" method="post">
+                <label for="email">Adresse email</label>
+                <input type="text" name="email" id="email" placeholder="****@mentalworks.fr" value="<?= htmlspecialchars($data['email'] ?? '') ?>">
+                <button class="btn-submit-mdp" type="submit">Demander à réinitialiser mot de passe</button>
+            </form>
 
-        <p><a class="click" href="">Cliquez ici</a> pour retourner à la page de connexion.</p>
-
+        <p><a class="click" href="./index.php">Cliquez ici</a> pour retourner à la page de connexion.</p>
+        </div>
     </section>
 </body>
 </html>
