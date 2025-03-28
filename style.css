@@ -264,7 +264,7 @@ header{
     color: #004C6C;
 }
 
-button[type="submit"] {
+.button-connexion {
     background-color: #004C6C;
     border: none;
     color: white;
@@ -767,18 +767,37 @@ th input {
 
 .two-buttons-type2{
     display: flex;
+    gap: 20px;
 }
 
 .two-buttons-type2 .btn-remove{
     background-color: #E10E0E;
+    border: none;
+    color: white;
+    height: 50px;
+    border-radius: 6px;
     padding: 13px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    margin-top: 20px;
+    cursor: pointer;
     width: 136px;
 }
 
 .two-buttons-type2 .btn-update{
+    background-color: #004C6C;
+    border: none;
+    color: white;
+    height: 50px;
+    border-radius: 6px;
     padding: 13px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    margin-top: 20px;
+    cursor: pointer;
     width: 153px;
-    margin-left: 20px;
 }
 
 @media screen and (max-width: 360px) {
@@ -787,7 +806,6 @@ th input {
     }
 
     .two-buttons-type2 .btn-update{
-        width: 136px;
         margin-left: 0px;
     }
 }
