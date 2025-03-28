@@ -148,3 +148,4 @@ let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[
 // Réexécuter la fonction de recherche après le tri
 searchTable();
 }
+
