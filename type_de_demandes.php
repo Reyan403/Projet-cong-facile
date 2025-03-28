@@ -25,36 +25,42 @@ include 'includes/header.php';
 include 'includes/menu-manager.php';
 ?>
      <div class="content-bloc2">
+        <div class="flex">
             <h1>
-                Demandes en attente
+                Type de demandes
             </h1>
+            <a href="ajout-demande.php">
+                Ajouter un type de demande
+            </a>
+        </div>
             <table id="requestsTable">
                 <thead>
                 <tr>
                     <th class="request-type" onclick="sortTable(0)">
                         <div class="text-and-arrow">
-                            <p>Type de demande</p>
+                            <p>Nom du type de demande</p>
                             <div class="arrow">
                                 <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="flèche haut">
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input type="search" id="searchType" onkeyup="filterTable(0)">
+                        <input class="type-de-demandes" type="search" id="searchType" onkeyup="filterTable(0)">
                     </th>
                     <th class="request-type" onclick="sortTable(1)">
-                        <div class="text-and-arrow">
-                            <p>Demandée le</p>
+                        <div class="text-and-arrow nb-demandes-associées">
+                            <p>Nb demandes associées</p>
                             <div class="arrow">
                                 <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="flèche haut">
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-associees" type="search" id="searchDate" onkeyup="filterTable(1)">
                     </th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
+
                 </tbody>
             </table>
         </div>
