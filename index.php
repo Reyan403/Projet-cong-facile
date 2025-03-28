@@ -76,7 +76,7 @@ include 'includes/header.php';
                     <button type="submit" class="button-connexion">Connexion au portail</button>
                 </form>
                 <p>
-                    Vous avez oublié votre mot de passe ? <a href="#" class="mdp-forgot"><strong>Cliquez ici</strong></a> pour le réinitialiser.
+                    Vous avez oublié votre mot de passe ? <a href="mdp.php" class="mdp-forgot"><strong>Cliquez ici</strong></a> pour le réinitialiser.
                 </p>
                 <?php 
                     if ($alerte): 
