@@ -780,6 +780,7 @@ th input {
     width: 153px;
 }
 
+
 @media screen and (max-width: 360px) {
     .two-buttons-type2{
         display: grid;
