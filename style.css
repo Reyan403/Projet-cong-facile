@@ -279,6 +279,7 @@ button[type="submit"] {
     width: 250px;
 }
 
+
 .error{
     color: red;
     font-size: 15px;
@@ -301,6 +302,25 @@ button[type="submit"] {
 
 /* ---------------------------MDP OUBLIE--------------------------------------- */
 
+.click{
+    color:#004C6C;
+    font-weight: 600;
+    text-decoration:none;
+}
+
+.btn-submit-mdp{
+    background-color: #004C6C;
+    color:white;
+    padding-top: 13px;
+    padding-right:28px;
+    padding-left: 28px;
+    padding-bottom: 13px;
+    border-radius: 6px;
+    width:300px;
+    border:none;
+    cursor: pointer;
+    height: 50px;
+}
 
 /* --------------------------ACCUEIL-------------------------------------------- */
 .separator {
