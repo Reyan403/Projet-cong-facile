@@ -134,11 +134,7 @@ header{
         width: 45px;
     }
 }
-
-/* -----------------------CONNEXION--------------------------------- */
-.bloc {
-    display: flex;
-}
+/* --------------------------------SIDEBAR MANAGER-COLLABORATEUR------------------------------------------------- */
 
 .sidebar { 
     width: 280px;
@@ -197,6 +193,21 @@ header{
     background-color: #cdcdf921;
     padding-top: 10px;
     padding-bottom: 15px;
+}
+
+.number-requests {
+    background-color: #004C6C14;
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter';
+    color: #004C6C;
+}
+
+/* -----------------------CONNEXION--------------------------------- */
+.bloc {
+    display: flex;
 }
 
 #email {

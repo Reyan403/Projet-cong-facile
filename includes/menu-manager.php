@@ -19,7 +19,7 @@
             <div class="content-menu">
                 <div class="other-menu">
                     <a href="./accueil2.php">Accueil</a>
-                    <a href="demandes-attente.php">Demandes en attente</a>
+                    <a href="demandes-attente.php">Demandes en attente <span class="number-requests">5</span></a>    
                     <a href="">Historique des demandes</a>
                     <a href="">Mon équipe</a>
                     <a href="">Statistiques</a>
