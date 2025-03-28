@@ -1,6 +1,16 @@
 <?php
 include 'includes/affichage-avatar.php';
 include 'includes/db.php';
+
+$sql = "SELECT id, name FROM request_type";
+$stmt = $connexion->prepare($sql);
+$stmt->execute();
+$request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $type_demande = $_POST['type_demande'] ?? '';
+}
+
 include 'includes/affichage-erreurs.php';
 ?>
 
@@ -70,16 +80,16 @@ include 'includes/affichage-erreurs.php';
             <div class="form-container">
                 <form method="POST" action="nouvelle-demande.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="type-demande"  name="type_demande" >Type de demande - champ obligatoire</label>
-                        <select id="type-demande" name="type_demande">
-                            <option value="" <?= empty($type_demande) ? 'selected' : '' ?>>Sélectionner un type</option>
-                            <option value="conge_paye" <?= ($type_demande == 'conge_paye') ? 'selected' : '' ?>>Congé payé</option>
-                            <option value="conge_maladie" <?= ($type_demande == 'conge_maladie') ? 'selected' : '' ?>>Congé maladie</option>
-                            <option value="conge_sans_solde" <?= ($type_demande == 'conge_sans_solde') ? 'selected' : '' ?>>Congé sans solde</option>
-                            <option value="conge_paternite_maternite" <?= ($type_demande == 'conge_paternite_maternite') ? 'selected' : '' ?>>Congé paternité/maternité</option>
-                            <option value="autre" <?= ($type_demande == 'autre') ? 'selected' : '' ?>>Autre</option>
-                        </select>
-                        <span class="error"> <?php echo $error['type_demande'] ?? ''; ?> </span>
+                    <label for="type-demande">Type de demande - champ obligatoire</label>
+        <select id="type-demande" name="type_demande">
+            <option value="" <?= empty($type_demande) ? 'selected' : '' ?>>Sélectionner un type</option>
+            <?php foreach ($request_types as $request_type): ?>
+                <option value="<?= $request_type['id'] ?>" <?= ($type_demande == $request_type['id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($request_type['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <span class="error"><?= $error['type_demande'] ?? ''; ?></span>
                     </div>
         
                     <div class="form-row">

@@ -42,9 +42,11 @@ include 'includes/header.php';
                 <button class="btn-submit-mdp" type="submit">Demander à réinitialiser mot de passe</button>
             </form>
 
-        <p><a class="click" href="./index.php">Cliquez ici</a> pour retourner à la page de connexion.</p>
+        <p><a class="mdp-forgot" href="./index.php"><strong>Cliquez ici</strong></a> pour retourner à la page de connexion.</p>
         </div>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
 
