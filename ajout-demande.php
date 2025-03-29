@@ -37,10 +37,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_SESSION['message'])) {
-$message = $_SESSION['message'];
-unset($_SESSION['message']);
-
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']);
 }
+
+$sql = "SELECT id, name FROM request_type";
+$stmt = $connexion->prepare($sql);
+$stmt->execute();
+$request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Si un id de demande est passé via GET, on récupère le nom de ce type
+$request_id = $_GET['id'] ?? null;
+if ($request_id) {
+    // Récupérer le nom du type en fonction de l'id
+    $sql = "SELECT name FROM request_type WHERE id = :id";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bindParam(':id', $request_id);
+    $stmt->execute();
+    $request_type = $stmt->fetch(PDO::FETCH_ASSOC);
+    $type_name = $request_type['name'] ?? ''; // Si aucun résultat, on laisse vide
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +87,7 @@ include 'includes/menu-manager.php';
             </h1>
             <form action="" method="POST">
                 <label for="type">Nom du type</label>
-                <input type="text" name="type" class="input-type">
+                <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name ?? '') ?>">
                 <div class="two-buttons-type2">
                     <button type="submit" name ="remove" class="btn-remove">Supprimer</button>
                     <button type="submit" name ="update" class="btn-update">Mettre à jour</button>

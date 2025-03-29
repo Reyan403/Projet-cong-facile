@@ -62,11 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['collaborator_id'] = $user['id']; // Enregistrer l'ID du collaborateur
         $_SESSION['department_id'] = $user['department_id']; // Enregistrer l'ID du département dans la session
 
-        $_SESSION['message'] = [
-            'type' => 'success',
-            'message' => 'Vous êtes maintenant connecté.',
-        ];
-
         // Redirection selon le rôle de l'utilisateur
         if ($user['role'] === 'employe') {
             header('Location: accueil.php');
