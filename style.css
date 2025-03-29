@@ -849,4 +849,25 @@ th input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-/*---------------------------------DETAILS MANAGER--------------------------------------*/
+
+
+/*---------------------------------DETAILS POSTES----------------------------------------*/
+
+.btn-supp{
+    background-color: #E10E0E;
+    color:white;
+    
+
+}
+.btn-mettre-a-jour{
+    background-color: #004C6C;
+    color:white;
+}
+
+.btn-supp , .btn-mettre-a-jour{
+    width:136px;
+    height: 40px;
+    border:none;
+    border-radius: 6px;
+    cursor: pointer;
+}

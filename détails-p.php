@@ -22,27 +22,24 @@ include 'includes/affichage-avatar.php';
 <body>
 <?php
 include 'includes/header.php';
-include 'includes/menu-collaborateur.php';
+include 'includes/menu-manager.php';
 ?>
         <div class="content-bloc">
             <h1>
-                Ma demande de congé
+                Développeur Web
             </h1>
-            <h3>Demande du <?php $dateDemande ?></h3>
-            <p>
-                Type de demande : <?php $typeConge ?><br>
-                Période : <?php $dateDebut ?> au <?php $dateFin ?><br>
-                Nombre de jours : <?php $nbJours ?><br><br>
-                Statut de la demande : <?php $statut?>
-            </p>
             <form action="traitement.php" method="post">
-            <label for="text">Commentaire du manager :</label>
+            <label for="text">Nom du poste</label>
                 <div class="input-container">
-                    <input type="text" id="text" name="text" placeholder="Profite bien de tes vacances à Mayorque et surtout, n'oublie pas la carte postale !!!">
+                    <input type="text" id="text" name="text" placeholder="$mettrevariable">
                 </div>
             <br>
             </form>
-            <button class="btn-return" a href="">Retourner à la liste de mes demandes</button>
+            <div class="btn-flex">
+                <button class="btn-supp" a href="">Supprimer</button>
+                <button class="btn-mettre-a-jour" a href="">Mettre à jour</button>
+            </div>
+
         </div>
     </section>
     <script src="script.js"></script>
