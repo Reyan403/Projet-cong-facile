@@ -29,15 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error['date_fin'] = "Veuillez choisir une date de fin.";
     }
 
-    // Mapping du type de congé avec la base de données
-    $type_demande_mapping = [
-        'conge_paye' => 1,
-        'conge_maladie' => 2,
-        'conge_sans_solde' => 3,
-        'conge_paternite_maternite' => 4,
-        'autre' => 5
-    ];
-
     // Gestion du fichier uploadé (justificatif)
     if (!empty($_FILES['receipt_file']['name'])) { 
         $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; 
@@ -58,28 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $justificatif = '/uploads/' . $filename;
         }
     }
-        
-    // Si aucune erreur, insérer dans la base de données
-    if (empty($error)) {
-        try {
-            $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, comment, receipt_file) 
-                    VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file)";
-            $stmt = $connexion->prepare($sql);
-            $stmt->execute([
-                ':request_type_id' => $type_demande_mapping[$type_demande] ?? null,
-                ':collaborator_id' => $collaborator_id, 
-                ':department_id' => $department_id,     
-                ':start_at' => $date_debut,
-                ':end_at' => $date_fin,
-                ':comment' => $commentaire,
-                ':receipt_file' => $justificatif ?? null
-            ]);
 
-            header("Location: demande-envoye.php?success=1");
-            exit();
-        } catch (PDOException $e) {
-            echo "Erreur : " . $e->getMessage();
-        }
+    // Si aucune erreur, insérer la demande dans la base de données
+    if (empty($error)) {
+        // Assurez-vous que le type de demande est valide
+        $type_demande_id = $_POST['type_demande']; // Récupération de l'ID correspondant
+
+        $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, comment, receipt_file) 
+                VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file)";
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([
+            ':request_type_id' => $type_demande_id,
+            ':collaborator_id' => $collaborator_id, 
+            ':department_id' => $department_id,     
+            ':start_at' => $date_debut,
+            ':end_at' => $date_fin,
+            ':comment' => $commentaire,
+            ':receipt_file' => $justificatif ?? null
+        ]);
+
+        // Rediriger l'utilisateur après l'enregistrement
+        header("Location: demande-envoye.php?success=1");
+        exit();
     }
 }
 ?>

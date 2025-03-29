@@ -97,7 +97,6 @@ include 'includes/menu-collaborateur.php';
                 </thead>
                 <tbody>
                     <?php foreach ($demandes as $demande) : 
-                        // Convertir les dates en format 03/10/2025 18h30
                         $date_creation = (new DateTime($demande['date_creation']))->format('d/m/Y H\hi');
                         $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
                         $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');

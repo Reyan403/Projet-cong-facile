@@ -279,14 +279,13 @@ header{
     width: 250px;
 }
 
-
 .error{
     color: red;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Epilogue';
     font-weight: 500;
     white-space: nowrap; 
-    margin: 10px 0 0 10px;
+    margin: 10px 0 0 0px;
 }
 
 .message.green {
@@ -298,30 +297,31 @@ header{
     font-weight: 500;
     width: 89%;
     padding: 3%;
+    margin-top: 20px;
 }
 
 /* ---------------------------MDP OUBLIE--------------------------------------- */
-
-.click{
-    color:#004C6C;
-    font-weight: 600;
-    text-decoration:none;
-}
-
 .btn-submit-mdp{
     background-color: #004C6C;
-    color:white;
-    padding-top: 13px;
-    padding-right:28px;
-    padding-left: 28px;
-    padding-bottom: 13px;
-    border-radius: 6px;
-    width:300px;
-    border:none;
-    cursor: pointer;
+    border: none;
+    color: white;
     height: 50px;
+    border-radius: 6px;
+    padding: 13px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    margin-top: 20px;
+    cursor: pointer;
+    width: 330px;
 }
 
+@media screen and (max-width: 380px) {
+    .btn-submit-mdp{
+        width: 282px;
+        padding: 7px 0px;
+    }
+}
 /* --------------------------ACCUEIL-------------------------------------------- */
 .separator {
     border: none;
@@ -799,6 +799,7 @@ th input {
     cursor: pointer;
     width: 153px;
 }
+
 
 @media screen and (max-width: 360px) {
     .two-buttons-type2{
