@@ -71,13 +71,10 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($request_type['name']) ?></td>
                             <td></td>
                             <td>
-                                <?php
-                                    $request_id = $request_type['name'];  
-                                    $details_url = "ajout-demande.php?id=" . urlencode($request_id);
-                                ?>
-                                <form action="<?php echo $details_url; ?>" method="GET">
-                                    <button type="submit" class="details-btn">Détails</button>
-                                </form>
+                            <form action="ajout-demande.php" method="GET">
+                            <input type="hidden" name="id" value="<?= $request_type['id'] ?>">
+                            <button type="submit" class="details-btn">Détails</button>
+                        </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
