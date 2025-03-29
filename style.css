@@ -871,3 +871,41 @@ th input {
     border-radius: 6px;
     cursor: pointer;
 }
+/*----------------------------------DEMANDE MANAGER----------*/
+.input-container-com2 input{
+    height:140px;
+    width:730px;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.refus{
+    background-color:#E10E0E;
+    color:white;
+    border:none;
+    width:203px;
+    height:40px;
+    border-radius:6px;
+}
+
+.valid{
+    background-color: #1A8245;
+    color:white;
+    border:none;
+    width:203px;
+    height:40px;
+    border-radius:6px;
+}
+.btn-assemble{
+    gap:30px;
+    display:flex;
+}
+
+.telechargement{
+    background-color: #e3f3fa;
+    border:none;
+    width:250px;
+    height:44px;
+    border-radius: 7px;
+
+}
