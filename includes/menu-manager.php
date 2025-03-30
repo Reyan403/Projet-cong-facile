@@ -24,7 +24,7 @@ include 'includes/count-requests.php';
                 <div class="other-menu">
                     <a href="accueil2.php">Accueil</a>
                     <a href="demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
-                    <a href="">Historique des demandes</a>
+                    <a href="historique-demandes-mana.php">Historique des demandes</a>
                     <a href="">Mon équipe</a>
                     <a href="">Statistiques</a>
                     <hr class="separator">

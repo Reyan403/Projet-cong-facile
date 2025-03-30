@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/get-requests_C.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +24,9 @@ include 'includes/get-requests_C.php';
 <body>
 <?php
 include 'includes/header.php';
-include 'includes/menu-collaborateur.php';
+include 'includes/menu-manager.php';
 ?>
+
 
         <div class="content-bloc2">
             <h1>
