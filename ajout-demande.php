@@ -78,6 +78,15 @@ $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+foreach ($request_types as &$type) {
+    $sql_count = "SELECT COUNT(*) FROM request WHERE request_type_id = :id";  
+    $stmt_count = $connexion->prepare($sql_count);
+    $stmt_count->bindParam(':id', $type['id'], PDO::PARAM_INT);  
+    $stmt_count->execute();
+    $result = $stmt_count->fetch(PDO::FETCH_ASSOC);
+    $type['request_count'] = $result['COUNT(*)'];  
+}
+
 //Récupération du nom du type en fonction de l'id
 if ($request_id) {
     $sql = "SELECT name FROM request_type WHERE id = :id";
@@ -91,8 +100,6 @@ if ($request_id) {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

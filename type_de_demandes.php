@@ -7,6 +7,17 @@ $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+foreach ($request_types as &$request_type) {
+    // Requête pour compter le nombre de demandes associées à chaque type
+    $sql_count = "SELECT COUNT(*) FROM request WHERE request_type_id = :id";
+    $stmt_count = $connexion->prepare($sql_count);
+    $stmt_count->bindParam(':id', $request_type['id'], PDO::PARAM_INT);
+    $stmt_count->execute();
+    $result = $stmt_count->fetch(PDO::FETCH_ASSOC);
+    // Ajouter la clé 'request_count' dans chaque élément du tableau $request_types
+    $request_type['request_count'] = $result['COUNT(*)'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -69,12 +80,12 @@ include 'includes/menu-manager.php';
                     <?php foreach ($request_types as $request_type): ?>
                         <tr>
                             <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td></td>
+                            <td><?= $request_type['request_count'] ?></td>
                             <td>
-                            <form action="ajout-demande.php" method="GET">
-                            <input type="hidden" name="id" value="<?= $request_type['id'] ?>">
-                            <button type="submit" class="details-btn">Détails</button>
-                        </form>
+                                <form action="ajout-demande.php" method="GET">
+                                    <input type="hidden" name="id" value="<?= $request_type['id'] ?>">
+                                    <button type="submit" class="details-btn">Détails</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

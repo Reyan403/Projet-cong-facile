@@ -73,7 +73,9 @@ include 'includes/menu-manager.php';
                 <button type="submit" name="cancel" class="btn-update">Annuler</button>
             </div>
 
-            <?php if (isset($error)) { echo '<span class="error">' . $error . '</span>'; } ?>
+            <?php if (isset($error)) 
+            { echo '<span class="error">' . $error . '</span>'; } 
+            ?>
         </form>
     </div>
     </section>
