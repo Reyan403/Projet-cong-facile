@@ -14,7 +14,6 @@ foreach ($request_types as &$request_type) {
     $stmt_count->bindParam(':id', $request_type['id'], PDO::PARAM_INT);
     $stmt_count->execute();
     $result = $stmt_count->fetch(PDO::FETCH_ASSOC);
-    // Ajouter la clé 'request_count' dans chaque élément du tableau $request_types
     $request_type['request_count'] = $result['COUNT(*)'];
 }
 
