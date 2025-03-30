@@ -3,53 +3,68 @@ include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 
 $errors = [];
+$message = '';
+$request_id = $_GET['id'] ?? null;
+$type_name = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $type = $_POST['type'] ?? '';
-    $update = $_POST['update'] ?? '';
-    $remove = $_POST['remove'] ?? '';
-
-    if (isset($remove) && empty($type)) {
-        $errors['remove'] = 'Vous devez sélectionner un type de demande pour le supprimer.';
+// Traitement de la suppression
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove'])) {
+    // Redirection vers la page de suppression pour confirmation
+    if (!empty($_POST['id'])) {
+        header('Location: alerte_suppression.php?id=' . $_POST['id']);
+        exit();
+    } else {
+        $errors[] = "Impossible de supprimer un type non existant.";
     }
+}
 
-    if (isset($update) && empty($type)) {
-        $errors['update'] = 'Vous devez ajouter un type de demande avant de pouvoir le mettre à jour.';
-    }
+// Mise à jour ou ajout d'un type de demande
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
+    $type = trim($_POST['type'] ?? '');
+    $request_id = $_POST['id'] ?? null;
 
-    if (empty($errors)) {
-        // Si vous voulez mettre à jour un type de demande
-        if (isset($update) && !empty($type)) {
-            // Vérification que le type de demande n'existe pas déjà dans la base
-            $sql_check = "SELECT * FROM request_type WHERE name = :name";
-            $stmt_check = $connexion->prepare($sql_check);
-            $stmt_check->bindParam(':name', $type);
-            $stmt_check->execute();
-            $existing_type = $stmt_check->fetch(PDO::FETCH_ASSOC);
+    if (!empty($type)) {
+        // Vérification de l'existence du type
+        $sql_check = "SELECT id FROM request_type WHERE name = :name";
+        $stmt_check = $connexion->prepare($sql_check);
+        $stmt_check->bindParam(':name', $type);
+        $stmt_check->execute();
+        $existing_type = $stmt_check->fetch(PDO::FETCH_ASSOC);
 
-            if (!$existing_type) {
-                $sql = "INSERT INTO request_type (name) VALUES (:name)";
-                $stmt = $connexion->prepare($sql);
-                $stmt->bindParam(':name', $type);
-                
-                if ($stmt->execute()) {
-                    $_SESSION['message'] = "Le type de demande a été ajouté avec succès.";
-                    header('Location: ' . $_SERVER['PHP_SELF']);
-                    exit;
+        if ($existing_type && (!$request_id || $existing_type['id'] != $request_id)) {
+            $errors[] = "Ce type de demande existe déjà.";
+        } else {
+            if ($request_id) {
+                $sql_update = "UPDATE request_type SET name = :name WHERE id = :id";
+                $stmt_update = $connexion->prepare($sql_update);
+                $stmt_update->bindParam(':name', $type);
+                $stmt_update->bindParam(':id', $request_id, PDO::PARAM_INT);
+                if ($stmt_update->execute()) {
+                    $message = "Le type de demande a été mis à jour avec succès.";
                 } else {
-                    $message = "Erreur lors de l'ajout du type de demande.";
+                    $errors[] = "Erreur lors de la mise à jour.";
+                }
+            } else {
+                $sql_insert = "INSERT INTO request_type (name) VALUES (:name)";
+                $stmt_insert = $connexion->prepare($sql_insert);
+                $stmt_insert->bindParam(':name', $type);
+                if ($stmt_insert->execute()) {
+                    $message = "Le nouveau type de demande a été ajouté avec succès.";
+                    header('Location: ajout-demande.php?success=1');
+                    exit();
+                } else {
+                    $errors[] = "Erreur lors de l'ajout.";
                 }
             }
         }
-        
-        // Si vous voulez supprimer un type de demande
-        if (isset($remove) && !empty($type)) {
-            // Redirection vers la page de confirmation de suppression
-            header('Location: alerte_suppression.php');
-            exit();
-        }
+    } else {
+        $errors[] = "Veuillez entrer un nom.";
     }
+}
+
+//Gestion des messages de succès
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    $message = "Le nouveau type de demande a été ajouté avec succès.";
 }
 
 if (isset($_SESSION['message'])) {
@@ -57,16 +72,14 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']);
 }
 
+//Récupération des types de demandes
 $sql = "SELECT id, name FROM request_type";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$request_id = $_GET['id'] ?? null;
-$type_name = ''; 
-
+//Récupération du nom du type en fonction de l'id
 if ($request_id) {
-    // Récupérer le nom du type en fonction de l'id
     $sql = "SELECT name FROM request_type WHERE id = :id";
     $stmt = $connexion->prepare($sql);
     $stmt->bindParam(':id', $request_id, PDO::PARAM_INT);
@@ -77,8 +90,9 @@ if ($request_id) {
         $type_name = $request_type['name'];
     }
 }
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,28 +115,29 @@ if ($request_id) {
 include 'includes/header.php';
 include 'includes/menu-manager.php';
 ?>
-        <div class="content-bloc">
-            <h1>
-                Types de demandes
-            </h1>
+      <div class="content-bloc">
+        <h1>Type de demandes </h1>
             <form action="" method="POST">
                 <label for="type">Nom du type</label>
                 <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name) ?>">
+                <input type="hidden" name="id" value="<?= htmlspecialchars($request_id) ?>">
+
                 <div class="two-buttons-type2">
-                    <button type="submit" name ="remove" class="btn-remove">Supprimer</button>
-                    <button type="submit" name ="update" class="btn-update">Mettre à jour</button>
+                    <button type="submit" name="remove" class="btn-remove">Supprimer</button>
+                    <button type="submit" name="update" class="btn-update">Mettre à jour</button>
                 </div>
+
                 <?php
-                    if (isset($errors['remove'])) {
-                        echo '<span class="error">' . $errors['remove'] . '</span>';
-                    }
-                    if (isset($errors['update'])) {
-                        echo '<span class="error">' . $errors['update'] . '</span>';
-                    } else {
-                        if (isset($message)) {
-                            echo '<span class=" message green">' . $message . '</span>';
-                        }
-                    }
+                foreach ($errors as $error) {
+                    echo '<span class="error">' . $error . '</span>';
+                }
+                if (!empty($message)) {
+                    echo '<span class="message green">' . $message . '</span>';
+                }
+
+                if (isset($_GET['deleted']) && $_GET['deleted'] == 1) {
+                    echo '<span class="message green">Le type de demande a été supprimé avec succès.</span>';
+                }
                 ?>
             </form>
         </div>

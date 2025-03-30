@@ -2,19 +2,43 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 
-if($_SERVER ['REQUEST_METHOD'] == 'POST'){
-    
-    if(isset($_POST['cancel'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['cancel'])) {
         header('Location: ajout-demande.php');
         exit();
-    } else if(isset($_POST['confirm'])) {
-        $sql = "DELETE FROM request_type WHERE name = :name";
+    } else if (isset($_POST['confirm']) && isset($_POST['id'])) {
+        $sql = "DELETE FROM request_type WHERE id = :id";
         $stmt = $connexion->prepare($sql);
-        $stmt->bindParam(':name', $_POST['name']);
-        $stmt->execute();
+        $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            // Redirection avec message de succès
+            header('Location: ajout-demande.php?deleted=1');
+            exit();
+        } else {
+            $error = "Erreur lors de la suppression.";
+        }
     }
 }
 
+// Récupération de l'ID depuis l'URL
+$request_id = $_GET['id'] ?? null;
+$type_name = '';
+
+// Vérifier si l'ID est valide
+if ($request_id) {
+    $sql = "SELECT name FROM request_type WHERE id = :id";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bindParam(':id', $request_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $request_type = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($request_type) {
+        $type_name = $request_type['name'];
+    } else {
+        $error = "Ce type de demande n'existe pas.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,16 +63,19 @@ include 'includes/header.php';
 include 'includes/menu-manager.php';
 ?>
         <div class="content-bloc">
-            <h1>
-                Êtes-vous sûr de vouloir supprimer ce type de demande ?
-            </h1>
-            <form action="" method="POST">
-                <div class="two-buttons-type2">
-                    <button type="submit" name ="confirm" class="btn-remove">Confirmer</button>
-                    <button type="submit" name ="cancel" class="btn-update">Annuler</button>
-                </div>
-            </form>
-        </div>
+        <h1>Êtes-vous sûr de vouloir supprimer "<?= htmlspecialchars($type_name) ?>" ?</h1>
+        
+        <form action="" method="POST">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($request_id) ?>">
+            
+            <div class="two-buttons-type2">
+                <button type="submit" name="confirm" class="btn-remove">Confirmer</button>
+                <button type="submit" name="cancel" class="btn-update">Annuler</button>
+            </div>
+
+            <?php if (isset($error)) { echo '<span class="error">' . $error . '</span>'; } ?>
+        </form>
+    </div>
     </section>
 </body>
 </html>
