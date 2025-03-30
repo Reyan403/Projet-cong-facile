@@ -6,13 +6,13 @@ include 'includes/count-requests.php';
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="accueil2.php">Accueil</a>
             <a href="demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
-            <a href="">Historique des demandes</a>
+            <a href="historique-demandes-mana.php">Historique des demandes</a>
             <a href="">Mon équipe</a>
             <a href="">Statistiques</a>
             <a href="type_de_demandes.php">Types de demandes</a>
             <a href="">Directions/Services</a>
             <a href="">Managers</a>
-            <a href="">Postes</a>
+            <a href="postes.php">Postes</a>
             <a href="">Mes informations</a>
             <a href="">Mes préférences</a>
             <a href="deconnexion.php">Déconnexion</a>
@@ -37,7 +37,7 @@ include 'includes/count-requests.php';
                             <a href="type_de_demandes.php">Types de demandes</a>
                             <a href="">Directions/Services</a>
                             <a href="">Managers</a>
-                            <a href="">Postes</a>
+                            <a href="postes.php">Postes</a>
                         </div>
                 </details>
                 <div class="other-menu">
