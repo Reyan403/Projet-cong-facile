@@ -11,7 +11,7 @@ include 'includes/get-requests_C.php';
     $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
     $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
     endforeach; ?>
-    
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,8 +51,9 @@ include 'includes/menu-collaborateur.php';
                 </div>
             <br>
             </form>
-            <button class="btn-return" a href="">Retourner à la liste de mes demandes</button>
-        </div>
+            <a href="historique-demandes.php"><button class="btn-return">Retourner à la liste de mes demandes</button></a>
+            
+        </div></button>
     </section>
     <script src="script.js"></script>
 </body>
