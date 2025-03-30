@@ -39,7 +39,7 @@ include 'includes/menu-manager.php';
             <form action="" method="POST">
                 <label for="type">Nom du type</label>
                 <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name) ?>">
-                <input type="hidden" name="id" value="<?= htmlspecialchars($request_id) ?>">
+                <input type="hidden" name="id" value="<?= htmlspecialchars($position_id) ?>">
 
                 <div class="two-buttons-type2">
                     <button type="submit" name="remove" class="btn-remove">Supprimer</button>
