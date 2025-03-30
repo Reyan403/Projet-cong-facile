@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
+include 'includes/get-requests_M.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +25,25 @@ include 'includes/affichage-avatar.php';
 include 'includes/header.php';
 include 'includes/menu-manager.php';
 ?>
+
+<?php foreach ($demandes as $demande) : 
+                        // Convertir les dates en format 03/10/2025 18h30
+                        $date_creation = (new DateTime($demande['created_at']))->format('d/m/Y H\hi');
+                        $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
+                        $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
+                        
+                    ?>
+                       
+                    <?php endforeach; ?>
         <div class="content-bloc">
             <h1>
-                Demande de <?php $name ?>
+                Demande de <td><?= htmlspecialchars($demande['last_name'] . ' ' . $demande['first_name']) ?></td>
             </h1>
-            <h3>Demande du <?php $dateDemande ?></h3>
+            <h3>Demande du <td><?= htmlspecialchars($date_creation) ?></td>
             <p>
-                Type de demande : <?php $typeConge ?><br>
-                Période : <?php $dateDebut ?> au <?php $dateFin ?><br>
-                Nombre de jours : <?php $nbJours ?><br>
+                Type de demande : <td><?= htmlspecialchars($demande['request_type_name']) ?></td><br>
+                Période : <td><?= htmlspecialchars($start_at) ?></td> au <td><?= htmlspecialchars($end_at) ?></td><br>
+                Nombre de jours : <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td><br>
             </p>
             <form action="traitement.php" method="post">
             <label for="text">Commentaire supplémentaire</label>

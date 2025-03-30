@@ -53,7 +53,7 @@ include 'includes/menu-collaborateur.php';
             </form>
             <a href="historique-demandes.php"><button class="btn-return">Retourner à la liste de mes demandes</button></a>
             
-        </div></button>
+        </div>
     </section>
     <script src="script.js"></script>
 </body>
