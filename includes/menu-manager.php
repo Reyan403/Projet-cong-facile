@@ -5,7 +5,7 @@ include 'includes/count-requests.php';
 <div class="menu" id="menu">
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="accueil2.php">Accueil</a>
-            <a href="demandes-attente.php">Demandes en attente</a>
+            <a href="demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
             <a href="">Historique des demandes</a>
             <a href="">Mon équipe</a>
             <a href="">Statistiques</a>
@@ -22,7 +22,7 @@ include 'includes/count-requests.php';
         <div class="sidebar">
             <div class="content-menu">
                 <div class="other-menu">
-                    <a href="./accueil2.php">Accueil</a>
+                    <a href="accueil2.php">Accueil</a>
                     <a href="demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
                     <a href="">Historique des demandes</a>
                     <a href="">Mon équipe</a>

@@ -31,48 +31,10 @@ include 'includes/affichage-erreurs.php';
         <title>Mentalworks</title>
     </head>
 <body>
-    <div class="background-gray"></div>
-    <header>
-        <div class="logo-mentalworks">
-            <img src="./PNG/logo-mentalworks-blanc.png" alt="">
-        </div>
-        <div class="burger-menu" onclick="toggleMenu()">
-            <img src="./PNG/burger-bar (1).png" alt="Menu">
-        </div>
-    </header>
-    <div class="menu" id="menu">
-        <span class="close-menu" onclick="toggleMenu()">&times;</span>
-            <a href="accueil.php">Accueil</a>
-            <a href="./nouvelle-demande.html">Nouvelle demande</a>
-            <a href="./historique-demandes.php">Historique des demandes</a>
-            <a href="">Mes informations</a>
-            <a href="">Mes préférences</a>
-            <a href="deconnexion.php">Déconnexion</a>
-    </div>
-
-    <section class="bloc">
-        <div class="sidebar">
-            <div class="content-menu">
-                <div class="other-menu">
-                    <a href="accueil.php">Accueil</a>
-                    <a href="./nouvelle-demande.php">Nouvelle demande</a>
-                    <a href="./historique-demandes.php">Historique des demandes</a>
-                    <hr class="separator">
-                    <a href="">Mes informations</a>
-                    <a href="">Mes préférences</a>
-                    <a href="deconnexion.php">Déconnexion</a>
-                </div>
-                <div class="character-menu">
-                    <div class="img-caharacter">
-                        <img src="./PNG/download.png" alt="">
-                    </div>
-                    <div class="info-employe">
-                        <p><?= htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName) ?></p>
-                        <span><?= ($role === 'manager') ? 'Manager' : 'Collaborateur' ?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<?php
+include 'includes/header.php';
+include 'includes/menu-collaborateur.php';
+?>
         <div class="content-bloc">
             <h1>
                 Effectuer une nouvelle demande
