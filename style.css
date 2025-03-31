@@ -76,9 +76,9 @@ header{
     z-index: 10;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 60%;
     height: 100%;
-    background: white;
+    background: #004c6c;
     box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px 0 0 10px;
     padding: 20px;
@@ -91,7 +91,7 @@ header{
     text-decoration: none;
     padding-top: 40px;
     text-align: center;
-    color: #637381;
+    color: white;;
     font-size: 18px;
     font-family: 'Inter';
     font-weight: 500;
@@ -109,6 +109,7 @@ header{
     font-weight: bold; 
     cursor: pointer;
     color: #004c6c;
+    color: white;
 }
 
 .background-gray{

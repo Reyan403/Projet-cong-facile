@@ -5,7 +5,6 @@ include 'includes/get-requests_C.php';
 
 ?>
 
-
 <?php foreach ($demandes as $demande) : 
     $date_creation = (new DateTime($demande['date_creation']))->format('d/m/Y H\hi');
     $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
