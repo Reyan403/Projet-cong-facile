@@ -149,8 +149,8 @@ let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[
 searchTable();
 }
 
-//validation
 
+//Validation
 document.getElementById("validate-request").addEventListener("click", function() {
     var demandeId = this.getAttribute("data-id"); // Récupère l'ID de la demande depuis l'attribut data-id
 
