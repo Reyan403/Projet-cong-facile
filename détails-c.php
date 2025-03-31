@@ -47,7 +47,7 @@ include 'includes/menu-collaborateur.php';
             <form action="traitement.php" method="post">
             <label for="text">Commentaire du manager :</label>
                 <div class="input-container">
-                    <input type="text" id="text" name="text" placeholder="Profite bien de tes vacances à Mayorque et surtout, n'oublie pas la carte postale !!!">
+                    <input type="text" id="text" name="text">
                 </div>
             <br>
             </form>

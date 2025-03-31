@@ -25,7 +25,15 @@ include 'includes/get-requests_M.php';
 include 'includes/header.php';
 include 'includes/menu-manager.php';
 ?>
-
+<?php
+if (isset($_SESSION['collaborator_id'])) {
+    $requete = $connexion->prepare("SELECT comment FROM request WHERE collaborator_id = :collaborator_id ORDER BY created_at DESC LIMIT 1");
+    $requete->execute(['collaborator_id' => $_SESSION['collaborator_id']]);
+    $commentairecollaborateur = $requete->fetchColumn() ?? ''; // Si null, mettre une chaîne vide
+} else {
+    echo "Erreur : Collaborator ID non défini en session.";
+}
+?>
 <?php foreach ($demandes as $demande) : 
                         // Convertir les dates en format 03/10/2025 18h30
                         $date_creation = (new DateTime($demande['created_at']))->format('d/m/Y H\hi');
@@ -47,10 +55,11 @@ include 'includes/menu-manager.php';
             </p>
             <form action="traitement.php" method="post">
             <label for="text">Commentaire supplémentaire</label>
-                <div class="input-container">
-                    <input type="text" id="text" name="text" placeholder="il faut mettre $commentairecollaborateur ici">
-                </div>
+            <div class="input-container">
+            <input type="text" id="text" name="text" placeholder="Ajoutez un commentaire..." value="<?php echo htmlspecialchars($commentairecollaborateur); ?>">
+            </div>
             <br>
+
             </form>
             <button class="telechargement">Télécharger le justificatif <i class='bx bx-download'></i></button>
             <h1>
@@ -67,8 +76,13 @@ include 'includes/menu-manager.php';
             </form>
             <div class="btn-assemble">
                 <button class="refus">Refuser la demande</button>
-                <button class="valid">Valider la demande</button>
+                <button class="valid" id="validate-request">Valider la demande</button>
             </div>
+
+            <div id="confirmation-message" style="display: none;">
+            <p>Votre demande a bien été validée.</p>
+            </div>
+
         </div>
     </section>
     <script src="script.js"></script>
