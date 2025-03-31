@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/get-requests_M.php';
+include 'traitement.php';
 ?>
 
 <!DOCTYPE html>
@@ -53,10 +54,10 @@ if (isset($_SESSION['collaborator_id'])) {
                 Période : <td><?= htmlspecialchars($start_at) ?></td> au <td><?= htmlspecialchars($end_at) ?></td><br>
                 Nombre de jours : <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td><br>
             </p>
-            <form action="traitement.php" method="post">
+            <form action="" method="post">
             <label for="text">Commentaire supplémentaire</label>
             <div class="input-container">
-            <input type="text" id="text" name="text" placeholder="Ajoutez un commentaire..." value="<?php echo htmlspecialchars($commentairecollaborateur); ?>">
+            <input type="text" id="text" name="text" value="<?php echo htmlspecialchars($commentairecollaborateur); ?>">
             </div>
             <br>
 
@@ -67,25 +68,24 @@ if (isset($_SESSION['collaborator_id'])) {
             </h1>
             
             
-            <form action="traitement.php" method="post">
-            <label for="text"><p>Saisir un commentaire</p></label>
-                <div class="input-container-com2">
-                    <input type="text" id="text" name="text">
-                </div>
-            <br>
-            </form>
-            <div class="btn-assemble">
-                <button class="refus">Refuser la demande</button>
-                <button class="valid" id="validate-request">Valider la demande</button>
-            </div>
+            <form action="" method="post">
+            <input type="hidden" name="demande_id" value="">
 
-            <div id="confirmation-message" style="display: none;">
-            <p>Votre demande a bien été validée.</p>
+            <label for="commentaire">Saisir un commentaire</label>
+            <div class="input-container-com2">
+                <input type="text" id="commentaire" name="commentaire">
             </div>
+            <br>
+            
+            <div class="btn-assemble">
+                <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
+                <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
+            </div>
+            </form>
 
         </div>
     </section>
     <script src="script.js"></script>
+</body> 
 </body>
-</body>
-</html>
+</html> 
