@@ -64,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Redirection selon le rôle de l'utilisateur
         if ($user['role'] === 'employe') {
-            header('Location: accueil.php');
+            header('Location: C-accueil.php');
         } elseif ($user['role'] === 'manager') {
-            header('Location: accueil2.php');
+            header('Location: M-accueil2.php');
         } else {
             header('Location: index.php');
         }

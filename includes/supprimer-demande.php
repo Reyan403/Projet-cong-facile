@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['cancel'])) {
-        header('Location: ajout-demande.php');
+        header('Location: M-ajout-demande.php');
         exit();
     } else if (isset($_POST['confirm']) && isset($_POST['id'])) {
         $sql = "DELETE FROM request_type WHERE id = :id";
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($stmt->execute()) {
             // Redirection avec message de succès
-            header('Location: ajout-demande.php?deleted=1');
+            header('Location: M-ajout-demande.php');
             exit();
         } else {
             $error = "Erreur lors de la suppression.";

@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
         // Rediriger l'utilisateur après l'enregistrement
-        header("Location: demande-envoye.php");
+        header("Location: C-demande-envoye.php");
         exit();
     }
 }

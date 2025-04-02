@@ -8,7 +8,7 @@ $type_name = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove'])) {
     // Redirection vers la page de suppression pour confirmation
     if (!empty($_POST['id'])) {
-        header('Location: alerte_suppression.php?id=' . $_POST['id']);
+        header('Location: M-alerte_suppression.php?id=' . $_POST['id']);
         exit();
     } else {
         $errors[] = "Impossible de supprimer un type non existant.";
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
                     $message = "Le nouveau type de demande a été ajouté avec succès.";
-                    header('Location: ajout-demande.php?success=1');
+                    header('Location: M-ajout-demande.php');
                     exit();
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";
