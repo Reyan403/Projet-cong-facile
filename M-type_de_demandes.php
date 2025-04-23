@@ -45,7 +45,7 @@ include 'includes/menu-manager.php';
             <h1>
                 Type de demandes
             </h1>
-            <a href="ajout-demande.php">
+            <a href="M-ajout-demande.php">
                 Ajouter un type de demande
             </a>
         </div>
@@ -81,7 +81,7 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($request_type['name']) ?></td>
                             <td><?= $request_type['request_count'] ?></td>
                             <td>
-                                <form action="ajout-demande.php" method="GET">
+                                <form action="M-ajout-demande.php" method="GET">
                                     <input type="hidden" name="id" value="<?= $request_type['id'] ?>">
                                     <button type="submit" class="details-btn">Détails</button>
                                 </form>

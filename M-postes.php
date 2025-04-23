@@ -45,7 +45,7 @@ include 'includes/menu-manager.php';
             <h1>
                 Postes
             </h1>
-            <a href="ajout-poste.php">
+            <a href="M-ajout-poste.php">
                 Ajouter un poste
             </a>
         </div>
@@ -81,7 +81,7 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($position['name']) ?></td>
                             <td><?= $position['position_count'] ?></td>
                             <td>
-                                <form action="ajout-poste.php" method="GET">
+                                <form action="M-ajout-poste.php" method="GET">
                                     <input type="hidden" name="id" value="<?= $position['id'] ?>">
                                     <button type="submit" class="details-btn">Détails</button>
                                 </form>

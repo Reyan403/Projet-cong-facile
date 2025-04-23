@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
                     $message = "Le poste a été ajouté avec succès.";
-                    header('Location: M-ajout-position.php');
+                    header('Location: M-ajout-poste.php');
                     exit();
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";
