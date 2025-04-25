@@ -110,7 +110,7 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($start_at) ?></td>
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
-                            <td><a href="dmdmana.php"><button class="details-btn">Détails</button></a></td>
+                            <td><a href="M-dmdmana.php"><button class="details-btn">Détails</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

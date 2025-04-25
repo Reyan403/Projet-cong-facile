@@ -109,7 +109,7 @@ include 'includes/menu-collaborateur.php';
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
                             <td><?= isset($demande['statut']) ? htmlspecialchars($demande['statut']) : 'Non défini' ?></td>
-                            <td><a href="détails-c.php"><button class="details-btn">Détails</button></a></td>
+                            <td><a href="C-détails.php"><button class="details-btn">Détails</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

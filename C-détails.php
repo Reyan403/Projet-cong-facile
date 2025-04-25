@@ -50,7 +50,7 @@ include 'includes/menu-collaborateur.php';
                 </div>
             <br>
             </form>
-            <a href="historique-demandes.php"><button class="btn-return">Retourner à la liste de mes demandes</button></a>
+            <a href="C-historique-demandes.php"><button class="btn-return">Retourner à la liste de mes demandes</button></a>
             
         </div>
     </section>

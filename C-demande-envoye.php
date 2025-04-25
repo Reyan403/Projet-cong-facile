@@ -26,7 +26,7 @@
         <p>
             Votre demande a bien été envoyé au manager. Veuillez patienter, le traitement de votre demande est en cours.
         </p>
-        <a href="accueil.php">Cliquez ici pour retourner à l'accueil</a>
+        <a href="C-accueil.php">Cliquez ici pour retourner à l'accueil</a>
     </section>
 </body>
 </html>

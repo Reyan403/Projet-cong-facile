@@ -40,7 +40,7 @@ include 'includes/menu-collaborateur.php';
                 Effectuer une nouvelle demande
             </h1>
             <div class="form-container">
-                <form method="POST" action="nouvelle-demande.php" enctype="multipart/form-data">
+                <form method="POST" action="C-nouvelle-demande.php" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="type-demande">Type de demande - champ obligatoire</label>
                         <select id="type-demande" name="type_demande">
