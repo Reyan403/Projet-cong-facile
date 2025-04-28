@@ -48,7 +48,7 @@ if (isset($_SESSION['collaborator_id'])) {
             <h1>
                 Demande de <td><?= htmlspecialchars($demande['last_name'] . ' ' . $demande['first_name']) ?></td>
             </h1>
-            <h3>Demande du <td><?= htmlspecialchars($date_creation) ?></td>
+            <h3>Demande du <td><?= htmlspecialchars($date_creation) ?></td></h3>
             <p>
                 Type de demande : <td><?= htmlspecialchars($demande['request_type_name']) ?></td><br>
                 Période : <td><?= htmlspecialchars($start_at) ?></td> au <td><?= htmlspecialchars($end_at) ?></td><br>
