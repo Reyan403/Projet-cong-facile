@@ -23,12 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (empty($_POST['date_debut'])) { 
         $error['date_debut'] = "Veuillez choisir une date de début.";
+    } else if (!empty($_POST['date_fin']) && $_POST['date_debut'] > $_POST['date_fin']) {
+        $error['date_debut'] = "La date de début ne peut pas être supérieure à la date de fin.";
     }
 
     if (empty($_POST['date_fin'])) {
         $error['date_fin'] = "Veuillez choisir une date de fin.";
     }
 
+    // réinitialise les valeurs après les erreurs
+    $date_debut = '';
+    $date_fin = '';
+    
     // Gestion du fichier uploadé (justificatif)
     if (!empty($_FILES['receipt_file']['name'])) { 
         $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; 

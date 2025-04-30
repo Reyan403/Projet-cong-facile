@@ -38,9 +38,6 @@ function calculerJours() {
 
         if (diffDays >= 0) {
             joursDemandes.value = Math.floor(diffDays); // Arrondi à l'inférieur
-        } else {
-            alert("La date de fin doit être supérieure ou égale à la date de début.");
-            joursDemandes.value = ''; // Réinitialise si les dates ne sont pas valides
         }
     } else {
         joursDemandes.value = ''; // Si une date manque, réinitialise le champ

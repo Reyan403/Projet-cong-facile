@@ -4,6 +4,7 @@ include 'includes/affichage-avatar.php';
 include 'includes/ajout-nom-poste.php';
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,15 +28,8 @@ include 'includes/menu-manager.php';
 ?>
       <div class="content-bloc">
         <h1>
-            <?php 
-                if (!empty($type_name)) {  
-                    echo htmlspecialchars($type_name);
-                } else { 
-                    echo 'Postes';
-                } 
-            ?>
+            <?= htmlspecialchars($type_name) ?>
         </h1>
-
             <form action="" method="POST">
                 <label for="type">Nom du type</label>
                 <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name) ?>">

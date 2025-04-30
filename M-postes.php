@@ -2,20 +2,15 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 
-$sql = "SELECT id, name FROM position";
+$sql = "
+    SELECT position.id, position.name, COUNT(person.id) AS position_count
+    FROM position
+    LEFT JOIN person ON position.id = person.position_id
+    GROUP BY position.id
+";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $positions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($positions as &$position) {
-    // Requête pour compter le nombre de demandes associées à chaque type
-    $sql_count = "SELECT COUNT(*) FROM position WHERE name = :id";
-    $stmt_count = $connexion->prepare($sql_count);
-    $stmt_count->bindParam(':id', $position['id'], PDO::PARAM_INT);
-    $stmt_count->execute();
-    $result = $stmt_count->fetch(PDO::FETCH_ASSOC);
-    $position['position_count'] = $result['COUNT(*)'];
-}
 
 ?>
 
@@ -77,16 +72,16 @@ include 'includes/menu-manager.php';
                 </thead>
                 <tbody>
                     <?php foreach ($positions as $position): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($position['name']) ?></td>
-                            <td><?= $position['position_count'] ?></td>
-                            <td>
-                                <form action="M-ajout-poste.php" method="GET">
-                                    <input type="hidden" name="id" value="<?= $position['id'] ?>">
-                                    <button type="submit" class="details-btn">Détails</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?= htmlspecialchars($position['name']) ?></td>
+                        <td><?= $position['position_count'] ?></td> 
+                        <td>
+                            <form action="M-ajout-poste.php" method="GET">
+                                <input type="hidden" name="id" value="<?= $position['id'] ?>">
+                                <button type="submit" class="details-btn">Détails</button>
+                            </form>
+                        </td>
+                    </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

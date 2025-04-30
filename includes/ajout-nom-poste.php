@@ -1,6 +1,6 @@
 <?php
 
-require './includes/db.php'; // Assurez-vous d'inclure la connexion à la base de données
+include './includes/db.php'; 
 
 $errors = [];
 $message = '';
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove'])) {
 }
 // Traitement de l'ajout ou de la mise à jour d'un poste
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
-    $type = trim($_POST['type'] ?? '');
+    $type = trim($_POST['type'] ?? ''); 
     $position_id = $_POST['id'] ?? null;
 
     if (!empty($type)) {
@@ -50,8 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert = $connexion->prepare($sql_insert);
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
-                    $message = "Le poste a été ajouté avec succès.";
-                    header('Location: M-ajout-poste.php');
+                    header('Location: M-postes.php'); // Redirection après ajout
                     exit();
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";

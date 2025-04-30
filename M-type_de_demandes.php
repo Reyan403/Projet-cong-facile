@@ -2,20 +2,15 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 
-$sql = "SELECT id, name FROM request_type";
+$sql = "
+    SELECT request_type.id, request_type.name, COUNT(request.id) AS request_count
+    FROM request_type
+    LEFT JOIN request ON request_type.id = request.request_type_id
+    GROUP BY request_type.id
+";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($request_types as &$request_type) {
-    // Requête pour compter le nombre de demandes associées à chaque type
-    $sql_count = "SELECT COUNT(*) FROM request WHERE request_type_id = :id";
-    $stmt_count = $connexion->prepare($sql_count);
-    $stmt_count->bindParam(':id', $request_type['id'], PDO::PARAM_INT);
-    $stmt_count->execute();
-    $result = $stmt_count->fetch(PDO::FETCH_ASSOC);
-    $request_type['request_count'] = $result['COUNT(*)'];
-}
 
 ?>
 
