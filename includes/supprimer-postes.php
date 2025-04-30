@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($stmt->execute()) {
             // Redirection avec message de succès
-            header('Location: M-ajout-poste.php');
+            header('Location: M-postes.php');
             exit();
         } else {
             $error = "Erreur lors de la suppression.";

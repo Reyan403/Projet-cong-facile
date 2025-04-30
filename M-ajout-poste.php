@@ -38,18 +38,22 @@ include 'includes/menu-manager.php';
                 <div class="two-buttons-type2">
                     <button type="submit" name="remove" class="btn-remove">Supprimer</button>
                     <button type="submit" name="update" class="btn-update">Mettre à jour</button>
+                    <a class="btn-cancel" href="M-postes.php">Annuler</a>
                 </div>
 
                 <?php
                 foreach ($errors as $error) {
                     echo '<span class="error">' . $error . '</span>';
                 }
-                if (!empty($message)) {
-                    echo '<span class="message green">' . $message . '</span>';
-                }
+                ?>
 
-                if (isset($_GET['deleted']) && $_GET['deleted'] == 1) {
-                    echo '<span class="message green">Le type de demande a été supprimé avec succès.</span>';
+                <?php
+                // Vérifie si le cookie existe et affiche le message
+                if (isset($_COOKIE['message'])) {
+                    echo '<span class="message green">' . $_COOKIE['message'] . '</span>';
+                    
+                    // Supprime le cookie après l'affichage
+                    setcookie('message', '', time() - 3600, "/");  // Le cookie est supprimé immédiatement
                 }
                 ?>
             </form>

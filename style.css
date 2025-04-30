@@ -812,7 +812,6 @@ th input {
     background-color: #008b00;
     border: none;
     color: white;
-    height: 50px;
     border-radius: 6px;
     padding: 13px 28px;
     font-size: 16px;
@@ -820,17 +819,20 @@ th input {
     font-family: 'Inter';
     margin-top: 20px;
     cursor: pointer;
-    width: 153px;
 }
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 500px) {
     .two-buttons-type2{
         display: grid;
     }
 
     .two-buttons-type2 .btn-update{
         margin-left: 0px;
+    }
+
+    .btn-cancel{
+        width: 60px;
     }
 }
 /*------------------------------------------DETAILS COLLABORATEUR------------------------*/

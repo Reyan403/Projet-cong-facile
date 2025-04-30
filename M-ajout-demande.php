@@ -42,13 +42,6 @@ include 'includes/menu-manager.php';
                 foreach ($errors as $error) {
                     echo '<span class="error">' . $error . '</span>';
                 }
-                if (!empty($message)) {
-                    echo '<span class="message green">' . $message . '</span>';
-                }
-
-                if (isset($_GET['deleted']) && $_GET['deleted'] == 1) {
-                    echo '<span class="message green">Le type de demande a été supprimé avec succès.</span>';
-                }
                 ?>
             </form>
         </div>

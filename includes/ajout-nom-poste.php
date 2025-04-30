@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['remove'])) {
         $errors[] = "Impossible de supprimer un type non existant.";
     }
 }
+
 // Traitement de l'ajout ou de la mise à jour d'un poste
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     $type = trim($_POST['type'] ?? ''); 
@@ -40,7 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_update->bindParam(':name', $type);
                 $stmt_update->bindParam(':id', $position_id, PDO::PARAM_INT);
                 if ($stmt_update->execute()) {
-                    $message = "Le poste a été mis à jour avec succès.";
+                    // Utilisation de setcookie pour afficher le message
+                    setcookie('message', 'Le poste a été mis à jour avec succès.', time() + 10, "/");  // Le cookie expire après 10 secondes
+                    header('Location: M-postes.php');
+                    exit();
                 } else {
                     $errors[] = "Erreur lors de la mise à jour.";
                 }
@@ -50,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert = $connexion->prepare($sql_insert);
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
-                    header('Location: M-postes.php'); // Redirection après ajout
-                    exit();
+                    // Utilisation de setcookie pour afficher le message
+                    setcookie('message', 'Le poste a été ajouté avec succès.', time() + 10, "/");  // Le cookie expire après 10 secondes
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";
                 }
@@ -62,14 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     }
 }
 
-// Gestion des messages de succès
-if (isset($_GET['success']) && $_GET['success'] == 1) {
-    $message = "Le poste a été ajouté avec succès.";
-}
-
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-    unset($_SESSION['message']);
+// Gestion des erreurs
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo '<span class="error">' . $error . '</span>';
+    }
 }
 
 // Récupération des postes
