@@ -7,7 +7,7 @@ include 'includes/count-requests.php';
             <a href="M-accueil2.php">Accueil</a>
             <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
             <a href="M-historique-demandes-mana.php">Historique des demandes</a>
-            <a href="">Mon équipe</a>
+            <a href="M-equipe1.php">Mon équipe</a>
             <a href="">Statistiques</a>
             <a href="M-type_de_demandes.php">Types de demandes</a>
             <a href="">Directions/Services</a>
@@ -25,7 +25,7 @@ include 'includes/count-requests.php';
                     <a href="M-accueil2.php">Accueil</a>
                     <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
                     <a href="M-historique-demandes-mana.php">Historique des demandes</a>
-                    <a href="">Mon équipe</a>
+                    <a href="M-equipe1.php">Mon équipe</a>
                     <a href="">Statistiques</a>
                     <hr class="separator">
                     <a href="">Mes informations</a>

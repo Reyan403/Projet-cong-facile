@@ -16,6 +16,13 @@ h2{
     color: #1B3168;
 }
 
+h3{
+    font-size: 18px;
+    font-family: 'Epilogue';
+    font-weight: 600;
+    color: #004C6CC7;
+}
+
 p{
     font-size: 16px;
     font-family: 'Epilogue';
@@ -894,6 +901,7 @@ th input {
     font-size: 14px;
     font-family: 'Epilogue';
 }
+
 .btn-assemble{
     gap:30px;
     display:flex;
