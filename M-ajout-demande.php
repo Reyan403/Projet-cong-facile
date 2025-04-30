@@ -35,6 +35,7 @@ include 'includes/menu-manager.php';
                 <div class="two-buttons-type2">
                     <button type="submit" name="remove" class="btn-remove">Supprimer</button>
                     <button type="submit" name="update" class="btn-update">Mettre à jour</button>
+                    <a class="btn-cancel" href="M-type_de_demandes.php">Annuler</a>
                 </div>
 
                 <?php

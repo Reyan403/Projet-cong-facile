@@ -808,6 +808,21 @@ th input {
     width: 153px;
 }
 
+.btn-cancel{
+    background-color: #008b00;
+    border: none;
+    color: white;
+    height: 50px;
+    border-radius: 6px;
+    padding: 13px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    margin-top: 20px;
+    cursor: pointer;
+    width: 153px;
+}
+
 
 @media screen and (max-width: 360px) {
     .two-buttons-type2{
