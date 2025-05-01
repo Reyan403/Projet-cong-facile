@@ -2,6 +2,12 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/ajout-type-de-demande.php';
+
+$message = null;
+if (isset($_COOKIE['message'])) {
+    $message = $_COOKIE['message'];
+    setcookie('message', '', time() - 3600, "/"); // Supprime le cookie
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +48,12 @@ include 'includes/menu-manager.php';
                 foreach ($errors as $error) {
                     echo '<span class="error">' . $error . '</span>';
                 }
+                ?>
+
+                <?php 
+                    if ($message): 
+                        echo "<div class='message green'>" . htmlspecialchars($message) . "</div>";
+                    endif; 
                 ?>
             </form>
         </div>

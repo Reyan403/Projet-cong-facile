@@ -37,7 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_update->bindParam(':name', $type);
                 $stmt_update->bindParam(':id', $request_id, PDO::PARAM_INT);
                 if ($stmt_update->execute()) {
-                    $message = "Le type de demande a été mis à jour avec succès.";
+                    setcookie('message', 'La demande a été mise à jour avec succès.', time() + 10, "/"); 
+                    header('Location: M-ajout-demande.php');
+                    exit();
                 } else {
                     $errors[] = "Erreur lors de la mise à jour.";
                 }
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert = $connexion->prepare($sql_insert);
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
-                    $message = "Le nouveau type de demande a été ajouté avec succès.";
+                    setcookie('message', 'La demande a été ajoutée avec succès.', time() + 10, "/"); 
                     header('Location: M-ajout-demande.php');
                     exit();
                 } else {

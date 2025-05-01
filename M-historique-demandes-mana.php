@@ -1,7 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-include 'includes/get-requests_C.php';
+include 'includes/get-requests_historique_mana.php';
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ include 'includes/menu-manager.php';
                     </th>
                     <th class="request-type" onclick="sortTable(1)">
                         <div class="text-and-arrow">
-                            <p>Demandée le</p>
+                            <p>Collaborateur</p>
                             <div class="arrow">
                                 <img class="arrow-top" src="./PNG/fleche-droite (8).png" alt="flèche haut">
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
@@ -104,7 +104,7 @@ include 'includes/menu-manager.php';
                     ?>
                         <tr>
                             <td><?= htmlspecialchars($demande['type_demande']) ?></td>
-                            <td><?= htmlspecialchars($date_creation) ?></td>
+                            <td><?= htmlspecialchars($demande['collaborateur']) ?></td>
                             <td><?= htmlspecialchars($start_at) ?></td>
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>

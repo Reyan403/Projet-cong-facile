@@ -2,6 +2,13 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/ajout-nom-poste.php';
+
+$message = null;
+if (isset($_COOKIE['message'])) {
+    $message = $_COOKIE['message'];
+    setcookie('message', '', time() - 3600, "/"); // Supprime le cookie
+}
+
 ?>
 
 
@@ -47,14 +54,10 @@ include 'includes/menu-manager.php';
                 }
                 ?>
 
-                <?php
-                // Vérifie si le cookie existe et affiche le message
-                if (isset($_COOKIE['message'])) {
-                    echo '<span class="message green">' . $_COOKIE['message'] . '</span>';
-                    
-                    // Supprime le cookie après l'affichage
-                    setcookie('message', '', time() - 3600, "/");  // Le cookie est supprimé immédiatement
-                }
+                <?php 
+                    if ($message): 
+                        echo "<div class='message green'>" . htmlspecialchars($message) . "</div>";
+                    endif; 
                 ?>
             </form>
         </div>

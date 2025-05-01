@@ -31,10 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error['date_fin'] = "Veuillez choisir une date de fin.";
     }
 
-    // réinitialise les valeurs après les erreurs
-    $date_debut = '';
-    $date_fin = '';
-    
     // Gestion du fichier uploadé (justificatif)
     if (!empty($_FILES['receipt_file']['name'])) { 
         $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/'; 

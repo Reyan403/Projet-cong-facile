@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_update->bindParam(':id', $position_id, PDO::PARAM_INT);
                 if ($stmt_update->execute()) {
                     // Utilisation de setcookie pour afficher le message
-                    setcookie('message', 'Le poste a été mis à jour avec succès.', time() + 10, "/");  // Le cookie expire après 10 secondes
-                    header('Location: M-postes.php');
+                    setcookie('message', 'Le poste a été mis à jour avec succès.', time() + 10, "/");  
+                    header('Location: M-ajout-poste.php');
                     exit();
                 } else {
                     $errors[] = "Erreur lors de la mise à jour.";
@@ -55,7 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
                 $stmt_insert->bindParam(':name', $type);
                 if ($stmt_insert->execute()) {
                     // Utilisation de setcookie pour afficher le message
-                    setcookie('message', 'Le poste a été ajouté avec succès.', time() + 10, "/");  // Le cookie expire après 10 secondes
+                    setcookie('message', 'Le poste a été ajouté avec succès.', time() + 10, "/");
+                    header('Location: M-ajout-poste.php');
+                    exit();
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";
                 }

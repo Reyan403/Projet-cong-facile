@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification en base de données
     $requete = $connexion->prepare('
         SELECT u.id, u.email, u.password, u.enabled, u.created_at, u.role, u.person_id,
-               p.first_name, p.last_name
+               p.first_name, p.last_name, p.department_id
         FROM user u
         LEFT JOIN person p ON u.person_id = p.id
         WHERE u.email = :email
