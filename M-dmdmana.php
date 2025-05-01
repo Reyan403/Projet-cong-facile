@@ -40,7 +40,7 @@ include 'includes/menu-manager.php';
         $date_creation = (new DateTime($demande['created_at']))->format('d/m/Y H\hi');
         $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
         $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
-        
+    endforeach;
     ?>
     
         <div class="content-bloc">
@@ -86,5 +86,4 @@ include 'includes/menu-manager.php';
     </section>
     <script src="script.js"></script>
 </body> 
-</body>
 </html> 
