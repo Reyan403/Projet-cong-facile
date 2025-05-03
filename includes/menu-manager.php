@@ -13,7 +13,7 @@ include 'includes/count-requests.php';
             <a href="">Directions/Services</a>
             <a href="">Managers</a>
             <a href="M-postes.php">Postes</a>
-            <a href="">Mes informations</a>
+            <a href="M-mes-informations.php">Mes informations</a>
             <a href="">Mes préférences</a>
             <a href="deconnexion.php">Déconnexion</a>
     </div>
@@ -28,7 +28,7 @@ include 'includes/count-requests.php';
                     <a href="M-equipe1.php">Mon équipe</a>
                     <a href="">Statistiques</a>
                     <hr class="separator">
-                    <a href="">Mes informations</a>
+                    <a href="M-mes-informations.php">Mes informations</a>
                     <a href="">Mes préférences</a>
                 </div>
                 <details>

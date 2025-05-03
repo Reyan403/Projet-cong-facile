@@ -5,9 +5,9 @@ function toggleMenu() {
 }
 
 // mdp caché ou non
-function togglePassword() {
-    const passwordInput = document.getElementById("password");
-    const toggleEye = document.getElementById("toggleEye");
+function togglePassword(inputId, eyeId) {
+    const passwordInput = document.getElementById(inputId);
+    const toggleEye = document.getElementById(eyeId);
 
     if (passwordInput.type === "password") {
         passwordInput.type = "text";

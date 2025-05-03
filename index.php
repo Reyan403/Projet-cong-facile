@@ -67,11 +67,11 @@ include 'includes/header.php';
                     <span class="error"><?= $erreurs['email'] ?? '' ?></span>
 
                     <label for="password" class="password-label">
-                    Mot de passe
-                    <div class="password-wrapper">
-                        <input type="password" name="password" id="password" class="input-field">
-                        <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEye" onclick="togglePassword()">
-                    </div>
+                        Mot de passe
+                        <div class="password-wrapper">
+                            <input type="password" name="password" id="password" class="input-field">
+                            <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyePassword" onclick="togglePassword('password', 'toggleEyePassword')">
+                        </div>
                     </label>
                     <button type="submit" class="button-connexion">Connexion au portail</button>
                 </form>

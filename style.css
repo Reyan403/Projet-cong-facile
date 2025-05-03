@@ -42,7 +42,6 @@ label{
     font-family: 'Inter';
     font-weight: 500;
     color: #212B36;
-    margin-bottom: 15px;
 }
 
 .content-bloc{
@@ -234,11 +233,14 @@ header{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    color: #9CA3AF;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     box-sizing: border-box;
     background-position: 17px; 
+}
+
+input#current-password, input#new-password, input#confirm-password, .input-field {
+    padding: 5px 16px 0px 15px;
 }
 
 .password-label {
@@ -289,6 +291,7 @@ header{
 }
 
 .error{
+    display: grid;
     color: red;
     font-size: 16px;
     font-family: 'Epilogue';
@@ -836,9 +839,6 @@ th input {
     }
 }
 /*------------------------------------------DETAILS COLLABORATEUR------------------------*/
-.bloc {
-    display: flex;
-}
 
 .btn-return{
     background-color: #EAF1F4;
@@ -932,4 +932,101 @@ th input {
     border-radius: 7px;
     font-size: 14px;
     font-family: 'Epilogue';
+}
+
+/* ------------------------------------MES INFORMATIONS MANAGER--------------------------------------------------------- */
+.form-infos{
+    display: grid;
+    gap: 15px;
+}
+
+#email2{
+    background: url(./PNG/email.png) no-repeat left center #F3F4F6;
+    background-size: 17px;
+    padding: 12px 16px 12px 40px;
+    width: 95%;
+    max-width: 350px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-position: 17px; 
+}
+
+#nom, #prenom, #service{
+    background-color: #F3F4F6;
+    background-size: 17px;
+    padding: 12px 16px 12px 15px;
+    width: 95%;
+    max-width: 350px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-position: 17px;
+}
+
+.nom-prenom, .flex-password{
+    display: flex;
+}
+
+.flex-password{
+    gap: 180px;
+}
+
+.password-label2 {
+    display: block;
+    margin: 20px 0 0 0px;
+    width: 200%; 
+    max-width: 350px; 
+}
+
+.label{
+    flex-direction: column;
+}
+
+.label-prenom{
+    margin-left: -145px;
+}
+
+.password-informations{
+    margin-top: 30px;
+}
+
+.button-reset{
+    background-color: #004C6C;
+    border: none;
+    color: white;
+    height: 50px;
+    border-radius: 6px;
+    padding: 13px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Inter';
+    margin-top: 20px;
+    cursor: pointer;
+    width: 270px;
+}
+
+@media screen and (max-width: 880px) {
+    .nom-prenom, .flex-password, .label{
+        display: grid;
+        gap: 20px;
+    }
+
+
+    .label-prenom{
+        display: grid;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .password-label2 {
+        width: 95%;
+    }
 }
