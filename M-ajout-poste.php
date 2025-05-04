@@ -6,7 +6,7 @@ include 'includes/ajout-nom-poste.php';
 $message = null;
 if (isset($_COOKIE['message'])) {
     $message = $_COOKIE['message'];
-    setcookie('message', '', time() - 3600, "/"); // Supprime le cookie
+    setcookie('message', '', time() + 1, "/"); 
 }
 
 ?>

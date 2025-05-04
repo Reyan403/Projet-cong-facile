@@ -68,13 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     }
 }
 
-// Gestion des erreurs
-if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo '<span class="error">' . $error . '</span>';
-    }
-}
-
 // Récupération des postes
 $sql = "SELECT id, name FROM position";
 $stmt = $connexion->prepare($sql);
