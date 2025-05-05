@@ -169,3 +169,41 @@ document.getElementById("validate-request").addEventListener("click", function()
     // Envoie l'ID de la demande au fichier PHP
     xhr.send("action=valider_demande&id_demande=" + demandeId);
 });
+
+
+// Pour les STATISTIQUES 
+// Graphique en forme de rond
+const config = {
+    type: 'doughnut',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart'
+        }
+      }
+    },
+  };
+
+//Graphique en forme de traits
+const config2 = {
+    type: 'line',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart'
+        }
+      }
+    },
+  };

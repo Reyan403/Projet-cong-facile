@@ -8,10 +8,10 @@ include 'includes/count-requests.php';
             <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
             <a href="M-historique-demandes-mana.php">Historique des demandes</a>
             <a href="M-equipe1.php">Mon équipe</a>
-            <a href="">Statistiques</a>
+            <a href="M-statistiques.php">Statistiques</a>
             <a href="M-type_de_demandes.php">Types de demandes</a>
             <a href="">Directions/Services</a>
-            <a href="">Managers</a>
+            <a href="M-liste-manager.php">Managers</a>
             <a href="M-postes.php">Postes</a>
             <a href="M-mes-informations.php">Mes informations</a>
             <a href="">Mes préférences</a>
@@ -26,7 +26,7 @@ include 'includes/count-requests.php';
                     <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
                     <a href="M-historique-demandes-mana.php">Historique des demandes</a>
                     <a href="M-equipe1.php">Mon équipe</a>
-                    <a href="">Statistiques</a>
+                    <a href="M-statistiques.php">Statistiques</a>
                     <hr class="separator">
                     <a href="M-mes-informations.php">Mes informations</a>
                     <a href="">Mes préférences</a>
@@ -36,7 +36,7 @@ include 'includes/count-requests.php';
                         <div class="choix">
                             <a href="M-type_de_demandes.php">Types de demandes</a>
                             <a href="">Directions/Services</a>
-                            <a href="">Managers</a>
+                            <a href="M-liste-manager.php">Managers</a>
                             <a href="M-postes.php">Postes</a>
                         </div>
                 </details>
