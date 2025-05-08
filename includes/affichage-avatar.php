@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // Vérification si l'utilisateur est bien connecté
 if (!isset($_SESSION['user'])) {
     header('Location: index.php');

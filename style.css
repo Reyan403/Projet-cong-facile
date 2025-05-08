@@ -44,14 +44,14 @@ label{
     color: #212B36;
 }
 
-.content-bloc{
+.content-bloc, .content-bloc3{
     width: 883px;
     line-height: 25px;
     margin: 30px 0 0 50px;
 }
 
 @media screen and (max-width: 1436px) {
-    .content-bloc{
+    .content-bloc, .content-bloc3{
         margin: 30px 0 0 25px;
     }
 }
@@ -221,7 +221,6 @@ header{
 /* -----------------------CONNEXION--------------------------------- */
 .bloc {
     display: flex;
-    padding-bottom: 100px;
 }
 
 #email {
@@ -1057,4 +1056,13 @@ th input {
     font-weight: 400;
     box-sizing: border-box;
     background-position: 17px; 
+}
+
+/* ------------------------------STATISTIQUES----------------------------------------------------------------- */
+.content-bloc3{
+    overflow: hidden;
+}
+
+#typeDemandesChart {
+    margin-top: -26%;
 }
