@@ -82,9 +82,9 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(2)">
                     </th>
-                    <th class="request-type" onclick="sortTable(2)">
+                    <th class="request-type" onclick="sortTable(3)">
                         <div class="text-and-arrow nb-demandes-associées">
                             <p>Poste</p>
                             <div class="arrow">
@@ -92,9 +92,9 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(3)">
                     </th>
-                    <th class="request-type" onclick="sortTable(2)">
+                    <th class="request-type" onclick="sortTable(4)">
                         <div class="text-and-arrow nb-demandes-associées">
                             <p>Nb congés posés sur l'année</p>
                             <div class="arrow">
@@ -102,18 +102,21 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(4)">
                     </th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($request_types as $request_type): ?>
+                    <?php foreach ($persons as $person): ?>
                         <tr>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
+                            <td><?= htmlspecialchars($person['last_name']) ?></td>
+                            <td><?= htmlspecialchars($person['first_name']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php foreach ($users as $user): ?>
+                            <td><?= htmlspecialchars($user['email']) ?></td>
+                            <td><?= htmlspecialchars($position['name']) ?></td>
                             <td><?= $request_type['request_count'] ?></td>
                             <td>
                                 <form action="M-ajout-demande.php" method="GET">

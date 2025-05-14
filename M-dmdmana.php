@@ -3,6 +3,7 @@ include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/get-requests_M.php';
 include 'traitement.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -62,25 +63,34 @@ include 'includes/menu-manager.php';
 
             </form>
             <button class="telechargement">Télécharger le justificatif <i class='bx bx-download'></i></button>
+
+            <?php if (!empty($cheminFichier)) : ?>
+                <a href="<?= htmlspecialchars($cheminFichier) ?>" download>
+                    <button type="button" class="telechargement">
+                        Télécharger le justificatif <i class='bx bx-download'></i>
+                    </button>
+                </a>
+            <?php endif; ?>
+
+            
             <h1>
                 Répondre à la demande
             </h1>
             
-            
-            <form action="" method="post">
-            <input type="hidden" name="demande_id" value="">
-
             <label for="commentaire">Saisir un commentaire</label>
             <div class="input-container-com2">
                 <input type="text" id="commentaire" name="commentaire">
             </div>
             <br>
             
-            <div class="btn-assemble">
-                <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
-                <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
-            </div>
+            <form action="" method="post"></form>
+                <div class="btn-assemble">
+                    <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
+                    <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
+                </div>
             </form>
+            
+
 
         </div>
     </section>

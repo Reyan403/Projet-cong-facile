@@ -80,7 +80,7 @@ $sql = "SELECT id, name FROM request_type";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+///////////////////////////////////////////////////////
 foreach ($request_types as &$type) {
     $sql_count = "SELECT COUNT(*) FROM request WHERE request_type_id = :id";  
     $stmt_count = $connexion->prepare($sql_count);
