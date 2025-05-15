@@ -4,7 +4,7 @@
             <a href="C-nouvelle-demande.php">Nouvelle demande</a>
             <a href="C-historique-demandes.php">Historique des demandes</a>
             <a href="C-mes-informations.php">Mes informations</a>
-            <a href="">Mes préférences</a>
+            <a href="C-preferences.php">Mes préférences</a>
             <a href="deconnexion.php">Déconnexion</a>
     </div>
 
@@ -17,7 +17,7 @@
                     <a href="C-historique-demandes.php">Historique des demandes</a>
                     <hr class="separator">
                     <a href="C-mes-informations.php">Mes informations</a>
-                    <a href="">Mes préférences</a>
+                    <a href="C-preferences.php">Mes préférences</a>
                     <a href="deconnexion.php">Déconnexion</a>
                 </div>
             </div>

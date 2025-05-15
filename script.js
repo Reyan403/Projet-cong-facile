@@ -98,6 +98,7 @@ window.onload = function() {
     });
 };
 
+
 // Fonction de tri
 function sortTable(n, ascending = true) {
 let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -109,34 +110,34 @@ while (switching) {
 switching = false;
 rows = table.rows;
 
-for (i = 1; i < (rows.length - 1); i++) {
-    shouldSwitch = false;
-    x = rows[i].getElementsByTagName("TD")[n];
-    y = rows[i + 1].getElementsByTagName("TD")[n];
+    for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
 
-    if (dir == "asc") {
-        if (x.innerHTML.trim() > y.innerHTML.trim()) {  // Tri croissant
-            shouldSwitch = true;
-            break;
-        }
-    } else if (dir == "desc") {
-        if (x.innerHTML.trim() < y.innerHTML.trim()) {  // Tri décroissant
-            shouldSwitch = true;
-            break;
+        if (dir == "asc") {
+            if (x.innerHTML.trim() > y.innerHTML.trim()) {  // Tri croissant
+                shouldSwitch = true;
+                break;
+            }
+        } else if (dir == "desc") {
+            if (x.innerHTML.trim() < y.innerHTML.trim()) {  // Tri décroissant
+                shouldSwitch = true;
+                break;
+            }
         }
     }
-}
 
-if (shouldSwitch) {
-    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    switching = true;
-    switchcount++;
-} else {
-    if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+    if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
+        switchcount++;
+    } else {
+        if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+        }
     }
-}
 }
 
 let arrowTop = table.rows[0].cells[n].getElementsByClassName("arrow-top")[0];
@@ -146,7 +147,7 @@ let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[
 searchTable();
 }
 
-
+/*
 //Validation
 document.getElementById("validate-request").addEventListener("click", function() {
     var demandeId = this.getAttribute("data-id"); // Récupère l'ID de la demande depuis l'attribut data-id
@@ -168,4 +169,18 @@ document.getElementById("validate-request").addEventListener("click", function()
     
     // Envoie l'ID de la demande au fichier PHP
     xhr.send("action=valider_demande&id_demande=" + demandeId);
+});
+*/
+
+
+//Bouton switch
+const switchBtn = document.getElementById('switchBtn');
+    switchBtn.addEventListener('click', () => {
+        switchBtn.classList.toggle('active');
+});
+
+
+const switchBtn2 = document.getElementById('switchBtn2');
+    switchBtn2.addEventListener('click', () => {
+        switchBtn2.classList.toggle('active');
 });

@@ -2,7 +2,7 @@
 
 $nom = $prenom = $email = $new_password = $confirm_password = "";
 
-$error = [];
+$errors = [];
 
 $pattern = "/^(?![-'])(?!.*[-']$)(?:(?:[\p{L}]+[-']?)+){2,}$/u";
 
@@ -14,48 +14,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm_password = trim($_POST['confirm_password']);
 
     if (empty($nom)) {
-        $error['nom'] = 'Veuillez entrer votre nom';
+        $errors['nom'] = 'Veuillez entrer votre nom';
     } elseif (!preg_match($pattern, $nom)) {
-        $error['nom'] = "Le nom doit contenir au moins deux lettres, sans chiffres ni caractères spéciaux, et peut inclure des traits d’union ou des apostrophes.";
+        $errors['nom'] = "Le nom doit contenir au moins deux lettres, sans chiffres ni caractères spéciaux, et peut inclure des traits d’union ou des apostrophes.";
     }
 
     if (empty($prenom)) {
-        $error['prenom'] = 'Veuillez entrer votre prénom';
+        $errors['prenom'] = 'Veuillez entrer votre prénom';
     } elseif (!preg_match($pattern, $prenom)) {
-        $error['prenom'] = "Le prénom doit contenir au moins deux lettres, sans chiffres ni caractères spéciaux, et peut inclure des traits d’union ou des apostrophes.";
+        $errors['prenom'] = "Le prénom doit contenir au moins deux lettres, sans chiffres ni caractères spéciaux, et peut inclure des traits d’union ou des apostrophes.";
     }
 
     if (empty($email)) {
-        $error['email'] = 'Veuillez entrer votre adresse mail';
+        $errors['email'] = 'Veuillez entrer votre adresse mail';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error['email'] = "L’adresse email n’est pas valide.";
+        $errors['email'] = "L’adresse email n’est pas valide.";
     }
 
     if(empty($service)) {
-        $error['service'] = 'Veuillez sélectionner un service';
+        $errors['service'] = 'Veuillez sélectionner un service';
     }
 
     if (empty($new_password)) {
-        $error['new_password'] = "Le nouveau mot de passe est obligatoire.";
+        $errors['new_password'] = "Le nouveau mot de passe est obligatoire.";
     } elseif (strlen($new_password) < 10) {
-        $error['new_password'] = "Le mot de passe doit comporter au moins 10 caractères.";
+        $errors['new_password'] = "Le mot de passe doit comporter au moins 10 caractères.";
     } elseif (!preg_match('/[A-Z]/', $new_password)) {
-        $error['new_password'] = "Le mot de passe doit contenir au moins une majuscule.";
+        $errors['new_password'] = "Le mot de passe doit contenir au moins une majuscule.";
     } elseif (!preg_match('/[a-z]/', $new_password)) {
-        $error['new_password'] = "Le mot de passe doit contenir au moins une minuscule.";
+        $errors['new_password'] = "Le mot de passe doit contenir au moins une minuscule.";
     } elseif (!preg_match('/[0-9]/', $new_password)) {
-        $error['new_password'] = "Le mot de passe doit contenir au moins un chiffre.";
+        $errors['new_password'] = "Le mot de passe doit contenir au moins un chiffre.";
     } elseif (!preg_match('/[\W_]/', $new_password)) {
-        $error['new_password'] = "Le mot de passe doit contenir au moins un caractère spécial.";
+        $errors['new_password'] = "Le mot de passe doit contenir au moins un caractère spécial.";
     }
 
     if (empty($confirm_password)) {
-        $error['confirm_password'] = "La confirmation du mot de passe est obligatoire.";
+        $errors['confirm_password'] = "La confirmation du mot de passe est obligatoire.";
     } elseif ($new_password !== $confirm_password) {
-        $error['confirm_password'] = "Les mots de passe ne correspondent pas.";
+        $errors['confirm_password'] = "Les mots de passe ne correspondent pas.";
     }
 
-    if (empty($error)) {
+    if (empty($errors)) {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         $stmtDept = $connexion->prepare("INSERT INTO department (service_name) VALUES (:service)");

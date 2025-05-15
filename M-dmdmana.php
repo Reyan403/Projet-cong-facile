@@ -68,18 +68,18 @@ include 'includes/menu-manager.php';
             
             
             <form action="" method="post">
-            <input type="hidden" name="demande_id" value="">
+                <input type="hidden" name="demande_id" value="">
 
-            <label for="commentaire">Saisir un commentaire</label>
-            <div class="input-container-com2">
-                <input type="text" id="commentaire" name="commentaire">
-            </div>
-            <br>
-            
-            <div class="btn-assemble">
-                <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
-                <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
-            </div>
+                <label for="commentaire">Saisir un commentaire</label>
+                <div class="input-container-com2">
+                    <input type="text" id="commentaire" name="commentaire">
+                </div>
+                <br>
+                
+                <div class="btn-assemble">
+                    <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
+                    <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
+                </div>
             </form>
 
         </div>
