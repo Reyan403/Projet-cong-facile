@@ -1,18 +1,17 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? null;
+    $demande_id = $_POST['demande_id'] ?? null;
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $action = $_POST['action'];
+    if ($demande_id && ($action === 'valider' || $action === 'refuser')) {
+        // Définir la valeur à mettre dans answer
+        $answer_value = ($action === 'valider') ? 1 : 0;
 
-    if ($action === 'valider') {
-        $sql_request = "UPDATE request SET answer = 1 WHERE answer IS NULL";
-        $stmt_request = $connexion->prepare($sql_request);
-        $stmt_request->execute();
-    } elseif ($action === 'refuser') {
-        $sql_request = "UPDATE request SET answer = 0 WHERE answer IS NULL";
-        $stmt_request = $connexion->prepare($sql_request);
-        $stmt_request->execute();
+        $sql = "UPDATE request SET answer = :answer WHERE id = :id AND answer IS NULL";
+        $stmt = $connexion->prepare($sql);
+        $stmt->bindParam(':answer', $answer_value, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $demande_id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }
-
-
 ?>

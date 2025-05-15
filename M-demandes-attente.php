@@ -97,7 +97,7 @@ include 'includes/menu-manager.php';
                 </thead>
                 <tbody>
                     <?php foreach ($demandes as $demande) : 
-                        // Convertir les dates en format 03/10/2025 18h30
+                        
                         $date_creation = (new DateTime($demande['created_at']))->format('d/m/Y H\hi');
                         $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
                         $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
@@ -111,6 +111,7 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
                             <td>
+                                 
                                 <form action="M-dmdmana.php" method="GET">
                                     <input type="hidden" name="id" value="<?= $demande['id'] ?>">
                                     <button type="submit" class="details-btn">Détails</button>

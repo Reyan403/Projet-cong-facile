@@ -147,32 +147,6 @@ let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[
 searchTable();
 }
 
-/*
-//Validation
-document.getElementById("validate-request").addEventListener("click", function() {
-    var demandeId = this.getAttribute("data-id"); // Récupère l'ID de la demande depuis l'attribut data-id
-
-    // Afficher un message de confirmation
-    document.getElementById("confirmation-message").style.display = "block";
-    
-    // Effectuer une requête AJAX pour valider la demande côté serveur
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "traitement.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            // Traitement effectué avec succès côté serveur
-            console.log("Demande validée");
-        }
-    };
-    
-    // Envoie l'ID de la demande au fichier PHP
-    xhr.send("action=valider_demande&id_demande=" + demandeId);
-});
-*/
-
-
 //Bouton switch
 const switchBtn = document.getElementById('switchBtn');
     switchBtn.addEventListener('click', () => {

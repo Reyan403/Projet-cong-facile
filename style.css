@@ -905,6 +905,7 @@ th input {
     border-radius:6px;
     font-size: 14px;
     font-family: 'Epilogue';
+    cursor: pointer;
 }
 
 .valid{
@@ -916,6 +917,7 @@ th input {
     border-radius:6px;
     font-size: 14px;
     font-family: 'Epilogue';
+    cursor: pointer;
 }
 
 .btn-assemble{

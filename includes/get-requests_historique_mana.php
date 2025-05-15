@@ -19,7 +19,8 @@ if ($manager && $manager['department_id']) {
                    DATEDIFF(r.end_at, r.start_at) AS jours_demandes,
                     rt.name AS type_demande,
                     r.created_at AS date_creation,
-                    CONCAT(p.first_name, ' ', p.last_name) AS collaborateur
+                    CONCAT(p.first_name, ' ', p.last_name) AS collaborateur,
+                    r.answer AS status
             FROM request r 
             JOIN person p ON r.collaborator_id = p.id
             JOIN request_type rt ON r.request_type_id = rt.id

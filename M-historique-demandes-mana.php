@@ -108,7 +108,18 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($start_at) ?></td>
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
-                            <td><?= isset($demande['statut']) ? htmlspecialchars($demande['statut']) : 'Non défini' ?></td>
+                            <td><?php
+                                    $status = $demande['status'] ?? null;
+
+                                    if ($status === 0 || $status === '0') {
+                                        echo 'Refusée';
+                                    } elseif ($status === 1 || $status === '1') {
+                                        echo 'Acceptée';
+                                    } elseif (is_null($status)) {
+                                        echo 'En cours';
+                                    } 
+                                ?>
+                            </td>
                             <td><a href="M-détails.php"><button class="details-btn">Détails</button></a></td>
                         </tr>
                     <?php endforeach; ?>

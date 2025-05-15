@@ -18,7 +18,8 @@ if ($manager) {
             FROM request r 
             JOIN person p ON r.collaborator_id = p.id
             WHERE p.manager_id = :manager_id
-            AND p.department_id = :department_id";  // Filtrer par department_id
+            AND p.department_id = :department_id
+            AND r.answer IS NULL";
 
     $stmt = $connexion->prepare($sql);
     $stmt->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
