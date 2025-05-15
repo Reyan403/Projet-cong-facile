@@ -110,7 +110,12 @@ include 'includes/menu-manager.php';
                             <td><?= htmlspecialchars($start_at) ?></td>
                             <td><?= htmlspecialchars($end_at) ?></td>
                             <td><?= htmlspecialchars($demande['jours_demandes']) ?> jours</td>
-                            <td><a href="M-dmdmana.php"><button class="details-btn">Détails</button></a></td>
+                            <td>
+                                <form action="M-dmdmana.php" method="GET">
+                                    <input type="hidden" name="id" value="<?= $demande['id'] ?>">
+                                    <button type="submit" class="details-btn">Détails</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
