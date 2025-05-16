@@ -10,7 +10,7 @@ include 'includes/count-requests.php';
             <a href="M-equipe1.php">Mon équipe</a>
             <a href="M-statistiques.php">Statistiques</a>
             <a href="M-type_de_demandes.php">Types de demandes</a>
-            <a href="">Directions/Services</a>
+            <a href="M-directions-services.php">Directions/Services</a>
             <a href="M-liste-manager.php">Managers</a>
             <a href="M-postes.php">Postes</a>
             <a href="M-mes-informations.php">Mes informations</a>
@@ -35,7 +35,7 @@ include 'includes/count-requests.php';
                     <summary>Administration</summary>
                         <div class="choix">
                             <a href="M-type_de_demandes.php">Types de demandes</a>
-                            <a href="">Directions/Services</a>
+                            <a href="M-directions-services.php">Directions/Services</a>
                             <a href="M-liste-manager.php">Managers</a>
                             <a href="M-postes.php">Postes</a>
                         </div>

@@ -4,15 +4,16 @@ $errors = [];
 
 $user_id = $_GET['id'];
 
-$stmt = $connexion->prepare("
+$stmt_managers = $connexion->prepare("
     SELECT u.email, u.password, p.last_name, p.first_name, d.name AS service
-    FROM user u
-    JOIN person p ON u.person_id = p.id
-    JOIN department d ON p.department_id = d.id
-    WHERE u.id = ?
+    FROM person p
+    LEFT JOIN user u ON u.person_id = p.id
+    LEFT JOIN department d ON p.department_id = d.id
+    WHERE p.id = :id
 ");
-$stmt->execute([$user_id]);
-$userData = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt_managers->bindParam(':id', $user_id);
+$stmt_managers->execute();
+$userData = $stmt_managers->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['update'])) {
     $newPassword = $_POST['new_password'];

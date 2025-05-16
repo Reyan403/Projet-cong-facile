@@ -512,7 +512,7 @@ details summary::after {
     margin-bottom: 30px;
 }
 
-input#jours-demandes, #date-fin, #date-debut, button.upload-btn, select#type-demande {
+input#jours-demandes, #date-fin, #date-debut, button.upload-btn, select#type-demande{
     background-size: 17px;
     padding: 12px 16px 12px 20px;
     border: 1px solid #ccc;
@@ -570,7 +570,7 @@ textarea {
         gap: 0px;
     }
 
-    input#jours-demandes, #date-fin, #date-debut, button.upload-btn, select#type-demande {
+    input#jours-demandes, #date-fin, #date-debut, button.upload-btn, type-demande {
         width: 95%;
     }
 
@@ -983,15 +983,15 @@ th input {
     gap: 150px;
 }
 
-.flex-password{
-    gap: 180px;
-}
-
 .password-label2 {
     display: block;
     margin: 20px 0 0 0px;
     width: 200%; 
     max-width: 350px; 
+}
+
+#confirm-password{
+    margin-left: 44px;
 }
 
 .label{
@@ -1058,6 +1058,20 @@ th input {
     font-weight: 400;
     box-sizing: border-box;
     background-position: 17px; 
+}
+
+select#direction_nom{
+    background-size: 17px;
+    padding: 12px 16px 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    background-position: 17px;
+    cursor: pointer;
+    width: 350px;
 }
 
 /* ------------------------------STATISTIQUES----------------------------------------------------------------- */

@@ -2,6 +2,17 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/M-affichage-ajout.php';
+
+$sql = "SELECT id, name FROM department";
+$stmt = $connexion->prepare($sql);
+$stmt->execute();
+$departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$direction_name = '';
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $direction_name = $_POST['direction_nom'] ?? '';
+}
 ?>
 
 
@@ -58,10 +69,15 @@ include 'includes/menu-manager.php';
                 </div>
 
                 <label for="service">Direction/Service - champ obligatoire</label>
-                <input type="text" name="service" id="service2" value="<?= htmlspecialchars($service ?? '') ?>">
-                <?php if (isset ($errors['service'])) : ?>
-                    <span class="error"><?= htmlspecialchars($errors['service']) ?></span>
-                <?php endif; ?>
+                <select id="direction_nom" name="direction_nom">
+                            <option value="" <?= empty($direction_name) ? 'selected' : '' ?>>Sélectionner un type</option>
+                            <?php foreach ($departments as $department): ?>
+                                <option value="<?= $department['id'] ?>" <?= ($direction_name == $department['id']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($department['name']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    <span class="error"><?= $errors['service'] ?? '' ?></span>
 
                 <div class="flex-password">
                     <div class="label">

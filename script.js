@@ -31,18 +31,52 @@ function calculerJours() {
     const joursDemandes = document.getElementById('jours-demandes');
 
     if (dateDebut && dateFin) {
-        const date1 = new Date(dateDebut);
-        const date2 = new Date(dateFin);
-        const diffTime = date2 - date1;
-        let diffDays = diffTime / (1000 * 3600 * 24) + 1; // Ajoute 1 pour inclure le jour de début
+        let start = new Date(dateDebut);
+        let end = new Date(dateFin);
+        end.setHours(0, 0, 0, 0);
+        start.setHours(0, 0, 0, 0);
 
-        if (diffDays >= 0) {
-            joursDemandes.value = Math.floor(diffDays); // Arrondi à l'inférieur
+        if (end < start) {
+            joursDemandes.value = 0;
+            return;
         }
+
+        let joursOuvres = 0;
+
+        // Liste des jours fériés en France (exemple pour 2025, à ajuster dynamiquement si nécessaire)
+        const joursFeries = [
+            "2025-01-01",
+            "2025-04-21",
+            "2025-05-01",
+            "2025-05-08",
+            "2025-05-29",
+            "2025-06-09",
+            "2025-07-14",
+            "2025-08-15",
+            "2025-11-01",
+            "2025-11-11",
+            "2025-12-25"
+        ];
+
+        // Parcours des jours entre start et end
+        let current = new Date(start);
+        while (current <= end) {
+            const jour = current.getDay(); // 0 = dimanche, 6 = samedi
+            const formattedDate = current.toISOString().split('T')[0];
+
+            if (jour !== 0 && jour !== 6 && !joursFeries.includes(formattedDate)) {
+                joursOuvres++;
+            }
+
+            current.setDate(current.getDate() + 1);
+        }
+
+        joursDemandes.value = joursOuvres;
     } else {
-        joursDemandes.value = ''; // Si une date manque, réinitialise le champ
+        joursDemandes.value = '';
     }
 }
+
 
 // Fonction de recherche dans le tableau
 function searchTable() {
