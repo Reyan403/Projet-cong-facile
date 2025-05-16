@@ -1,29 +1,15 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
+
 include 'includes/accepter-refuser.php';
 include 'includes/get-request-detail.php';
+
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-        <title>Mentalworks</title>
-    </head>
-<body>
+
 <?php
 include 'includes/header.php';
 include 'includes/menu-manager.php';
@@ -53,13 +39,25 @@ include 'includes/menu-manager.php';
 
             </form>
             <button class="telechargement">Télécharger le justificatif <i class='bx bx-download'></i></button>
+
+            <?php if (!empty($cheminFichier)) : ?>
+                <a href="<?= htmlspecialchars($cheminFichier) ?>" download>
+                    <button type="button" class="telechargement">
+                        Télécharger le justificatif <i class='bx bx-download'></i>
+                    </button>
+                </a>
+            <?php endif; ?>
+
+            
             <h1>
                 Répondre à la demande
             </h1>
             
+
             
             <form action="" method="post">
             <input type="hidden" name="demande_id" value="<?= htmlspecialchars($demande['id']) ?>">
+
 
             <label for="commentaire">Saisir un commentaire</label>
             <div class="input-container-com2">
@@ -67,11 +65,14 @@ include 'includes/menu-manager.php';
             </div>
             <br>
             
-            <div class="btn-assemble">
-                <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
-                <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
-            </div>
+            <form action="" method="post"></form>
+                <div class="btn-assemble">
+                    <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
+                    <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
+                </div>
             </form>
+            
+
 
         </div>
     </section>

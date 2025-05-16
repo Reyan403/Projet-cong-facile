@@ -20,23 +20,7 @@ foreach ($request_types as &$request_type) {
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-        <title>Mentalworks</title>
-    </head>
-<body>
+
 <?php
 include 'includes/header.php';
 include 'includes/menu-manager.php';
@@ -82,9 +66,9 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(2)">
                     </th>
-                    <th class="request-type" onclick="sortTable(2)">
+                    <th class="request-type" onclick="sortTable(3)">
                         <div class="text-and-arrow nb-demandes-associées">
                             <p>Poste</p>
                             <div class="arrow">
@@ -92,9 +76,9 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(3)">
                     </th>
-                    <th class="request-type" onclick="sortTable(2)">
+                    <th class="request-type" onclick="sortTable(4)">
                         <div class="text-and-arrow nb-demandes-associées">
                             <p>Nb congés posés sur l'année</p>
                             <div class="arrow">
@@ -102,18 +86,21 @@ include 'includes/menu-manager.php';
                                 <img class="arrow-bottom" src="./PNG/fleche-droite (8).png" alt="flèche bas">
                             </div>
                         </div>
-                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(1)">
+                        <input class="demandes-moyenne" type="search" id="searchDate" onkeyup="filterTable(4)">
                     </th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($request_types as $request_type): ?>
+                    <?php foreach ($persons as $person): ?>
                         <tr>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
-                            <td><?= htmlspecialchars($request_type['name']) ?></td>
+                            <td><?= htmlspecialchars($person['last_name']) ?></td>
+                            <td><?= htmlspecialchars($person['first_name']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php foreach ($users as $user): ?>
+                            <td><?= htmlspecialchars($user['email']) ?></td>
+                            <td><?= htmlspecialchars($position['name']) ?></td>
                             <td><?= $request_type['request_count'] ?></td>
                             <td>
                                 <form action="M-ajout-demande.php" method="GET">
