@@ -1,7 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-include 'includes/supprimer-demande.php';
+include 'includes/supprimer-direction.php';////
 ?>
 
 
@@ -13,7 +13,7 @@ include 'includes/menu-manager.php';
         <h1>Êtes-vous sûr de vouloir supprimer "<?= htmlspecialchars($type_name) ?>" ?</h1>
         
         <form action="" method="POST">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($request_id) ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($department_id) ?>">
             
             <div class="two-buttons-type2">
                 <button type="submit" name="confirm" class="btn-remove">Confirmer</button>
