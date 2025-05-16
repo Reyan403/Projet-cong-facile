@@ -1,6 +1,6 @@
 <?php
 
-$error = [];
+$errors = [];
 
 $user_id = $_GET['id'];
 
@@ -19,39 +19,39 @@ if (isset($_POST['update'])) {
     $confirmPassword = $_POST['confirm_password'];
 
     if (empty($newPassword)) {
-        $error['new_password'] = "Le nouveau mot de passe est obligatoire.";
+        $errors['new_password'] = "Le nouveau mot de passe est obligatoire.";
     }
 
     if (empty($confirmPassword)) {
-        $error['confirm_password'] = "La confirmation du mot de passe est obligatoire.";
+        $errors['confirm_password'] = "La confirmation du mot de passe est obligatoire.";
     }
 
     // Vérification des nouveaux mots de passe
     if ($newPassword !== $confirmPassword) {
-        $error['confirm_password'] = "Les mots de passe ne correspondent pas.";
+        $errors['confirm_password'] = "Les mots de passe ne correspondent pas.";
     }
 
     // Règles de sécurité
     if (!empty($newPassword)) {
         if (strlen($newPassword) < 10) {
-            $error['new_password'] = "Le mot de passe doit comporter au moins 10 caractères.";
+            $errors['new_password'] = "Le mot de passe doit comporter au moins 10 caractères.";
         }
         if (!preg_match('/[A-Z]/', $newPassword)) {
-            $error['new_password'] = "Le mot de passe doit contenir au moins une majuscule.";
+            $errors['new_password'] = "Le mot de passe doit contenir au moins une majuscule.";
         }
         if (!preg_match('/[a-z]/', $newPassword)) {
-            $error['new_password'] = "Le mot de passe doit contenir au moins une minuscule.";
+            $errors['new_password'] = "Le mot de passe doit contenir au moins une minuscule.";
         }
         if (!preg_match('/[0-9]/', $newPassword)) {
-            $error['new_password'] = "Le mot de passe doit contenir au moins un chiffre.";
+            $errors['new_password'] = "Le mot de passe doit contenir au moins un chiffre.";
         }
         if (!preg_match('/[\W_]/', $newPassword)) {
-            $error['new_password'] = "Le mot de passe doit contenir au moins un caractère spécial.";
+            $errors['new_password'] = "Le mot de passe doit contenir au moins un caractère spécial.";
         }
     }
 
     // Mise à jour si aucune erreur
-    if (empty($error)) {
+    if (empty($errors)) {
         $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
     
         $update = $connexion->prepare("UPDATE user SET password = ? WHERE id = ?");

@@ -62,8 +62,8 @@ include 'includes/menu-manager.php';
                             <input type="password" name="current_password" id="current-password" class="input-field">
                             <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeCurrent" onclick="togglePassword('current-password', 'toggleEyeCurrent')">
                         </div>
-                        <?php if (isset($error['current_password'])): ?>
-                            <span class="error"><?= htmlspecialchars($error['current_password']) ?></span>
+                        <?php if (isset($errors['current_password'])): ?>
+                            <span class="error"><?= htmlspecialchars($errors['current_password']) ?></span>
                         <?php endif; ?>
                     </label>
 
@@ -75,8 +75,8 @@ include 'includes/menu-manager.php';
                                     <input type="password" name="new_password" id="new-password" class="input-field">
                                     <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeNew" onclick="togglePassword('new-password', 'toggleEyeNew')">
                                 </div>
-                                <?php if (isset($error['new_password'])): ?>
-                                    <span class="error"><?= htmlspecialchars($error['new_password']) ?></span>
+                                <?php if (isset($errors['new_password'])): ?>
+                                    <span class="error"><?= htmlspecialchars($errors['new_password']) ?></span>
                                 <?php endif; ?>
                             </label>
                         </div>
@@ -88,8 +88,8 @@ include 'includes/menu-manager.php';
                                     <input type="password" name="confirm_password" id="confirm-password" class="input-field">
                                     <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeConfirm" onclick="togglePassword('confirm-password', 'toggleEyeConfirm')">
                                 </div>
-                                <?php if (isset($error['confirm_password'])): ?>
-                                    <span class="error"><?= htmlspecialchars($error['confirm_password']) ?></span>
+                                <?php if (isset($errors['confirm_password'])): ?>
+                                    <span class="error"><?= htmlspecialchars($errors['confirm_password']) ?></span>
                                 <?php endif; ?>
                             </label>
                         </div>

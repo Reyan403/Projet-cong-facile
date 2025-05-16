@@ -35,32 +35,32 @@ include 'includes/menu-manager.php';
             <form action="" method="POST" class="form-infos">
                 <label for="email">Adresse email - champ obligatoire</label>
                 <input type="text" name="email" id="email" value="<?= htmlspecialchars($email ?? '') ?>">
-                <?php if (isset($error['email'])): ?>
-                        <span class="error"><?= htmlspecialchars($error['email']) ?></span>
+                <?php if (isset($errors['email'])): ?>
+                        <span class="error"><?= htmlspecialchars($errors['email']) ?></span>
                     <?php endif; ?>
 
                 <div class="nom-prenom">
                     <div class="label">
                     <label for="nom">Nom de famille - champ obligatoire</label>
                     <input type="text" name="nom" id="nom2" value="<?= htmlspecialchars($nom ?? '') ?>">
-                    <?php if (isset($error['nom'])): ?>
-                        <span class="error"><?= htmlspecialchars($error['nom']) ?></span>
+                    <?php if (isset($errors['nom'])): ?>
+                        <span class="error"><?= htmlspecialchars($errors['nom']) ?></span>
                     <?php endif; ?>
                     </div>
 
                     <div class="label-prenom">
                         <label for="prenom">Prénom - champ obligatoire</label>
                         <input type="text" name="prenom" id="prenom2" value="<?= htmlspecialchars($prenom ?? '') ?>">
-                        <?php if (isset ($error['prenom'])) : ?>
-                            <span class="error"><?= htmlspecialchars($error['prenom']) ?></span>
+                        <?php if (isset ($errors['prenom'])) : ?>
+                            <span class="error"><?= htmlspecialchars($errors['prenom']) ?></span>
                         <?php endif; ?>
                     </div>
                 </div>
 
                 <label for="service">Direction/Service - champ obligatoire</label>
                 <input type="text" name="service" id="service2" value="<?= htmlspecialchars($service ?? '') ?>">
-                <?php if (isset ($error['service'])) : ?>
-                    <span class="error"><?= htmlspecialchars($error['service']) ?></span>
+                <?php if (isset ($errors['service'])) : ?>
+                    <span class="error"><?= htmlspecialchars($errors['service']) ?></span>
                 <?php endif; ?>
 
                 <div class="flex-password">
@@ -71,8 +71,8 @@ include 'includes/menu-manager.php';
                                 <input type="password" name="new_password" id="new-password" class="input-field">
                                 <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeNew" onclick="togglePassword('new-password', 'toggleEyeNew')">
                             </div>
-                            <?php if (isset($error['confirm_password'])): ?>
-                                <span class="error"><?= htmlspecialchars($error['new_password']) ?></span>
+                            <?php if (isset($errors['confirm_password'])): ?>
+                                <span class="error"><?= htmlspecialchars($errors['new_password']) ?></span>
                             <?php endif; ?>
                         </label>
                     </div>
@@ -84,8 +84,8 @@ include 'includes/menu-manager.php';
                                 <input type="password" name="confirm_password" id="confirm-password" class="input-field">
                                 <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeConfirm" onclick="togglePassword('confirm-password', 'toggleEyeConfirm')">
                             </div>
-                            <?php if (isset($error['confirm_password'])): ?>
-                                <span class="error"><?= htmlspecialchars($error['confirm_password']) ?></span>
+                            <?php if (isset($errors['confirm_password'])): ?>
+                                <span class="error"><?= htmlspecialchars($errors['confirm_password']) ?></span>
                             <?php endif; ?>
                         </label>
                     </div>

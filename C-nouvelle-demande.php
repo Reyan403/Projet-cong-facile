@@ -7,7 +7,7 @@ $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $type_demande = $_POST['type_demande'] ?? '';
 }
 
@@ -40,7 +40,7 @@ include 'includes/menu-collaborateur.php';
                 Effectuer une nouvelle demande
             </h1>
             <div class="form-container">
-                <form method="POST" action="C-nouvelle-demande.php" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="type-demande">Type de demande - champ obligatoire</label>
                         <select id="type-demande" name="type_demande">
@@ -51,19 +51,19 @@ include 'includes/menu-collaborateur.php';
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                    <span class="error"><?= $error['type_demande'] ?? ''; ?></span>
+                    <span class="error"><?= $errors['type_demande'] ?? ''; ?></span>
                     </div>
         
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date-debut">Date début - champ obligatoire</label>
                             <input type="datetime-local" id="date-debut" name="date_debut" value="<?php echo htmlspecialchars($date_debut); ?>" onchange="calculerJours()">
-                            <span class="error"> <?php echo $error['date_debut'] ?? ''; ?> </span>
+                            <span class="error"> <?php echo $errors['date_debut'] ?? ''; ?> </span>
                         </div>
                         <div class="form-group">
                             <label for="date-fin">Date de fin - champ obligatoire</label>
                             <input type="datetime-local" id="date-fin" name="date_fin" value="<?php echo htmlspecialchars($date_fin); ?>" onchange="calculerJours()">
-                            <span class="error"> <?php echo $error['date_fin'] ?? ''; ?> </span>
+                            <span class="error"> <?php echo $errors['date_fin'] ?? ''; ?> </span>
                         </div>
                     </div>
 
@@ -79,7 +79,7 @@ include 'includes/menu-collaborateur.php';
                         <button type="button" class="upload-btn" onclick="document.getElementById('receipt_file').click();">
                             <img src="./PNG/fichier-texte.png" alt=""> <span id="file-name">Sélectionner un fichier</span>
                         </button>
-                        <span class="error"><?php echo $error['file'] ?? ''; ?></span>
+                        <span class="error"><?php echo $errors['file'] ?? ''; ?></span>
                     </div>
        
                     <div class="form-group">

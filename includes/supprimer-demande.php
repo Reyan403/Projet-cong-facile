@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: M-type_de_demandes.php');
             exit();
         } else {
-            $error = "Erreur lors de la suppression.";
+            $errors = "Erreur lors de la suppression.";
         }
     }
 }
@@ -33,7 +33,7 @@ if ($request_id) {
     if ($request_type) {
         $type_name = $request_type['name'];
     } else {
-        $error = "Ce type de demande n'existe pas.";
+        $errors = "Ce type de demande n'existe pas.";
     }
 }
 ?>
