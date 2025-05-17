@@ -1,26 +1,14 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-include 'includes/get-request-detail.php';
+include 'includes/get-request-detail-C.php';
 
-
-
-
-
-
-
-
-    $date_creation = (new DateTime($demande['date_creation']))->format('d/m/Y H\hi');
-    $start_at = (new DateTime($demande['start_at']))->format('d/m/Y H\hi');
-    $end_at = (new DateTime($demande['end_at']))->format('d/m/Y H\hi');
+    $date_creation = (new DateTime($demande['date_demande']))->format('d/m/Y H\hi');
+    $start_at = (new DateTime($demande['date_debut']))->format('d/m/Y H\hi');
+    $end_at = (new DateTime($demande['date_fin']))->format('d/m/Y H\hi');
     $commentaire = $demande['commentaire'];
+
     
-
-
-
-
-
-
 include 'includes/header.php';
 include 'includes/menu-collaborateur.php';
 ?>

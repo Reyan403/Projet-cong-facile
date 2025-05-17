@@ -105,7 +105,7 @@ include 'includes/menu-collaborateur.php';
                                     } 
                                 ?>
                             </td>
-                            <td><a href="C-détails.php"><button class="details-btn">Détails</button></a></td>
+                            <td><a href="C-détails.php?id=<?= $demande['id'] ?>"><button class="details-btn">Détails</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
