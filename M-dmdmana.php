@@ -4,8 +4,6 @@ include 'includes/affichage-avatar.php';
 
 include 'includes/accepter-refuser.php';
 include 'includes/get-request-detail.php';
-
-
 ?>
 
 
@@ -65,7 +63,6 @@ include 'includes/menu-manager.php';
             </div>
             <br>
             
-            <form action="" method="post"></form>
                 <div class="btn-assemble">
                     <button type="submit" name="action" value="refuser" class="refus">Refuser la demande</button>
                     <button type="submit" name="action" value="valider" class="valid">Valider la demande</button>
