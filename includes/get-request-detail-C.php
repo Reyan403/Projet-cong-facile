@@ -11,15 +11,11 @@ $sql_request = "
         request.start_at AS date_debut,
         request.end_at AS date_fin,
         DATEDIFF(request.end_at, request.start_at) AS jours_demandes,
-        request.comment AS commentaire,
-        request.receipt_file,
-        person.first_name AS prenom,
-        person.last_name AS nom
+        request.comment AS commentaire
     FROM request
     JOIN request_type ON request.request_type_id = request_type.id
-    JOIN person ON request.collaborator_id = person.id
+    JOIN user u ON request.collaborator_id = u.id
     WHERE request.id = :request_id
-
 ";
 
 $stmt = $connexion->prepare($sql_request);
@@ -28,3 +24,4 @@ $stmt->execute();
 $demande = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
+

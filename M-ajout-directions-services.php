@@ -19,7 +19,7 @@ include 'includes/menu-manager.php';
         <h1><?= htmlspecialchars($type_name) ?></h1>
             <form action="" method="POST">
                 <label for="type">Nom du type</label>
-                <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name) ?>">
+                <input type="text" name="type" class="input-type" value="<?= htmlspecialchars($type_name) ?>">          <?php ///?>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($department_id) ?>">
 
                 <div class="two-buttons-type2">

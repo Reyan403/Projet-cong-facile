@@ -2,7 +2,7 @@
 include 'includes/db.php';
 
 // Déclaration des variables
-$type_demande = $date_debut = $date_fin = $jours_demandes = $justificatif = "";
+$type_demande = $date_debut = $date_fin = $jours_demandes = $justificatif = $commentaire= "";
 $errors = [];
 
 // Vérification de l'utilisateur connecté
