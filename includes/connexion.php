@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérification en base de données
     $requete = $connexion->prepare('
-        SELECT u.id, u.email, u.password, u.enabled, u.created_at, u.role, u.person_id,
+        SELECT u.id, u.email, u.password, u.connected, u.created_at, u.role, u.person_id,
                p.first_name, p.last_name, p.department_id
         FROM user u
         LEFT JOIN person p ON u.person_id = p.id
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user'] = [
             'id' => $user['id'],
             'email' => $user['email'],
-            'enabled' => $user['enabled'],
+            'connected' => $user['connected'],
             'created_at' => $user['created_at'],
             'role' => $user['role'],
             'person_id' => $user['person_id'],
@@ -61,9 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['collaborator_id'] = $user['id'];
         $_SESSION['department_id'] = $user['department_id'];
 
-        // ✅ Mettre à jour enabled = 1 AVANT la redirection
-        $sql_enabled = 'UPDATE user SET enabled = 1 WHERE id = :id';
-        $stmt = $connexion->prepare($sql_enabled);
+        // ✅ Mettre à jour connected = 1 AVANT la redirection
+        $sql_connected = 'UPDATE user SET connected = 1 WHERE id = :id';
+        $stmt = $connexion->prepare($sql_connected);
         $stmt->bindParam(':id', $_SESSION['user']['id']);
         $stmt->execute();
 

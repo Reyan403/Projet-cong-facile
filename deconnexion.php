@@ -4,7 +4,7 @@ include 'includes/db.php';
 
 // Mise à jour : désactive le compte si l'utilisateur est connecté
 if (isset($_SESSION['user']['id'])) {
-    $sql_enabled = 'UPDATE user SET enabled = 0 WHERE id = :id';
+    $sql_enabled = 'UPDATE user SET connected = 0 WHERE id = :id';
     $stmt = $connexion->prepare($sql_enabled);
     $stmt->bindParam(':id', $_SESSION['user']['id']);
     $stmt->execute();

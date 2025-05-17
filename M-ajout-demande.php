@@ -2,7 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/ajout-type-de-demande.php';
-include 'includes/M-check-enabled.php';
+include 'includes/M-check-connected.php';
 
 $message = null;
 if (isset($_COOKIE['message'])) {

@@ -543,8 +543,7 @@ button.upload-btn img{
 }
 
 textarea {
-    background-size: 17px;
-    width: 100%;
+    width: 90%;
     max-width: 730px;
     padding: 20px;
     height: 186px;
@@ -555,7 +554,6 @@ textarea {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     box-sizing: border-box;
-    background-position: 17px;
 }
 
 .form-row{
@@ -570,10 +568,6 @@ textarea {
     }
 
     input#jours-demandes, #date-fin, #date-debut, button.upload-btn, type-demande {
-        width: 95%;
-    }
-
-    textarea{
         width: 95%;
     }
 }
@@ -838,19 +832,17 @@ th input {
 }
 /*------------------------------------------DETAILS COLLABORATEUR------------------------*/
 
-.btn-return{
+.btn-return {
     background-color: #EAF1F4;
-    color:#455466;
-    padding-top: 13px;
-    padding-right:28px;
-    padding-left: 28px;
-    padding-bottom: 13px;
+    color: #455466;
     border-radius: 6px;
-    width:300px;
-    height:40px;
-    border:none;
+    width: 343px;
+    height: 40px;
+    border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Inter';
 }
 
 .input-container {
@@ -858,12 +850,47 @@ th input {
     display: flex;
     align-items: center;
 }
+
 .input-container input {
-    width: 730px;
-    height: 220px;
-    padding: 10px 10px 10px 35px; 
+    width: 90%;
+    max-width: 730px;
+    padding: 10px 10px 10px 35px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #9CA3AF;
+    padding: 25px 0 150px 20px;
+}
+
+.accepted {
+    color: #1A8245;
+    font-weight: 500;
+    font-family: 'Inter';
+    font-size: 16px;
+    background-color: #DAF8E6;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+
+.refused {
+    color: #dc3545;
+    font-weight: 500;
+    font-family: 'Inter';
+    font-size: 16px;
+    background-color: #f8dada;
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+
+.pending {
+    color: #ffc107;
+    font-weight: 500;
+    font-family: 'Inter';
+    font-size: 16px;
+    background-color: #f8f1da;
+    border-radius: 30px;
+    padding: 3px 10px;
 }
 
 
@@ -888,13 +915,22 @@ th input {
     cursor: pointer;
 }
 /*----------------------------------DEMANDE MANAGER----------*/
+.answer-request{
+    margin-top: 70px;
+}
+
 .input-container-com2 input{
-    height:140px;
-    width:730px;
+    width: 90%;
+    max-width: 730px;
     padding: 10px 10px 10px 35px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #9CA3AF;
+    padding: 25px 0 60px 20px;
 }
+
 .refus{
     background-color:#E10E0E;
     color:white;
@@ -927,11 +963,22 @@ th input {
 .telechargement{
     background-color: #e3f3fa;
     border:none;
-    width:250px;
-    height:44px;
+    width: 250px;
+    height: 44px;
     border-radius: 7px;
-    font-size: 14px;
-    font-family: 'Epilogue';
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #475467;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    .btn-assemble{
+        gap:30px;
+        display:grid;
+        justify-content: center;
+    }
 }
 
 /* ------------------------------------MES INFORMATIONS MANAGER-COLLABORATEUR--------------------------------------------------------- */

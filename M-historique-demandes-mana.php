@@ -2,7 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/get-requests_historique_mana.php';
-include 'includes/M-check-enabled.php';
+include 'includes/M-check-connected.php';
 ?>
 
 

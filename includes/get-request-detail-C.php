@@ -10,8 +10,10 @@ $sql_request = "
         request.created_at AS date_demande,
         request.start_at AS date_debut,
         request.end_at AS date_fin,
-        DATEDIFF(request.end_at, request.start_at) AS jours_demandes,
-        request.comment AS commentaire
+        request.jours_demandes,
+        request.answer AS status,
+        request.comment AS commentaire,
+        request.answer_comment AS commentaire_reponse
     FROM request
     JOIN request_type ON request.request_type_id = request_type.id
     JOIN user u ON request.collaborator_id = u.id

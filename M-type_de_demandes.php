@@ -1,7 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-include 'includes/M-check-enabled.php';
+include 'includes/M-check-connected.php';
 
 $sql = "
     SELECT request_type.id, request_type.name, COUNT(request.id) AS request_count

@@ -1,7 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-include 'includes/M-check-enabled.php';
+include 'includes/M-check-connected.php';
 
 $sql = "
     SELECT position.id, position.name, COUNT(person.id) AS position_count
