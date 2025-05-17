@@ -1,6 +1,6 @@
 <?php
 include 'includes/db.php';
-
+//
 // Vérifier que l'utilisateur est connecté (id dans session)
 if (!isset($_SESSION['user']['id'])) {
     header('Location: index.php');
