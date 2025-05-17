@@ -4,16 +4,7 @@ include 'includes/affichage-avatar.php';
 include 'includes/M-affichage-infos.php';
 include 'includes/M-check-enabled.php';
 
-$sql = "SELECT id, name FROM request_type";
-$stmt = $connexion->prepare($sql);
-$stmt->execute();
-$request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $type_demande = $_POST['type_demande'] ?? '';
-
-    
-}
 
 
 
@@ -43,8 +34,7 @@ include 'includes/affichage-erreurs.php';
 include 'M-info.php';
 
 foreach ($team_members as $member): ?>
-                
-            <?php endforeach; 
+<?php endforeach; 
 ?>
 
 

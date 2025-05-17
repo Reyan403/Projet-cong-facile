@@ -12,7 +12,7 @@ include 'M-info.php';
 <div class="content-bloc2">
     <div class="flex">
         <h1>Mon équipe</h1>
-        <a href="M-ajout-collaborateur.php">Ajouter un collaborateur</a>
+        <a href="M-equipe2.php">Ajouter un collaborateur</a>
     </div>
     <table id="requestsTable">
         <thead>
