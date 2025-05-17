@@ -15,8 +15,7 @@ if ($manager && $manager['department_id']) {
     $department_id = $manager['department_id'];
 
     // Requête pour récupérer les demandes des collaborateurs du même département
-    $sql = "SELECT r.id, r.start_at, r.end_at,
-                   DATEDIFF(r.end_at, r.start_at) AS jours_demandes,
+    $sql = "SELECT r.id, r.start_at, r.end_at, r.jours_demandes,
                     rt.name AS type_demande,
                     r.created_at AS date_creation,
                     CONCAT(p.first_name, ' ', p.last_name) AS collaborateur,

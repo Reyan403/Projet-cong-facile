@@ -5,7 +5,7 @@ include 'includes/count-requests.php';
 <div class="menu" id="menu">
         <span class="close-menu" onclick="toggleMenu()">&times;</span>
             <a href="M-accueil2.php">Accueil</a>
-            <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
+            <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $resultat['total'] ?></span></a>
             <a href="M-historique-demandes-mana.php">Historique des demandes</a>
             <a href="M-equipe1.php">Mon équipe</a>
             <a href="M-statistiques.php">Statistiques</a>
@@ -23,7 +23,7 @@ include 'includes/count-requests.php';
             <div class="content-menu">
                 <div class="other-menu">
                     <a href="M-accueil2.php">Accueil</a>
-                    <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $result['total'] ?></span></a>
+                    <a href="M-demandes-attente.php">Demandes en attente <span class="number-requests"><?= $resultat['total'] ?></span></a>
                     <a href="M-historique-demandes-mana.php">Historique des demandes</a>
                     <a href="M-equipe1.php">Mon équipe</a>
                     <a href="M-statistiques.php">Statistiques</a>

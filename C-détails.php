@@ -1,9 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-
-
-include 'includes/get-request-detail-C.php';
+include 'includes/get-request-detail.php';
 
 
 
@@ -51,4 +49,3 @@ include 'includes/menu-collaborateur.php';
     </section>
     <script src="script.js"></script>
 </body>
-</html>

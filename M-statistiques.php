@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/affichage-statistique.php';
+include 'includes/M-check-enabled.php';
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php

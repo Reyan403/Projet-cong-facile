@@ -62,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Assurez-vous que le type de demande est valide
         $type_demande_id = $_POST['type_demande']; // Récupération de l'ID correspondant
 
-        $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, comment, receipt_file) 
-                VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file)";
+        $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, comment, receipt_file, jours_demandes) 
+                VALUES (:request_type_id, :collaborator_id, :department_id, NOW(), :start_at, :end_at, :comment, :receipt_file, :jours_demandes)";
         $stmt = $connexion->prepare($sql);
         $stmt->execute([
             ':request_type_id' => $type_demande_id,
@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':start_at' => $date_debut,
             ':end_at' => $date_fin,
             ':comment' => $commentaire,
+            ':jours_demandes' => $jours_demandes,
             ':receipt_file' => $justificatif ?? null
         ]);
 

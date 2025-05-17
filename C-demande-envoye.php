@@ -1,5 +1,7 @@
 <?php
+include 'includes/affichage-avatar.php';
 include 'includes/header.php';
+include 'includes/C-check-enabled.php';
 ?>
     <section class="demande-conge-envoye">
         <p>

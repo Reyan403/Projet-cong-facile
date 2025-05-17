@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/C-affichage-infos.php';
+include 'includes/C-check-enabled.php';
 ?>
 
 
@@ -63,30 +64,30 @@ include 'includes/menu-collaborateur.php';
                     </label>
 
                     <div class="flex-password">
-                        <div class="label">
+                        <div class="label2">
                             <label for="new-password" class="password-label2">
                                 Nouveau mot de passe
-                                <div class="password-wrapper">
-                                    <input type="password" name="new_password" id="new-password" class="input-field">
-                                    <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeNew" onclick="togglePassword('new-password', 'toggleEyeNew')">
-                                </div>
-                                <?php if (isset($errors['new_password'])): ?>
-                                    <span class="error"><?= htmlspecialchars($errors['new_password']) ?></span>
-                                <?php endif; ?>
                             </label>
+                            <div class="password-wrapper2">
+                                <input type="password" name="new_password" id="new-password" class="input-field">
+                                <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeNew" onclick="togglePassword('new-password', 'toggleEyeNew')">
+                            </div>
+                            <?php if (isset($errors['new_password'])): ?>
+                                <span class="error"><?= htmlspecialchars($errors['new_password']) ?></span>
+                            <?php endif; ?>
                         </div>
 
-                        <div class="label">
+                        <div class="label3">
                             <label for="confirm-password" class="password-label2">
                                 Confirmation de mot de passe
-                                <div class="password-wrapper">
-                                    <input type="password" name="confirm_password" id="confirm-password" class="input-field">
-                                    <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeConfirm" onclick="togglePassword('confirm-password', 'toggleEyeConfirm')">
-                                </div>
-                                <?php if (isset($errors['confirm_password'])): ?>
-                                    <span class="error"><?= htmlspecialchars($errors['confirm_password']) ?></span>
-                                <?php endif; ?>
                             </label>
+                            <div class="password-wrapper2">
+                                <input type="password" name="confirm_password" id="confirm-password" class="input-field">
+                                <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeConfirm" onclick="togglePassword('confirm-password', 'toggleEyeConfirm')">
+                            </div>
+                            <?php if (isset($errors['confirm_password'])): ?>
+                                <span class="error"><?= htmlspecialchars($errors['confirm_password']) ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

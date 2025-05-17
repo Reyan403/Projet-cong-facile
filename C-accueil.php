@@ -1,5 +1,6 @@
 <?php
 include 'includes/affichage-avatar.php';
+include 'includes/C-check-enabled.php';
 ?>
 
 

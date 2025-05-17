@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
+include 'includes/M-check-enabled.php';
 
 $stmt_ajout_manager = $connexion->prepare("
     SELECT p.id, p.last_name, p.first_name, d.name AS department_name

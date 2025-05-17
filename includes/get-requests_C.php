@@ -3,9 +3,12 @@
 $collaborator_id = $_SESSION['collaborator_id']; 
 
 // Requête SQL pour récupérer l'historique des demandes du collaborateur sans tri
+
 $sql = "SELECT r.id, r.start_at, r.end_at, r.request_type_id, 
                DATEDIFF(r.end_at, r.start_at) AS jours_demandes,
                rt.name AS type_demande, r.created_at AS date_creation, r.comment AS commentaire,
+
+
                r.answer AS status
         FROM request r
         LEFT JOIN request_type rt ON r.request_type_id = rt.id

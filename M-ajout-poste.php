@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/ajout-nom-poste.php';
+include 'includes/M-check-enabled.php';
 
 $message = null;
 if (isset($_COOKIE['message'])) {

@@ -295,7 +295,6 @@ input#current-password, input#new-password, input#confirm-password, .input-field
     font-size: 16px;
     font-family: 'Epilogue';
     font-weight: 500;
-    white-space: nowrap; 
     margin: 10px 0 0 0px;
 }
 
@@ -983,19 +982,27 @@ th input {
     gap: 150px;
 }
 
+.password-wrapper2{
+    position: relative;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+}
+
 .password-label2 {
     display: block;
     margin: 20px 0 0 0px;
-    width: 200%; 
+    width: 100%; 
     max-width: 350px; 
-}
-
-#confirm-password{
-    margin-left: 44px;
 }
 
 .label{
     flex-direction: column;
+}
+
+.label2,.label3{
+    width: 368px;
 }
 
 .label-prenom{

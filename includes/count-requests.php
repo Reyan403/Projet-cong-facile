@@ -25,9 +25,9 @@ if ($manager) {
     $stmt->bindParam(':manager_id', $manager_id, PDO::PARAM_INT);
     $stmt->bindParam(':department_id', $manager_department_id, PDO::PARAM_INT);
     $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $result['total'];
+    return $resultat['total'];
 } else {
     return 0; // Si le manager n'a pas de département associé
 }
