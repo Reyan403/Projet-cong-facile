@@ -1,6 +1,6 @@
 <?php
 include 'includes/affichage-avatar.php';
-include 'includes/C-check-enabled.php';
+include 'includes/C-check-connected.php';
 ?>
 
 

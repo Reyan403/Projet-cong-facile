@@ -10,9 +10,9 @@ $sql_request = "
         request.created_at AS date_demande,
         request.start_at AS date_debut,
         request.end_at AS date_fin,
-        DATEDIFF(request.end_at, request.start_at) AS jours_demandes,
+        request.jours_demandes,
         request.comment AS commentaire,
-        request.receipt_file,
+        request.receipt_file AS justificatif,
         person.first_name AS prenom,
         person.last_name AS nom
     FROM request
@@ -27,4 +27,5 @@ $stmt->bindParam(':request_id', $request_id, PDO::PARAM_INT);
 $stmt->execute();
 $demande = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$cheminFichier = !empty($demande['justificatif']) ? $demande['justificatif'] : null;
 ?>
