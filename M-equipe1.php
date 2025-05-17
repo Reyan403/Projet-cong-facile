@@ -2,15 +2,15 @@
 
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-<<<<<<< HEAD
 include 'includes/M-check-connected.php';
+include 'M-info.php';
 
 $sql = "SELECT id, name FROM request_type";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
 $request_types = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($request_types as &$request_type) {
+foreach ($request_types as $request_type) {
     // Requête pour compter le nombre de demandes associées à chaque type
     $sql_count = "SELECT COUNT(*) FROM request WHERE request_type_id = :id";
     $stmt_count = $connexion->prepare($sql_count);
@@ -20,10 +20,6 @@ foreach ($request_types as &$request_type) {
     $request_type['request_count'] = $result['COUNT(*)'];
 }
 
-=======
-include 'includes/M-check-enabled.php';
-include 'M-info.php';
->>>>>>> 588c1621517f3d698e1a7baa727b1be0ae31b779
 ?>
 
 <?php include 'includes/header.php'; ?>
