@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $requete->fetch(PDO::FETCH_ASSOC);
 
     // Vérification des informations utilisateur
-    if (!$user || !password_verify($data['password'], $user['password'])) {
-        $erreurs['email'] = 'Compte non valide, veuillez réessayer.';
+   if (!$user || !password_verify($data['password'], $user['password'])) {
+    $erreurs['email'] = 'Compte non valide, veuillez réessayer.';
     } else {
         // Stocker les informations dans la session
         $_SESSION['user'] = [
@@ -58,11 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'department_id' => $user['department_id'] ?? null 
         ];
 
-        // Stocker l'ID du collaborateur dans la session
-        $_SESSION['collaborator_id'] = $user['id']; // Enregistrer l'ID du collaborateur
-        $_SESSION['department_id'] = $user['department_id']; // Enregistrer l'ID du département dans la session
+        $_SESSION['collaborator_id'] = $user['id'];
+        $_SESSION['department_id'] = $user['department_id'];
 
-        // Redirection selon le rôle de l'utilisateur
+        // ✅ Mettre à jour enabled = 1 AVANT la redirection
+        $sql_enabled = 'UPDATE user SET enabled = 1 WHERE id = :id';
+        $stmt = $connexion->prepare($sql_enabled);
+        $stmt->bindParam(':id', $_SESSION['user']['id']);
+        $stmt->execute();
+
+        // Redirection selon le rôle
         if ($user['role'] === 'employe') {
             header('Location: C-accueil.php');
         } elseif ($user['role'] === 'manager') {

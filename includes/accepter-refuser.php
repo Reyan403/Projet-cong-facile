@@ -12,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':answer', $answer_value, PDO::PARAM_INT);
         $stmt->bindParam(':id', $demande_id, PDO::PARAM_INT);
         $stmt->execute();
+
+        header('Location: M-historique-demandes-mana.php');
+        exit;
     }
 }
 ?>

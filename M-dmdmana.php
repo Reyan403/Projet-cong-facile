@@ -1,7 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
-
+include 'includes/M-check-enabled.php';
 include 'includes/accepter-refuser.php';
 include 'includes/get-request-detail.php';
 ?>

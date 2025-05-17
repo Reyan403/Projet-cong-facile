@@ -1,6 +1,7 @@
 <?php
 include 'includes/affichage-avatar.php';
 include 'includes/db.php';
+include 'includes/C-check-enabled.php';
 
 $sql = "SELECT id, name FROM request_type";
 $stmt = $connexion->prepare($sql);

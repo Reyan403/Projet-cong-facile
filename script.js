@@ -192,3 +192,4 @@ const switchBtn2 = document.getElementById('switchBtn2');
     switchBtn2.addEventListener('click', () => {
         switchBtn2.classList.toggle('active');
 });
+

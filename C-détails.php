@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/get-requests_C.php';
+include 'includes/C-check-enabled.php';
 
 ?>
 

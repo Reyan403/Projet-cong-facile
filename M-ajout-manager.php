@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/M-affichage-ajout.php';
+include 'includes/M-check-enabled.php';
 
 $sql = "SELECT id, name FROM department";
 $stmt = $connexion->prepare($sql);
@@ -64,20 +65,20 @@ include 'includes/menu-manager.php';
                     <span class="error"><?= $errors['service'] ?? '' ?></span>
 
                 <div class="flex-password">
-                    <div class="label">
+                    <div class="label2">
                         <label for="new-password" class="password-label2">
                             Nouveau mot de passe
                             <div class="password-wrapper">
                                 <input type="password" name="new_password" id="new-password" class="input-field">
                                 <img src="./PNG/les-yeux-croises.png" class="toggle-password" id="toggleEyeNew" onclick="togglePassword('new-password', 'toggleEyeNew')">
                             </div>
-                            <?php if (isset($errors['confirm_password'])): ?>
+                            <?php if (isset($errors['new_password'])): ?>
                                 <span class="error"><?= htmlspecialchars($errors['new_password']) ?></span>
                             <?php endif; ?>
                         </label>
                     </div>
 
-                    <div class="label">
+                    <div class="label3">
                         <label for="confirm-password" class="password-label2">
                             Confirmation de mot de passe
                             <div class="password-wrapper">

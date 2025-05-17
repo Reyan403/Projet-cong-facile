@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['email'] = "L’adresse email n’est pas valide.";
     }
 
-    if(empty($service)) {
+    if (empty($service)) {
         $errors['service'] = 'Veuillez sélectionner un service';
     }
 
@@ -59,29 +59,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-        // On récupère l'id du service (department) sélectionné, ici $service contient l'id choisi
-        $department_id = $service;  // Pas besoin d'insérer un nouveau department, tu utilises un existant
+        $department_id = $service;
 
-        // 2. Insérer dans la table person (nom, prénom, department_id)
+        // Insérer dans person
         $stmtPerson = $connexion->prepare("INSERT INTO person (first_name, last_name, department_id) VALUES (:prenom, :nom, :department_id)");
         $stmtPerson->bindParam(':prenom', $prenom);
         $stmtPerson->bindParam(':nom', $nom);
         $stmtPerson->bindParam(':department_id', $department_id);
         $stmtPerson->execute();
-        $person_id = $connexion->lastInsertId(); // Récupérer l'ID de la personne insérée
 
-        // 3. Insérer dans la table user (email, mot de passe, rôle, lien avec person)
-        $stmtUser = $connexion->prepare("INSERT INTO user (email, password, role, person_id) 
-                                        VALUES (:email, :password, :role, :person_id)");
+        $person_id = $connexion->lastInsertId();
+
+        // Insérer dans user avec id = person_id
+        $stmtUser = $connexion->prepare("INSERT INTO user (id, person_id, email, password, role) 
+                                        VALUES (:id, :person_id, :email, :password, :role)");
+        $stmtUser->bindParam(':id', $person_id, PDO::PARAM_INT);
+        $stmtUser->bindParam(':person_id', $person_id, PDO::PARAM_INT);
         $stmtUser->bindParam(':email', $email);
         $stmtUser->bindParam(':password', $hashed_password);
-        $stmtUser->bindParam(':role', $role); // Le rôle par défaut sera 'manager'
-        $stmtUser->bindParam(':person_id', $person_id);
 
         $role = 'manager';
+        $stmtUser->bindParam(':role', $role);
+
         $stmtUser->execute();
-    }   
+    }
 }
-
 ?>
-

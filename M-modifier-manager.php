@@ -2,6 +2,7 @@
 include 'includes/db.php';
 include 'includes/affichage-avatar.php';
 include 'includes/M-affichage-modif.php';
+include 'includes/M-check-enabled.php';
 ?>
 
 
@@ -36,7 +37,7 @@ include 'includes/menu-manager.php';
                     <input type="text" name="service" id="service2" value="<?= htmlspecialchars($userData['service']) ?>">
 
                     <div class="flex-password">
-                        <div class="label">
+                        <div class="label2">
                             <label for="new-password" class="password-label2">
                                 Nouveau mot de passe
                                 <div class="password-wrapper">
@@ -49,7 +50,7 @@ include 'includes/menu-manager.php';
                             </label>
                         </div>
 
-                        <div class="label">
+                        <div class="label3">
                             <label for="confirm-password" class="password-label2">
                                 Confirmation de mot de passe
                                 <div class="password-wrapper">
