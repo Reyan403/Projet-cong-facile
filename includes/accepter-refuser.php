@@ -19,8 +19,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':id', $demande_id, PDO::PARAM_INT);
         $stmt->execute();
 
+        // ✅ Envoi de l'e-mail si l'utilisateur a activé les notifications
+        $sql = "SELECT u.email, p.alert_on_answer AS notify_on_decision
+                FROM request r
+                JOIN user u ON r.collaborator_id = u.id
+                JOIN person p ON u.person_id = p.id
+                WHERE r.id = :id";
+
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([':id' => $demande_id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && $user['notify_on_decision']) {
+            $to = $user['email'];
+            $subject = "Mise à jour de votre demande de congé";
+            $statusText = ($answer_value === 1) ? "acceptée" : "refusée";
+            $message = "Bonjour,\n\nVotre demande de congé a été traitée.";
+
+            mail($to, $subject, $message); // Fonction mail standard
+        }
+
         header('Location: M-historique-demandes-mana.php');
         exit;
     }
 }
+
 ?>

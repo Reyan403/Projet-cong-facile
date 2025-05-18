@@ -181,15 +181,26 @@ let arrowBottom = table.rows[0].cells[n].getElementsByClassName("arrow-bottom")[
 searchTable();
 }
 
-//Bouton switch
-const switchBtn = document.getElementById('switchBtn');
+  const switchBtn = document.getElementById('switchBtn');
+  if (switchBtn) {
     switchBtn.addEventListener('click', () => {
-        switchBtn.classList.toggle('active');
-});
+      switchBtn.classList.toggle('active');
+    });
+  }
 
-
-const switchBtn2 = document.getElementById('switchBtn2');
+  // SwitchBtn2
+  const switchBtn2 = document.getElementById('switchBtn2');
+  if (switchBtn2) {
     switchBtn2.addEventListener('click', () => {
-        switchBtn2.classList.toggle('active');
-});
+      switchBtn2.classList.toggle('active');
+    });
+  }
+
+  // SwitchBtn3
+  const switchBtn3 = document.getElementById('switchBtn3');
+  if (switchBtn3) {
+    switchBtn3.addEventListener('click', () => {
+      switchBtn3.classList.toggle('active');
+    });
+  }
 

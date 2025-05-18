@@ -16,13 +16,13 @@ include 'includes/menu-collaborateur.php';
             Mes préférences
         </h1>
         <div class="btn-switch">
-            <button id="switchBtn"></button>
+            <button id="switchBtn2"></button>
             <p>
                 Être alerté par email lorsqu'une demande de congé est acceptée ou refusée
             </p>
         </div>
         <div class="btn-switch">
-            <button id="switchBtn2"></button>
+            <button id="switchBtn3"></button>
             <p>
                 Recevoir un rappel par email lorsqu'un congé arrive la semaine prochaine
             </p>
