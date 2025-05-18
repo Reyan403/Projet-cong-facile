@@ -59,12 +59,12 @@ include 'includes/menu-manager.php';
                 <div class="nom-prenom">
                     <div class="label">
                         <label for="nom">Nom de famille - champ obligatoire</label>
-                        <input type="text" name="nom-prenom" id="nom-prenom" value="<?= htmlspecialchars($member['last_name']) ?>" readonly>
+                        <input type="text" name="nom" id="nom" value="<?= htmlspecialchars($member['last_name']) ?>" readonly>
                     </div>
 
-                    <div class="label-prenom">
+                    <div class="label">
                         <label for="prenom">Prénom - champ obligatoire</label>
-                        <input type="text" name="prenom-nom" id="prenom-nom" value="<?= htmlspecialchars($member['first_name']) ?>" readonly>
+                        <input type="text" name="prenom" id="prenom" value="<?= htmlspecialchars($member['first_name']) ?>" readonly>
                     </div>
                 </div>
 

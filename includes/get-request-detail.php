@@ -13,6 +13,7 @@ $sql_request = "
         request.jours_demandes,
         request.comment AS commentaire,
         request.receipt_file AS justificatif,
+        request.answer AS status,
         person.first_name AS prenom,
         person.last_name AS nom
     FROM request

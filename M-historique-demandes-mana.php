@@ -105,7 +105,7 @@ include 'includes/menu-manager.php';
                                     } 
                                 ?>
                             </td>
-                            <td><a href="M-détails.php"><button class="details-btn">Détails</button></a></td>
+                            <td><a href="M-détails.php?id=<?= $demande['id'] ?>"><button class="details-btn">Détails</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

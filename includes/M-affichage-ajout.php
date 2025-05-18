@@ -82,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmtUser->bindParam(':role', $role);
 
         $stmtUser->execute();
+
+        header("Location: M-liste-manager.php");
+        exit;
     }
 }
 ?>
