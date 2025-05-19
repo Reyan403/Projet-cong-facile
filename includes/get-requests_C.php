@@ -6,8 +6,6 @@ $collaborator_id = $_SESSION['collaborator_id'];
 
 $sql = "SELECT r.id, r.start_at, r.end_at, r.request_type_id, r.jours_demandes,
                rt.name AS type_demande, r.created_at AS date_creation, r.comment AS commentaire,
-
-
                r.answer AS status
         FROM request r
         LEFT JOIN request_type rt ON r.request_type_id = rt.id
