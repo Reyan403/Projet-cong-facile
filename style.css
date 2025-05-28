@@ -900,11 +900,15 @@ th input {
 
 
 /*---------------------------------DETAILS POSTES----------------------------------------*/
+.btn-flex{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 
 .btn-supp{
     background-color: #E10E0E;
     color:white;
-    
 
 }
 .btn-mettre-a-jour{
@@ -913,11 +917,14 @@ th input {
 }
 
 .btn-supp , .btn-mettre-a-jour{
-    width:136px;
+    width: 216px;
     height: 40px;
     border:none;
     border-radius: 6px;
     cursor: pointer;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 500;
 }
 /*----------------------------------DEMANDE MANAGER----------*/
 .answer-request{

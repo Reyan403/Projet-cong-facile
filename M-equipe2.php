@@ -4,10 +4,6 @@ include 'includes/affichage-avatar.php';
 include 'includes/M-affichage-infos.php';
 include 'includes/M-check-connected.php';
 
-
-
-
-
 $sql = "SELECT id, name FROM department";
 $stmt = $connexion->prepare($sql);
 $stmt->execute();
@@ -15,8 +11,6 @@ $departments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $department = $_POST['department'] ?? '';
-
-    
 }
 
 $sql = "SELECT id, name FROM position";
@@ -26,8 +20,6 @@ $positions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $position = $_POST['position'] ?? '';
-
-    
 }
 
 include 'includes/affichage-erreurs.php';
@@ -49,6 +41,7 @@ include 'includes/menu-manager.php';
             <?= htmlspecialchars($member['first_name']) . ' ' . htmlspecialchars($member['last_name']) ?>
 
         </h1>
+
         <div class="formulaire-bloc-connexion">
             
             <form action="" method="POST" class="form-infos">
@@ -57,7 +50,7 @@ include 'includes/menu-manager.php';
                 <input type="text" name="email" id="email" value="<?= htmlspecialchars($member['email']) ?>" >
 
                 <div class="nom-prenom">
-                    <div class="label">
+                    <div class="label2">
                         <label for="nom">Nom de famille - champ obligatoire</label>
                         <input type="text" name="nom" id="nom" value="<?= htmlspecialchars($member['last_name']) ?>" readonly>
                     </div>
